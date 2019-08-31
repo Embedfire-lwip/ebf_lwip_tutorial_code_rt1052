@@ -437,11 +437,6 @@
               <FilePath>..\..\libraries\drivers\fsl_iomuxc.h</FilePath>
             </File>
             <File>
-              <FileName>fsl_elcdif.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\libraries\drivers\fsl_elcdif.c</FilePath>
-            </File>
-            <File>
               <FileName>fsl_lpi2c.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\libraries\drivers\fsl_lpi2c.c</FilePath>
@@ -452,14 +447,14 @@
               <FilePath>..\..\libraries\drivers\fsl_flexspi.c</FilePath>
             </File>
             <File>
-              <FileName>fsl_usdhc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\libraries\drivers\fsl_usdhc.c</FilePath>
-            </File>
-            <File>
               <FileName>fsl_enet.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\libraries\drivers\fsl_enet.c</FilePath>
+            </File>
+            <File>
+              <FileName>fsl_usdhc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\libraries\drivers\fsl_usdhc.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1331,7 +1326,7 @@
 </MiscControls>
               <Define>CPU_MIMXRT1052CVL5B,XIP_EXTERNAL_FLASH=1, XIP_BOOT_HEADER_ENABLE =1,XIP_BOOT_HEADER_DCD_ENABLE =1,PRINTF_FLOAT_ENABLE=1, SCANF_FLOAT_ENABLE=1, PRINTF_ADVANCED_ENABLE=1, SCANF_ADVANCED_ENABLE=1, USB_STACK_BM</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\libraries\CMSIS\Include;..\..\libraries\drivers;..\..\libraries\utilities;..\..\libraries\utilities\str;..\..\libraries\utilities\log;..\..\libraries\utilities\io;..\..\libraries\xip;..\..\user;..\..\user\bsp;..\..\user\bsp\sdcard\inc;..\..\user\bsp\sdcard\port;..\..\user\bsp\usb\include;..\..\user\bsp\usb\osa;..\..\user\bsp\usb\phy;..\..\user\bsp\usb\host;..\..\user\bsp\usb\host\class;..\..\user\bsp\host_mouse;..\..\user\bsp\lwip\port;..\..\user\bsp\lwip\src;..\..\user\bsp\lwip\src\include;..\..\user\bsp\lwip\contrib\apps;..\..\user\bsp\lwip\test</IncludePath>
+              <IncludePath>..\..\libraries\CMSIS\Include;..\..\libraries\drivers;..\..\libraries\utilities;..\..\libraries\utilities\str;..\..\libraries\utilities\log;..\..\libraries\utilities\io;..\..\libraries\xip;..\..\user;..\..\user\bsp;..\..\user\bsp\sdcard\inc;..\..\user\bsp\sdcard\port;..\..\user\bsp\lwip\port;..\..\user\bsp\lwip\src;..\..\user\bsp\lwip\src\include;..\..\user\bsp\lwip\contrib\apps;..\..\user\bsp\lwip\test</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -1427,11 +1422,6 @@
               <FilePath>..\..\libraries\drivers\fsl_iomuxc.h</FilePath>
             </File>
             <File>
-              <FileName>fsl_elcdif.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\libraries\drivers\fsl_elcdif.c</FilePath>
-            </File>
-            <File>
               <FileName>fsl_lpi2c.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\libraries\drivers\fsl_lpi2c.c</FilePath>
@@ -1442,14 +1432,14 @@
               <FilePath>..\..\libraries\drivers\fsl_flexspi.c</FilePath>
             </File>
             <File>
-              <FileName>fsl_usdhc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\libraries\drivers\fsl_usdhc.c</FilePath>
-            </File>
-            <File>
               <FileName>fsl_enet.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\libraries\drivers\fsl_enet.c</FilePath>
+            </File>
+            <File>
+              <FileName>fsl_usdhc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\libraries\drivers\fsl_usdhc.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2417,11 +2407,6 @@
               <FilePath>..\..\libraries\drivers\fsl_iomuxc.h</FilePath>
             </File>
             <File>
-              <FileName>fsl_elcdif.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\libraries\drivers\fsl_elcdif.c</FilePath>
-            </File>
-            <File>
               <FileName>fsl_lpi2c.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\libraries\drivers\fsl_lpi2c.c</FilePath>
@@ -2432,14 +2417,14 @@
               <FilePath>..\..\libraries\drivers\fsl_flexspi.c</FilePath>
             </File>
             <File>
-              <FileName>fsl_usdhc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\libraries\drivers\fsl_usdhc.c</FilePath>
-            </File>
-            <File>
               <FileName>fsl_enet.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\libraries\drivers\fsl_enet.c</FilePath>
+            </File>
+            <File>
+              <FileName>fsl_usdhc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\libraries\drivers\fsl_usdhc.c</FilePath>
             </File>
           </Files>
         </Group>
