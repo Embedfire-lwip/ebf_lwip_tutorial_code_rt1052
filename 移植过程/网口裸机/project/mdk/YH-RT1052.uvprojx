@@ -562,71 +562,6 @@
               <FilePath>..\..\user\main.c</FilePath>
             </File>
             <File>
-              <FileName>bsp_led.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\led\bsp_led.c</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_lcd.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\lcd\bsp_lcd.c</FilePath>
-            </File>
-            <File>
-              <FileName>fonts.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\font\fonts.c</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_i2c_touch.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\touch\bsp_i2c_touch.c</FilePath>
-            </File>
-            <File>
-              <FileName>gt9xx.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\touch\gt9xx.c</FilePath>
-            </File>
-            <File>
-              <FileName>palette.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\touch\palette.c</FilePath>
-            </File>
-            <File>
-              <FileName>sdram_test.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\sdram_test.c</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_i2c_eeprom.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\eeprom\bsp_i2c_eeprom.c</FilePath>
-            </File>
-            <File>
-              <FileName>eeprom_test.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\eeprom\eeprom_test.c</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_norflash.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\norflash\bsp_norflash.c</FilePath>
-            </File>
-            <File>
-              <FileName>norflash_test.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\norflash\norflash_test.c</FilePath>
-            </File>
-            <File>
-              <FileName>logictest.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\logictest\logictest.c</FilePath>
-            </File>
-            <File>
-              <FileName>sdcard_test.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\sdcard\sdcard_test.c</FilePath>
-            </File>
-            <File>
               <FileName>lwip_ping_test.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\user\bsp\lwip\test\lwip_ping_test.c</FilePath>
@@ -685,66 +620,6 @@
               <FileName>fsl_sdmmc_common.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\user\bsp\sdcard\src\fsl_sdmmc_common.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>USB</GroupName>
-          <Files>
-            <File>
-              <FileName>usb_host_devices.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\usb\host\usb_host_devices.c</FilePath>
-            </File>
-            <File>
-              <FileName>usb_host_ehci.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\usb\host\usb_host_ehci.c</FilePath>
-            </File>
-            <File>
-              <FileName>usb_host_framework.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\usb\host\usb_host_framework.c</FilePath>
-            </File>
-            <File>
-              <FileName>usb_host_hci.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\usb\host\usb_host_hci.c</FilePath>
-            </File>
-            <File>
-              <FileName>usb_host_hid.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\usb\host\class\usb_host_hid.c</FilePath>
-            </File>
-            <File>
-              <FileName>usb_host_hub.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\usb\host\class\usb_host_hub.c</FilePath>
-            </File>
-            <File>
-              <FileName>usb_host_hub_app.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\usb\host\class\usb_host_hub_app.c</FilePath>
-            </File>
-            <File>
-              <FileName>usb_osa_bm.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\usb\osa\usb_osa_bm.c</FilePath>
-            </File>
-            <File>
-              <FileName>usb_phy.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\usb\phy\usb_phy.c</FilePath>
-            </File>
-            <File>
-              <FileName>app.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\host_mouse\app.c</FilePath>
-            </File>
-            <File>
-              <FileName>host_mouse.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\host_mouse\host_mouse.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1677,71 +1552,6 @@
               <FilePath>..\..\user\main.c</FilePath>
             </File>
             <File>
-              <FileName>bsp_led.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\led\bsp_led.c</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_lcd.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\lcd\bsp_lcd.c</FilePath>
-            </File>
-            <File>
-              <FileName>fonts.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\font\fonts.c</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_i2c_touch.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\touch\bsp_i2c_touch.c</FilePath>
-            </File>
-            <File>
-              <FileName>gt9xx.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\touch\gt9xx.c</FilePath>
-            </File>
-            <File>
-              <FileName>palette.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\touch\palette.c</FilePath>
-            </File>
-            <File>
-              <FileName>sdram_test.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\sdram_test.c</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_i2c_eeprom.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\eeprom\bsp_i2c_eeprom.c</FilePath>
-            </File>
-            <File>
-              <FileName>eeprom_test.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\eeprom\eeprom_test.c</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_norflash.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\norflash\bsp_norflash.c</FilePath>
-            </File>
-            <File>
-              <FileName>norflash_test.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\norflash\norflash_test.c</FilePath>
-            </File>
-            <File>
-              <FileName>logictest.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\logictest\logictest.c</FilePath>
-            </File>
-            <File>
-              <FileName>sdcard_test.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\sdcard\sdcard_test.c</FilePath>
-            </File>
-            <File>
               <FileName>lwip_ping_test.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\user\bsp\lwip\test\lwip_ping_test.c</FilePath>
@@ -1800,66 +1610,6 @@
               <FileName>fsl_sdmmc_common.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\user\bsp\sdcard\src\fsl_sdmmc_common.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>USB</GroupName>
-          <Files>
-            <File>
-              <FileName>usb_host_devices.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\usb\host\usb_host_devices.c</FilePath>
-            </File>
-            <File>
-              <FileName>usb_host_ehci.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\usb\host\usb_host_ehci.c</FilePath>
-            </File>
-            <File>
-              <FileName>usb_host_framework.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\usb\host\usb_host_framework.c</FilePath>
-            </File>
-            <File>
-              <FileName>usb_host_hci.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\usb\host\usb_host_hci.c</FilePath>
-            </File>
-            <File>
-              <FileName>usb_host_hid.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\usb\host\class\usb_host_hid.c</FilePath>
-            </File>
-            <File>
-              <FileName>usb_host_hub.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\usb\host\class\usb_host_hub.c</FilePath>
-            </File>
-            <File>
-              <FileName>usb_host_hub_app.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\usb\host\class\usb_host_hub_app.c</FilePath>
-            </File>
-            <File>
-              <FileName>usb_osa_bm.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\usb\osa\usb_osa_bm.c</FilePath>
-            </File>
-            <File>
-              <FileName>usb_phy.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\usb\phy\usb_phy.c</FilePath>
-            </File>
-            <File>
-              <FileName>app.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\host_mouse\app.c</FilePath>
-            </File>
-            <File>
-              <FileName>host_mouse.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\host_mouse\host_mouse.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2792,71 +2542,6 @@
               <FilePath>..\..\user\main.c</FilePath>
             </File>
             <File>
-              <FileName>bsp_led.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\led\bsp_led.c</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_lcd.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\lcd\bsp_lcd.c</FilePath>
-            </File>
-            <File>
-              <FileName>fonts.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\font\fonts.c</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_i2c_touch.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\touch\bsp_i2c_touch.c</FilePath>
-            </File>
-            <File>
-              <FileName>gt9xx.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\touch\gt9xx.c</FilePath>
-            </File>
-            <File>
-              <FileName>palette.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\touch\palette.c</FilePath>
-            </File>
-            <File>
-              <FileName>sdram_test.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\sdram_test.c</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_i2c_eeprom.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\eeprom\bsp_i2c_eeprom.c</FilePath>
-            </File>
-            <File>
-              <FileName>eeprom_test.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\eeprom\eeprom_test.c</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_norflash.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\norflash\bsp_norflash.c</FilePath>
-            </File>
-            <File>
-              <FileName>norflash_test.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\norflash\norflash_test.c</FilePath>
-            </File>
-            <File>
-              <FileName>logictest.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\logictest\logictest.c</FilePath>
-            </File>
-            <File>
-              <FileName>sdcard_test.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\sdcard\sdcard_test.c</FilePath>
-            </File>
-            <File>
               <FileName>lwip_ping_test.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\user\bsp\lwip\test\lwip_ping_test.c</FilePath>
@@ -2915,66 +2600,6 @@
               <FileName>fsl_sdmmc_common.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\user\bsp\sdcard\src\fsl_sdmmc_common.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>USB</GroupName>
-          <Files>
-            <File>
-              <FileName>usb_host_devices.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\usb\host\usb_host_devices.c</FilePath>
-            </File>
-            <File>
-              <FileName>usb_host_ehci.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\usb\host\usb_host_ehci.c</FilePath>
-            </File>
-            <File>
-              <FileName>usb_host_framework.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\usb\host\usb_host_framework.c</FilePath>
-            </File>
-            <File>
-              <FileName>usb_host_hci.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\usb\host\usb_host_hci.c</FilePath>
-            </File>
-            <File>
-              <FileName>usb_host_hid.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\usb\host\class\usb_host_hid.c</FilePath>
-            </File>
-            <File>
-              <FileName>usb_host_hub.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\usb\host\class\usb_host_hub.c</FilePath>
-            </File>
-            <File>
-              <FileName>usb_host_hub_app.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\usb\host\class\usb_host_hub_app.c</FilePath>
-            </File>
-            <File>
-              <FileName>usb_osa_bm.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\usb\osa\usb_osa_bm.c</FilePath>
-            </File>
-            <File>
-              <FileName>usb_phy.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\usb\phy\usb_phy.c</FilePath>
-            </File>
-            <File>
-              <FileName>app.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\host_mouse\app.c</FilePath>
-            </File>
-            <File>
-              <FileName>host_mouse.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\host_mouse\host_mouse.c</FilePath>
             </File>
           </Files>
         </Group>
