@@ -52,17 +52,32 @@
 ** ###################################################################
 */
 
-#define m_interrupts_start             0x00000000
+#define m_flash_config_start           0x60000000
+#define m_flash_config_size            0x00001000
+
+#define m_ivt_start                    0x60001000
+#define m_ivt_size                     0x00001000
+
+#define m_interrupts_start             0x60002000
 #define m_interrupts_size              0x00000400
 
-#define m_text_start                   0x00000400
-#define m_text_size                    0x0001FC00
+#define m_text_start                   0x60002400
+#define m_text_size                    0x03FFDC00
 
-#define m_data_start                   0x80000000
-#define m_data_size                    0x01C00000
+;在SDRAM中存放代码的空间
+;中断向量表
+#define m_sdram_interrupts_start       0x80000000
+#define m_sdram_interrupts_size        0x00000400
 
-#define m_ncache_start                 0x81C00000
-#define m_ncache_size                  0x00400000
+;SDRAM中的主体代码
+#define m_sdram_text_start             0x80000400
+#define m_sdram_text_size              0x003FFC00
+
+#define m_data_start                   0x80400000
+#define m_data_size                    0x01A00000
+
+#define m_ncache_start                 0x81E00000
+#define m_ncache_size                  0x00200000
 
 #define m_data2_start                  0x20000000
 #define m_data2_size                   0x00020000
@@ -83,14 +98,47 @@
   #define Heap_Size                    0x0400
 #endif
 
+LR_m_rom_config m_flash_config_start m_flash_config_size {   ; load region size_region
+	RW_m_config_text m_flash_config_start m_flash_config_size { ; load address = execution address
+	* (.boot_hdr.conf, +FIRST)
+	}
+}
+
+LR_m_rom_ivt m_ivt_start m_ivt_size {   ; load region size_region
+	RW_m_ivt_text m_ivt_start m_ivt_size { ; load address = execution address
+	* (.boot_hdr.ivt, +FIRST)
+	* (.boot_hdr.boot_data)
+	* (.boot_hdr.dcd_data)
+	}
+}
+
 LR_m_text m_interrupts_start m_text_start+m_text_size-m_interrupts_size {   ; load region size_region
+  
+  ; 在FALSH中的中断向量表
   VECTOR_ROM m_interrupts_start m_interrupts_size { ; load address = execution address
     * (RESET,+FIRST)
   }
+  
+  ; * (InRoot$$Sections)是__main中从加载域复制代码到执行域的程序scatter_copy，
+  ; 启动时运行的startup_mimxrt1052t和system_mimxrt1052中的代码要存放在FLASH中
   ER_m_text m_text_start m_text_size { ; load address = execution address
     * (InRoot$$Sections)
-    .ANY (+RO)
+	startup_mimxrt1052.o(+RO)
+	system_mimxrt1052.o(+RO)
+  } 
+
+  ;	EMPTY表示这段空间留空，防止其它应用占用或编译提示warning
+  VECTOR_RAM m_sdram_interrupts_start EMPTY m_sdram_interrupts_size { ;execution address
+   
+   ;这部分内容由board.c文件中的CopyAndUseRAMVectorTable函数从VECTOR_ROM中复制得到
+   ;得到SDRAM版本的中断向量表
   }
+  
+  ;存放主体程序的SDRAM空间，由__main函数从FLASH中加载
+  ER_m_ram_text m_sdram_text_start m_sdram_text_size { ;execution address
+    .ANY (+RO)
+  }  
+  
   RW_m_data m_data_start m_data_size-Stack_Size-Heap_Size { ; RW data
     .ANY (+RW +ZI)
     *(m_usb_dma_init_data)

@@ -1,4 +1,6 @@
 /*
+
+https://www.iar.com/support/tech-notes/general/execute-in-ram-after-copying-from-flashrom-v5.20-and-later/
 ** ###################################################################
 **     Processors:          MIMXRT1052CVL5B
 **                          MIMXRT1052DVL6B
@@ -55,7 +57,16 @@ define symbol m_interrupts_start       = 0x60002000;
 define symbol m_interrupts_end         = 0x600023FF;
 
 define symbol m_text_start             = 0x60002400;
-define symbol m_text_end               = 0x61FFFFFF;
+define symbol m_text_end               = 0x63FFFFFF;
+
+/* ITCM text */
+/* ITCM IVT_TABLE */
+define symbol m_ram_interrupts_start   = 0x00000000;
+define symbol m_ram_interrupts_end     = 0x000003FF;
+
+/* ITCM code */
+define symbol m_ram_text_start         = 0x00000400;
+define symbol m_ram_text_end           = 0x0001FFFF;
 
 define symbol m_data_start             = 0x20000000;
 define symbol m_data_end               = 0x2001FFFF;
@@ -63,7 +74,10 @@ define symbol m_data_end               = 0x2001FFFF;
 define symbol m_data2_start            = 0x20200000;
 define symbol m_data2_end              = 0x2023FFFF;
 
-define symbol m_ncache_start           = 0x81C00000;
+define symbol m_data3_start            = 0x80040000;
+define symbol m_data3_end              = 0x81DFFFFF;
+
+define symbol m_ncache_start           = 0x81E00000;
 define symbol m_ncache_end             = 0x81FFFFFF;
 
 define exported symbol m_boot_hdr_conf_start = 0x60000000;
@@ -85,28 +99,48 @@ if (isdefinedsymbol(__heap_size__)) {
 }
 
 define exported symbol __VECTOR_TABLE  = m_interrupts_start;
-define exported symbol __VECTOR_RAM    = m_interrupts_start;
+define exported symbol __VECTOR_RAM    = m_ram_interrupts_start;
 define exported symbol __RAM_VECTOR_TABLE_SIZE = 0x0;
 
 define memory mem with size = 4G;
 define region TEXT_region = mem:[from m_interrupts_start to m_interrupts_end]
                           | mem:[from m_text_start to m_text_end];
 
+define region RAM_TEXT_region = mem:[from m_ram_interrupts_start to m_ram_interrupts_end]
+                                | mem:[from m_ram_text_start to m_ram_text_end];  
+
 define region DATA_region = mem:[from m_data_start to m_data_end-__size_cstack__];
 define region DATA2_region = mem:[from m_data2_start to m_data2_end];
-define region CSTACK_region = mem:[from m_data_end-__size_cstack__+1 to m_data_end];
+define region DATA3_region  = mem:[from m_data3_start to m_data3_end];
 define region NCACHE_region = mem:[from m_ncache_start to m_ncache_end];
+define region CSTACK_region = mem:[from m_data_end-__size_cstack__+1 to m_data_end];
 
 define block CSTACK    with alignment = 8, size = __size_cstack__   { };
 define block HEAP      with alignment = 8, size = __size_heap__     { };
-define block RW        { readwrite };
-define block ZI        { zi };
-define block NCACHE_VAR with size = 0x400000 , alignment = 0x100000  { section NonCacheable , section NonCacheable.init };
+define block RW        { first readwrite, section m_usb_dma_init_data };
+define block ZI         with alignment = 32  { first zi, section m_usb_dma_noninit_data };
+define block NCACHE_VAR with size = 0x200000 , alignment = 0x100000  { section NonCacheable , section NonCacheable.init };
 
-initialize by copy { readwrite, section .textrw };
+/*readonly --- copy code to RAM*/
+/*except boot code */
+initialize by copy{ readonly, readwrite, section .textrw }
+              except{
+                      readonly section .intvec,
+                      readonly object system_MIMXRT1052.o,
+                      readonly  object startup_MIMXRT1052.o,
+                      
+                      section .boot_hdr.conf, 
+                      section .boot_hdr.ivt, 
+                      section .boot_hdr.boot_data, 
+                      section .boot_hdr.dcd_data 
+                    };
+              
 do not initialize  { section .noinit };
 
 place at address mem: m_interrupts_start    { readonly section .intvec };
+
+/* RAM vector table*/
+place at address mem: m_ram_interrupts_start    {  section .intvec_RAM };
 
 place at address mem:m_boot_hdr_conf_start { section .boot_hdr.conf };
 place at address mem:m_boot_hdr_ivt_start { section .boot_hdr.ivt };
@@ -115,8 +149,11 @@ place at address mem:m_boot_hdr_dcd_data_start { readonly section .boot_hdr.dcd_
 
 keep{ section .boot_hdr.conf, section .boot_hdr.ivt, section .boot_hdr.boot_data, section .boot_hdr.dcd_data };
 
+/* code load addr*/
 place in TEXT_region                        { readonly };
-place in DATA_region                        { block RW };
+
+/* code execute addr & RW data*/
+place in RAM_TEXT_region                    { block RW };
 place in DATA_region                        { block ZI };
 place in DATA_region                        { last block HEAP };
 place in CSTACK_region                      { block CSTACK };
