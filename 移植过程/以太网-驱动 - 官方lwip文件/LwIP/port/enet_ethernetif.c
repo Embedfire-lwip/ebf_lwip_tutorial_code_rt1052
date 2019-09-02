@@ -246,6 +246,8 @@ err_t ethernetif_init(struct netif *netif, struct ethernetif *ethernetif,
         netif->mld_mac_filter(netif, &ip6_allnodes_ll, NETIF_ADD_MAC_FILTER);
     }
 #endif /* LWIP_IPV6 && LWIP_IPV6_MLD */
-
+		
+		//low_level_init(netif);//³õÊ¼»¯Ó²¼þ
+		
     return ERR_OK;
 }
