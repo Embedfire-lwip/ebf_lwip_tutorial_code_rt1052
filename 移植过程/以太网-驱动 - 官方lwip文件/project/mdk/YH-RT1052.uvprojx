@@ -614,47 +614,47 @@
             <File>
               <FileName>api_lib.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\api_lib.c</FilePath>
+              <FilePath>..\..\LwIP\api\api_lib.c</FilePath>
             </File>
             <File>
               <FileName>api_msg.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\api_msg.c</FilePath>
+              <FilePath>..\..\LwIP\api\api_msg.c</FilePath>
             </File>
             <File>
               <FileName>err.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\err.c</FilePath>
+              <FilePath>..\..\LwIP\api\err.c</FilePath>
             </File>
             <File>
               <FileName>if_api.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\if_api.c</FilePath>
+              <FilePath>..\..\LwIP\api\if_api.c</FilePath>
             </File>
             <File>
               <FileName>netbuf.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\netbuf.c</FilePath>
+              <FilePath>..\..\LwIP\api\netbuf.c</FilePath>
             </File>
             <File>
               <FileName>netdb.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\netdb.c</FilePath>
+              <FilePath>..\..\LwIP\api\netdb.c</FilePath>
             </File>
             <File>
               <FileName>netifapi.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\netifapi.c</FilePath>
+              <FilePath>..\..\LwIP\api\netifapi.c</FilePath>
             </File>
             <File>
               <FileName>sockets.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\sockets.c</FilePath>
+              <FilePath>..\..\LwIP\api\sockets.c</FilePath>
             </File>
             <File>
               <FileName>tcpip.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\tcpip.c</FilePath>
+              <FilePath>..\..\LwIP\api\tcpip.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -664,142 +664,142 @@
             <File>
               <FileName>altcp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\altcp.c</FilePath>
+              <FilePath>..\..\LwIP\core\altcp.c</FilePath>
             </File>
             <File>
               <FileName>altcp_alloc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\altcp_alloc.c</FilePath>
+              <FilePath>..\..\LwIP\core\altcp_alloc.c</FilePath>
             </File>
             <File>
               <FileName>altcp_tcp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\altcp_tcp.c</FilePath>
+              <FilePath>..\..\LwIP\core\altcp_tcp.c</FilePath>
             </File>
             <File>
               <FileName>def.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\def.c</FilePath>
+              <FilePath>..\..\LwIP\core\def.c</FilePath>
             </File>
             <File>
               <FileName>dns.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\dns.c</FilePath>
+              <FilePath>..\..\LwIP\core\dns.c</FilePath>
             </File>
             <File>
               <FileName>inet_chksum.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\inet_chksum.c</FilePath>
+              <FilePath>..\..\LwIP\core\inet_chksum.c</FilePath>
             </File>
             <File>
               <FileName>init.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\init.c</FilePath>
+              <FilePath>..\..\LwIP\core\init.c</FilePath>
             </File>
             <File>
               <FileName>ip.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ip.c</FilePath>
+              <FilePath>..\..\LwIP\core\ip.c</FilePath>
             </File>
             <File>
               <FileName>mem.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\mem.c</FilePath>
+              <FilePath>..\..\LwIP\core\mem.c</FilePath>
             </File>
             <File>
               <FileName>memp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\memp.c</FilePath>
+              <FilePath>..\..\LwIP\core\memp.c</FilePath>
             </File>
             <File>
               <FileName>netif.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\netif.c</FilePath>
+              <FilePath>..\..\LwIP\core\netif.c</FilePath>
             </File>
             <File>
               <FileName>pbuf.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\pbuf.c</FilePath>
+              <FilePath>..\..\LwIP\core\pbuf.c</FilePath>
             </File>
             <File>
               <FileName>raw.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\raw.c</FilePath>
+              <FilePath>..\..\LwIP\core\raw.c</FilePath>
             </File>
             <File>
               <FileName>stats.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\stats.c</FilePath>
+              <FilePath>..\..\LwIP\core\stats.c</FilePath>
             </File>
             <File>
               <FileName>sys.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\sys.c</FilePath>
+              <FilePath>..\..\LwIP\core\sys.c</FilePath>
             </File>
             <File>
               <FileName>tcp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\tcp.c</FilePath>
+              <FilePath>..\..\LwIP\core\tcp.c</FilePath>
             </File>
             <File>
               <FileName>tcp_in.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\tcp_in.c</FilePath>
+              <FilePath>..\..\LwIP\core\tcp_in.c</FilePath>
             </File>
             <File>
               <FileName>tcp_out.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\tcp_out.c</FilePath>
+              <FilePath>..\..\LwIP\core\tcp_out.c</FilePath>
             </File>
             <File>
               <FileName>timeouts.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\timeouts.c</FilePath>
+              <FilePath>..\..\LwIP\core\timeouts.c</FilePath>
             </File>
             <File>
               <FileName>udp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\udp.c</FilePath>
+              <FilePath>..\..\LwIP\core\udp.c</FilePath>
             </File>
             <File>
               <FileName>autoip.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\autoip.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\autoip.c</FilePath>
             </File>
             <File>
               <FileName>dhcp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\dhcp.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\dhcp.c</FilePath>
             </File>
             <File>
               <FileName>etharp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\etharp.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\etharp.c</FilePath>
             </File>
             <File>
               <FileName>icmp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\icmp.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\icmp.c</FilePath>
             </File>
             <File>
               <FileName>igmp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\igmp.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\igmp.c</FilePath>
             </File>
             <File>
               <FileName>ip4.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\ip4.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\ip4.c</FilePath>
             </File>
             <File>
               <FileName>ip4_addr.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\ip4_addr.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\ip4_addr.c</FilePath>
             </File>
             <File>
               <FileName>ip4_frag.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\ip4_frag.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\ip4_frag.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -809,42 +809,42 @@
             <File>
               <FileName>bridgeif.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\bridgeif.c</FilePath>
+              <FilePath>..\..\LwIP\netif\bridgeif.c</FilePath>
             </File>
             <File>
               <FileName>bridgeif_fdb.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\bridgeif_fdb.c</FilePath>
+              <FilePath>..\..\LwIP\netif\bridgeif_fdb.c</FilePath>
             </File>
             <File>
               <FileName>ethernet.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\ethernet.c</FilePath>
+              <FilePath>..\..\LwIP\netif\ethernet.c</FilePath>
             </File>
             <File>
               <FileName>lowpan6.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\lowpan6.c</FilePath>
+              <FilePath>..\..\LwIP\netif\lowpan6.c</FilePath>
             </File>
             <File>
               <FileName>lowpan6_ble.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\lowpan6_ble.c</FilePath>
+              <FilePath>..\..\LwIP\netif\lowpan6_ble.c</FilePath>
             </File>
             <File>
               <FileName>lowpan6_common.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\lowpan6_common.c</FilePath>
+              <FilePath>..\..\LwIP\netif\lowpan6_common.c</FilePath>
             </File>
             <File>
               <FileName>slipif.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\slipif.c</FilePath>
+              <FilePath>..\..\LwIP\netif\slipif.c</FilePath>
             </File>
             <File>
               <FileName>zepif.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\zepif.c</FilePath>
+              <FilePath>..\..\LwIP\netif\zepif.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -854,17 +854,17 @@
             <File>
               <FileName>enet_ethernetif.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\port\enet_ethernetif.c</FilePath>
+              <FilePath>..\..\user\bsp\arch\enet_ethernetif.c</FilePath>
             </File>
             <File>
               <FileName>enet_ethernetif_kinetis.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\port\enet_ethernetif_kinetis.c</FilePath>
+              <FilePath>..\..\user\bsp\arch\enet_ethernetif_kinetis.c</FilePath>
             </File>
             <File>
               <FileName>sys_arch.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\port\sys_arch.c</FilePath>
+              <FilePath>..\..\user\bsp\arch\sys_arch.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1508,47 +1508,47 @@
             <File>
               <FileName>api_lib.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\api_lib.c</FilePath>
+              <FilePath>..\..\LwIP\api\api_lib.c</FilePath>
             </File>
             <File>
               <FileName>api_msg.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\api_msg.c</FilePath>
+              <FilePath>..\..\LwIP\api\api_msg.c</FilePath>
             </File>
             <File>
               <FileName>err.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\err.c</FilePath>
+              <FilePath>..\..\LwIP\api\err.c</FilePath>
             </File>
             <File>
               <FileName>if_api.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\if_api.c</FilePath>
+              <FilePath>..\..\LwIP\api\if_api.c</FilePath>
             </File>
             <File>
               <FileName>netbuf.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\netbuf.c</FilePath>
+              <FilePath>..\..\LwIP\api\netbuf.c</FilePath>
             </File>
             <File>
               <FileName>netdb.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\netdb.c</FilePath>
+              <FilePath>..\..\LwIP\api\netdb.c</FilePath>
             </File>
             <File>
               <FileName>netifapi.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\netifapi.c</FilePath>
+              <FilePath>..\..\LwIP\api\netifapi.c</FilePath>
             </File>
             <File>
               <FileName>sockets.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\sockets.c</FilePath>
+              <FilePath>..\..\LwIP\api\sockets.c</FilePath>
             </File>
             <File>
               <FileName>tcpip.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\tcpip.c</FilePath>
+              <FilePath>..\..\LwIP\api\tcpip.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1558,142 +1558,142 @@
             <File>
               <FileName>altcp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\altcp.c</FilePath>
+              <FilePath>..\..\LwIP\core\altcp.c</FilePath>
             </File>
             <File>
               <FileName>altcp_alloc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\altcp_alloc.c</FilePath>
+              <FilePath>..\..\LwIP\core\altcp_alloc.c</FilePath>
             </File>
             <File>
               <FileName>altcp_tcp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\altcp_tcp.c</FilePath>
+              <FilePath>..\..\LwIP\core\altcp_tcp.c</FilePath>
             </File>
             <File>
               <FileName>def.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\def.c</FilePath>
+              <FilePath>..\..\LwIP\core\def.c</FilePath>
             </File>
             <File>
               <FileName>dns.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\dns.c</FilePath>
+              <FilePath>..\..\LwIP\core\dns.c</FilePath>
             </File>
             <File>
               <FileName>inet_chksum.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\inet_chksum.c</FilePath>
+              <FilePath>..\..\LwIP\core\inet_chksum.c</FilePath>
             </File>
             <File>
               <FileName>init.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\init.c</FilePath>
+              <FilePath>..\..\LwIP\core\init.c</FilePath>
             </File>
             <File>
               <FileName>ip.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ip.c</FilePath>
+              <FilePath>..\..\LwIP\core\ip.c</FilePath>
             </File>
             <File>
               <FileName>mem.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\mem.c</FilePath>
+              <FilePath>..\..\LwIP\core\mem.c</FilePath>
             </File>
             <File>
               <FileName>memp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\memp.c</FilePath>
+              <FilePath>..\..\LwIP\core\memp.c</FilePath>
             </File>
             <File>
               <FileName>netif.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\netif.c</FilePath>
+              <FilePath>..\..\LwIP\core\netif.c</FilePath>
             </File>
             <File>
               <FileName>pbuf.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\pbuf.c</FilePath>
+              <FilePath>..\..\LwIP\core\pbuf.c</FilePath>
             </File>
             <File>
               <FileName>raw.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\raw.c</FilePath>
+              <FilePath>..\..\LwIP\core\raw.c</FilePath>
             </File>
             <File>
               <FileName>stats.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\stats.c</FilePath>
+              <FilePath>..\..\LwIP\core\stats.c</FilePath>
             </File>
             <File>
               <FileName>sys.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\sys.c</FilePath>
+              <FilePath>..\..\LwIP\core\sys.c</FilePath>
             </File>
             <File>
               <FileName>tcp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\tcp.c</FilePath>
+              <FilePath>..\..\LwIP\core\tcp.c</FilePath>
             </File>
             <File>
               <FileName>tcp_in.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\tcp_in.c</FilePath>
+              <FilePath>..\..\LwIP\core\tcp_in.c</FilePath>
             </File>
             <File>
               <FileName>tcp_out.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\tcp_out.c</FilePath>
+              <FilePath>..\..\LwIP\core\tcp_out.c</FilePath>
             </File>
             <File>
               <FileName>timeouts.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\timeouts.c</FilePath>
+              <FilePath>..\..\LwIP\core\timeouts.c</FilePath>
             </File>
             <File>
               <FileName>udp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\udp.c</FilePath>
+              <FilePath>..\..\LwIP\core\udp.c</FilePath>
             </File>
             <File>
               <FileName>autoip.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\autoip.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\autoip.c</FilePath>
             </File>
             <File>
               <FileName>dhcp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\dhcp.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\dhcp.c</FilePath>
             </File>
             <File>
               <FileName>etharp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\etharp.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\etharp.c</FilePath>
             </File>
             <File>
               <FileName>icmp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\icmp.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\icmp.c</FilePath>
             </File>
             <File>
               <FileName>igmp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\igmp.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\igmp.c</FilePath>
             </File>
             <File>
               <FileName>ip4.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\ip4.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\ip4.c</FilePath>
             </File>
             <File>
               <FileName>ip4_addr.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\ip4_addr.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\ip4_addr.c</FilePath>
             </File>
             <File>
               <FileName>ip4_frag.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\ip4_frag.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\ip4_frag.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1703,42 +1703,42 @@
             <File>
               <FileName>bridgeif.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\bridgeif.c</FilePath>
+              <FilePath>..\..\LwIP\netif\bridgeif.c</FilePath>
             </File>
             <File>
               <FileName>bridgeif_fdb.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\bridgeif_fdb.c</FilePath>
+              <FilePath>..\..\LwIP\netif\bridgeif_fdb.c</FilePath>
             </File>
             <File>
               <FileName>ethernet.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\ethernet.c</FilePath>
+              <FilePath>..\..\LwIP\netif\ethernet.c</FilePath>
             </File>
             <File>
               <FileName>lowpan6.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\lowpan6.c</FilePath>
+              <FilePath>..\..\LwIP\netif\lowpan6.c</FilePath>
             </File>
             <File>
               <FileName>lowpan6_ble.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\lowpan6_ble.c</FilePath>
+              <FilePath>..\..\LwIP\netif\lowpan6_ble.c</FilePath>
             </File>
             <File>
               <FileName>lowpan6_common.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\lowpan6_common.c</FilePath>
+              <FilePath>..\..\LwIP\netif\lowpan6_common.c</FilePath>
             </File>
             <File>
               <FileName>slipif.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\slipif.c</FilePath>
+              <FilePath>..\..\LwIP\netif\slipif.c</FilePath>
             </File>
             <File>
               <FileName>zepif.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\zepif.c</FilePath>
+              <FilePath>..\..\LwIP\netif\zepif.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1748,17 +1748,17 @@
             <File>
               <FileName>enet_ethernetif.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\port\enet_ethernetif.c</FilePath>
+              <FilePath>..\..\user\bsp\arch\enet_ethernetif.c</FilePath>
             </File>
             <File>
               <FileName>enet_ethernetif_kinetis.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\port\enet_ethernetif_kinetis.c</FilePath>
+              <FilePath>..\..\user\bsp\arch\enet_ethernetif_kinetis.c</FilePath>
             </File>
             <File>
               <FileName>sys_arch.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\port\sys_arch.c</FilePath>
+              <FilePath>..\..\user\bsp\arch\sys_arch.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2402,47 +2402,47 @@
             <File>
               <FileName>api_lib.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\api_lib.c</FilePath>
+              <FilePath>..\..\LwIP\api\api_lib.c</FilePath>
             </File>
             <File>
               <FileName>api_msg.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\api_msg.c</FilePath>
+              <FilePath>..\..\LwIP\api\api_msg.c</FilePath>
             </File>
             <File>
               <FileName>err.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\err.c</FilePath>
+              <FilePath>..\..\LwIP\api\err.c</FilePath>
             </File>
             <File>
               <FileName>if_api.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\if_api.c</FilePath>
+              <FilePath>..\..\LwIP\api\if_api.c</FilePath>
             </File>
             <File>
               <FileName>netbuf.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\netbuf.c</FilePath>
+              <FilePath>..\..\LwIP\api\netbuf.c</FilePath>
             </File>
             <File>
               <FileName>netdb.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\netdb.c</FilePath>
+              <FilePath>..\..\LwIP\api\netdb.c</FilePath>
             </File>
             <File>
               <FileName>netifapi.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\netifapi.c</FilePath>
+              <FilePath>..\..\LwIP\api\netifapi.c</FilePath>
             </File>
             <File>
               <FileName>sockets.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\sockets.c</FilePath>
+              <FilePath>..\..\LwIP\api\sockets.c</FilePath>
             </File>
             <File>
               <FileName>tcpip.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\tcpip.c</FilePath>
+              <FilePath>..\..\LwIP\api\tcpip.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2452,142 +2452,142 @@
             <File>
               <FileName>altcp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\altcp.c</FilePath>
+              <FilePath>..\..\LwIP\core\altcp.c</FilePath>
             </File>
             <File>
               <FileName>altcp_alloc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\altcp_alloc.c</FilePath>
+              <FilePath>..\..\LwIP\core\altcp_alloc.c</FilePath>
             </File>
             <File>
               <FileName>altcp_tcp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\altcp_tcp.c</FilePath>
+              <FilePath>..\..\LwIP\core\altcp_tcp.c</FilePath>
             </File>
             <File>
               <FileName>def.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\def.c</FilePath>
+              <FilePath>..\..\LwIP\core\def.c</FilePath>
             </File>
             <File>
               <FileName>dns.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\dns.c</FilePath>
+              <FilePath>..\..\LwIP\core\dns.c</FilePath>
             </File>
             <File>
               <FileName>inet_chksum.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\inet_chksum.c</FilePath>
+              <FilePath>..\..\LwIP\core\inet_chksum.c</FilePath>
             </File>
             <File>
               <FileName>init.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\init.c</FilePath>
+              <FilePath>..\..\LwIP\core\init.c</FilePath>
             </File>
             <File>
               <FileName>ip.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ip.c</FilePath>
+              <FilePath>..\..\LwIP\core\ip.c</FilePath>
             </File>
             <File>
               <FileName>mem.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\mem.c</FilePath>
+              <FilePath>..\..\LwIP\core\mem.c</FilePath>
             </File>
             <File>
               <FileName>memp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\memp.c</FilePath>
+              <FilePath>..\..\LwIP\core\memp.c</FilePath>
             </File>
             <File>
               <FileName>netif.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\netif.c</FilePath>
+              <FilePath>..\..\LwIP\core\netif.c</FilePath>
             </File>
             <File>
               <FileName>pbuf.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\pbuf.c</FilePath>
+              <FilePath>..\..\LwIP\core\pbuf.c</FilePath>
             </File>
             <File>
               <FileName>raw.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\raw.c</FilePath>
+              <FilePath>..\..\LwIP\core\raw.c</FilePath>
             </File>
             <File>
               <FileName>stats.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\stats.c</FilePath>
+              <FilePath>..\..\LwIP\core\stats.c</FilePath>
             </File>
             <File>
               <FileName>sys.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\sys.c</FilePath>
+              <FilePath>..\..\LwIP\core\sys.c</FilePath>
             </File>
             <File>
               <FileName>tcp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\tcp.c</FilePath>
+              <FilePath>..\..\LwIP\core\tcp.c</FilePath>
             </File>
             <File>
               <FileName>tcp_in.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\tcp_in.c</FilePath>
+              <FilePath>..\..\LwIP\core\tcp_in.c</FilePath>
             </File>
             <File>
               <FileName>tcp_out.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\tcp_out.c</FilePath>
+              <FilePath>..\..\LwIP\core\tcp_out.c</FilePath>
             </File>
             <File>
               <FileName>timeouts.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\timeouts.c</FilePath>
+              <FilePath>..\..\LwIP\core\timeouts.c</FilePath>
             </File>
             <File>
               <FileName>udp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\udp.c</FilePath>
+              <FilePath>..\..\LwIP\core\udp.c</FilePath>
             </File>
             <File>
               <FileName>autoip.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\autoip.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\autoip.c</FilePath>
             </File>
             <File>
               <FileName>dhcp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\dhcp.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\dhcp.c</FilePath>
             </File>
             <File>
               <FileName>etharp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\etharp.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\etharp.c</FilePath>
             </File>
             <File>
               <FileName>icmp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\icmp.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\icmp.c</FilePath>
             </File>
             <File>
               <FileName>igmp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\igmp.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\igmp.c</FilePath>
             </File>
             <File>
               <FileName>ip4.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\ip4.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\ip4.c</FilePath>
             </File>
             <File>
               <FileName>ip4_addr.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\ip4_addr.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\ip4_addr.c</FilePath>
             </File>
             <File>
               <FileName>ip4_frag.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\ip4_frag.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\ip4_frag.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2597,42 +2597,42 @@
             <File>
               <FileName>bridgeif.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\bridgeif.c</FilePath>
+              <FilePath>..\..\LwIP\netif\bridgeif.c</FilePath>
             </File>
             <File>
               <FileName>bridgeif_fdb.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\bridgeif_fdb.c</FilePath>
+              <FilePath>..\..\LwIP\netif\bridgeif_fdb.c</FilePath>
             </File>
             <File>
               <FileName>ethernet.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\ethernet.c</FilePath>
+              <FilePath>..\..\LwIP\netif\ethernet.c</FilePath>
             </File>
             <File>
               <FileName>lowpan6.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\lowpan6.c</FilePath>
+              <FilePath>..\..\LwIP\netif\lowpan6.c</FilePath>
             </File>
             <File>
               <FileName>lowpan6_ble.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\lowpan6_ble.c</FilePath>
+              <FilePath>..\..\LwIP\netif\lowpan6_ble.c</FilePath>
             </File>
             <File>
               <FileName>lowpan6_common.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\lowpan6_common.c</FilePath>
+              <FilePath>..\..\LwIP\netif\lowpan6_common.c</FilePath>
             </File>
             <File>
               <FileName>slipif.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\slipif.c</FilePath>
+              <FilePath>..\..\LwIP\netif\slipif.c</FilePath>
             </File>
             <File>
               <FileName>zepif.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\zepif.c</FilePath>
+              <FilePath>..\..\LwIP\netif\zepif.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2642,17 +2642,17 @@
             <File>
               <FileName>enet_ethernetif.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\port\enet_ethernetif.c</FilePath>
+              <FilePath>..\..\user\bsp\arch\enet_ethernetif.c</FilePath>
             </File>
             <File>
               <FileName>enet_ethernetif_kinetis.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\port\enet_ethernetif_kinetis.c</FilePath>
+              <FilePath>..\..\user\bsp\arch\enet_ethernetif_kinetis.c</FilePath>
             </File>
             <File>
               <FileName>sys_arch.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\port\sys_arch.c</FilePath>
+              <FilePath>..\..\user\bsp\arch\sys_arch.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3024,7 +3024,7 @@
 </MiscControls>
               <Define>CPU_MIMXRT1052CVL5B,XIP_EXTERNAL_FLASH=1, XIP_BOOT_HEADER_ENABLE =1,XIP_BOOT_HEADER_DCD_ENABLE =1,PRINTF_FLOAT_ENABLE=1, SCANF_FLOAT_ENABLE=1, PRINTF_ADVANCED_ENABLE=1, SCANF_ADVANCED_ENABLE=1</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\libraries\CMSIS\Include;..\..\libraries\drivers;..\..\libraries\utilities;..\..\libraries\utilities\str;..\..\libraries\utilities\log;..\..\libraries\utilities\io;..\..\libraries\xip;..\..\user;..\..\user\bsp;..\..\FreeRTOS\include;..\..\FreeRTOS\port\RVDS\ARM_CM7\r0p1;..\..\LwIP\src\api;..\..\LwIP\src\core;..\..\LwIP\src\core\ipv4;..\..\LwIP\port;..\..\LwIP\src\include</IncludePath>
+              <IncludePath>..\..\libraries\CMSIS\Include;..\..\libraries\drivers;..\..\libraries\utilities;..\..\libraries\utilities\str;..\..\libraries\utilities\log;..\..\libraries\utilities\io;..\..\libraries\xip;..\..\user;..\..\user\bsp;..\..\FreeRTOS\include;..\..\FreeRTOS\port\RVDS\ARM_CM7\r0p1;..\..\LwIP\api;..\..\LwIP\core;..\..\LwIP\core\ipv4;..\..\user\bsp\arch;..\..\LwIP\include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -3297,47 +3297,47 @@
             <File>
               <FileName>api_lib.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\api_lib.c</FilePath>
+              <FilePath>..\..\LwIP\api\api_lib.c</FilePath>
             </File>
             <File>
               <FileName>api_msg.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\api_msg.c</FilePath>
+              <FilePath>..\..\LwIP\api\api_msg.c</FilePath>
             </File>
             <File>
               <FileName>err.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\err.c</FilePath>
+              <FilePath>..\..\LwIP\api\err.c</FilePath>
             </File>
             <File>
               <FileName>if_api.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\if_api.c</FilePath>
+              <FilePath>..\..\LwIP\api\if_api.c</FilePath>
             </File>
             <File>
               <FileName>netbuf.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\netbuf.c</FilePath>
+              <FilePath>..\..\LwIP\api\netbuf.c</FilePath>
             </File>
             <File>
               <FileName>netdb.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\netdb.c</FilePath>
+              <FilePath>..\..\LwIP\api\netdb.c</FilePath>
             </File>
             <File>
               <FileName>netifapi.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\netifapi.c</FilePath>
+              <FilePath>..\..\LwIP\api\netifapi.c</FilePath>
             </File>
             <File>
               <FileName>sockets.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\sockets.c</FilePath>
+              <FilePath>..\..\LwIP\api\sockets.c</FilePath>
             </File>
             <File>
               <FileName>tcpip.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\tcpip.c</FilePath>
+              <FilePath>..\..\LwIP\api\tcpip.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3347,142 +3347,142 @@
             <File>
               <FileName>altcp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\altcp.c</FilePath>
+              <FilePath>..\..\LwIP\core\altcp.c</FilePath>
             </File>
             <File>
               <FileName>altcp_alloc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\altcp_alloc.c</FilePath>
+              <FilePath>..\..\LwIP\core\altcp_alloc.c</FilePath>
             </File>
             <File>
               <FileName>altcp_tcp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\altcp_tcp.c</FilePath>
+              <FilePath>..\..\LwIP\core\altcp_tcp.c</FilePath>
             </File>
             <File>
               <FileName>def.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\def.c</FilePath>
+              <FilePath>..\..\LwIP\core\def.c</FilePath>
             </File>
             <File>
               <FileName>dns.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\dns.c</FilePath>
+              <FilePath>..\..\LwIP\core\dns.c</FilePath>
             </File>
             <File>
               <FileName>inet_chksum.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\inet_chksum.c</FilePath>
+              <FilePath>..\..\LwIP\core\inet_chksum.c</FilePath>
             </File>
             <File>
               <FileName>init.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\init.c</FilePath>
+              <FilePath>..\..\LwIP\core\init.c</FilePath>
             </File>
             <File>
               <FileName>ip.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ip.c</FilePath>
+              <FilePath>..\..\LwIP\core\ip.c</FilePath>
             </File>
             <File>
               <FileName>mem.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\mem.c</FilePath>
+              <FilePath>..\..\LwIP\core\mem.c</FilePath>
             </File>
             <File>
               <FileName>memp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\memp.c</FilePath>
+              <FilePath>..\..\LwIP\core\memp.c</FilePath>
             </File>
             <File>
               <FileName>netif.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\netif.c</FilePath>
+              <FilePath>..\..\LwIP\core\netif.c</FilePath>
             </File>
             <File>
               <FileName>pbuf.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\pbuf.c</FilePath>
+              <FilePath>..\..\LwIP\core\pbuf.c</FilePath>
             </File>
             <File>
               <FileName>raw.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\raw.c</FilePath>
+              <FilePath>..\..\LwIP\core\raw.c</FilePath>
             </File>
             <File>
               <FileName>stats.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\stats.c</FilePath>
+              <FilePath>..\..\LwIP\core\stats.c</FilePath>
             </File>
             <File>
               <FileName>sys.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\sys.c</FilePath>
+              <FilePath>..\..\LwIP\core\sys.c</FilePath>
             </File>
             <File>
               <FileName>tcp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\tcp.c</FilePath>
+              <FilePath>..\..\LwIP\core\tcp.c</FilePath>
             </File>
             <File>
               <FileName>tcp_in.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\tcp_in.c</FilePath>
+              <FilePath>..\..\LwIP\core\tcp_in.c</FilePath>
             </File>
             <File>
               <FileName>tcp_out.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\tcp_out.c</FilePath>
+              <FilePath>..\..\LwIP\core\tcp_out.c</FilePath>
             </File>
             <File>
               <FileName>timeouts.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\timeouts.c</FilePath>
+              <FilePath>..\..\LwIP\core\timeouts.c</FilePath>
             </File>
             <File>
               <FileName>udp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\udp.c</FilePath>
+              <FilePath>..\..\LwIP\core\udp.c</FilePath>
             </File>
             <File>
               <FileName>autoip.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\autoip.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\autoip.c</FilePath>
             </File>
             <File>
               <FileName>dhcp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\dhcp.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\dhcp.c</FilePath>
             </File>
             <File>
               <FileName>etharp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\etharp.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\etharp.c</FilePath>
             </File>
             <File>
               <FileName>icmp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\icmp.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\icmp.c</FilePath>
             </File>
             <File>
               <FileName>igmp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\igmp.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\igmp.c</FilePath>
             </File>
             <File>
               <FileName>ip4.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\ip4.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\ip4.c</FilePath>
             </File>
             <File>
               <FileName>ip4_addr.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\ip4_addr.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\ip4_addr.c</FilePath>
             </File>
             <File>
               <FileName>ip4_frag.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\ip4_frag.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\ip4_frag.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3492,42 +3492,42 @@
             <File>
               <FileName>bridgeif.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\bridgeif.c</FilePath>
+              <FilePath>..\..\LwIP\netif\bridgeif.c</FilePath>
             </File>
             <File>
               <FileName>bridgeif_fdb.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\bridgeif_fdb.c</FilePath>
+              <FilePath>..\..\LwIP\netif\bridgeif_fdb.c</FilePath>
             </File>
             <File>
               <FileName>ethernet.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\ethernet.c</FilePath>
+              <FilePath>..\..\LwIP\netif\ethernet.c</FilePath>
             </File>
             <File>
               <FileName>lowpan6.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\lowpan6.c</FilePath>
+              <FilePath>..\..\LwIP\netif\lowpan6.c</FilePath>
             </File>
             <File>
               <FileName>lowpan6_ble.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\lowpan6_ble.c</FilePath>
+              <FilePath>..\..\LwIP\netif\lowpan6_ble.c</FilePath>
             </File>
             <File>
               <FileName>lowpan6_common.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\lowpan6_common.c</FilePath>
+              <FilePath>..\..\LwIP\netif\lowpan6_common.c</FilePath>
             </File>
             <File>
               <FileName>slipif.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\slipif.c</FilePath>
+              <FilePath>..\..\LwIP\netif\slipif.c</FilePath>
             </File>
             <File>
               <FileName>zepif.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\zepif.c</FilePath>
+              <FilePath>..\..\LwIP\netif\zepif.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3537,17 +3537,17 @@
             <File>
               <FileName>enet_ethernetif.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\port\enet_ethernetif.c</FilePath>
+              <FilePath>..\..\user\bsp\arch\enet_ethernetif.c</FilePath>
             </File>
             <File>
               <FileName>enet_ethernetif_kinetis.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\port\enet_ethernetif_kinetis.c</FilePath>
+              <FilePath>..\..\user\bsp\arch\enet_ethernetif_kinetis.c</FilePath>
             </File>
             <File>
               <FileName>sys_arch.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\port\sys_arch.c</FilePath>
+              <FilePath>..\..\user\bsp\arch\sys_arch.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -4192,47 +4192,47 @@
             <File>
               <FileName>api_lib.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\api_lib.c</FilePath>
+              <FilePath>..\..\LwIP\api\api_lib.c</FilePath>
             </File>
             <File>
               <FileName>api_msg.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\api_msg.c</FilePath>
+              <FilePath>..\..\LwIP\api\api_msg.c</FilePath>
             </File>
             <File>
               <FileName>err.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\err.c</FilePath>
+              <FilePath>..\..\LwIP\api\err.c</FilePath>
             </File>
             <File>
               <FileName>if_api.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\if_api.c</FilePath>
+              <FilePath>..\..\LwIP\api\if_api.c</FilePath>
             </File>
             <File>
               <FileName>netbuf.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\netbuf.c</FilePath>
+              <FilePath>..\..\LwIP\api\netbuf.c</FilePath>
             </File>
             <File>
               <FileName>netdb.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\netdb.c</FilePath>
+              <FilePath>..\..\LwIP\api\netdb.c</FilePath>
             </File>
             <File>
               <FileName>netifapi.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\netifapi.c</FilePath>
+              <FilePath>..\..\LwIP\api\netifapi.c</FilePath>
             </File>
             <File>
               <FileName>sockets.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\sockets.c</FilePath>
+              <FilePath>..\..\LwIP\api\sockets.c</FilePath>
             </File>
             <File>
               <FileName>tcpip.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\tcpip.c</FilePath>
+              <FilePath>..\..\LwIP\api\tcpip.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -4242,142 +4242,142 @@
             <File>
               <FileName>altcp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\altcp.c</FilePath>
+              <FilePath>..\..\LwIP\core\altcp.c</FilePath>
             </File>
             <File>
               <FileName>altcp_alloc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\altcp_alloc.c</FilePath>
+              <FilePath>..\..\LwIP\core\altcp_alloc.c</FilePath>
             </File>
             <File>
               <FileName>altcp_tcp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\altcp_tcp.c</FilePath>
+              <FilePath>..\..\LwIP\core\altcp_tcp.c</FilePath>
             </File>
             <File>
               <FileName>def.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\def.c</FilePath>
+              <FilePath>..\..\LwIP\core\def.c</FilePath>
             </File>
             <File>
               <FileName>dns.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\dns.c</FilePath>
+              <FilePath>..\..\LwIP\core\dns.c</FilePath>
             </File>
             <File>
               <FileName>inet_chksum.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\inet_chksum.c</FilePath>
+              <FilePath>..\..\LwIP\core\inet_chksum.c</FilePath>
             </File>
             <File>
               <FileName>init.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\init.c</FilePath>
+              <FilePath>..\..\LwIP\core\init.c</FilePath>
             </File>
             <File>
               <FileName>ip.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ip.c</FilePath>
+              <FilePath>..\..\LwIP\core\ip.c</FilePath>
             </File>
             <File>
               <FileName>mem.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\mem.c</FilePath>
+              <FilePath>..\..\LwIP\core\mem.c</FilePath>
             </File>
             <File>
               <FileName>memp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\memp.c</FilePath>
+              <FilePath>..\..\LwIP\core\memp.c</FilePath>
             </File>
             <File>
               <FileName>netif.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\netif.c</FilePath>
+              <FilePath>..\..\LwIP\core\netif.c</FilePath>
             </File>
             <File>
               <FileName>pbuf.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\pbuf.c</FilePath>
+              <FilePath>..\..\LwIP\core\pbuf.c</FilePath>
             </File>
             <File>
               <FileName>raw.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\raw.c</FilePath>
+              <FilePath>..\..\LwIP\core\raw.c</FilePath>
             </File>
             <File>
               <FileName>stats.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\stats.c</FilePath>
+              <FilePath>..\..\LwIP\core\stats.c</FilePath>
             </File>
             <File>
               <FileName>sys.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\sys.c</FilePath>
+              <FilePath>..\..\LwIP\core\sys.c</FilePath>
             </File>
             <File>
               <FileName>tcp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\tcp.c</FilePath>
+              <FilePath>..\..\LwIP\core\tcp.c</FilePath>
             </File>
             <File>
               <FileName>tcp_in.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\tcp_in.c</FilePath>
+              <FilePath>..\..\LwIP\core\tcp_in.c</FilePath>
             </File>
             <File>
               <FileName>tcp_out.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\tcp_out.c</FilePath>
+              <FilePath>..\..\LwIP\core\tcp_out.c</FilePath>
             </File>
             <File>
               <FileName>timeouts.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\timeouts.c</FilePath>
+              <FilePath>..\..\LwIP\core\timeouts.c</FilePath>
             </File>
             <File>
               <FileName>udp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\udp.c</FilePath>
+              <FilePath>..\..\LwIP\core\udp.c</FilePath>
             </File>
             <File>
               <FileName>autoip.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\autoip.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\autoip.c</FilePath>
             </File>
             <File>
               <FileName>dhcp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\dhcp.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\dhcp.c</FilePath>
             </File>
             <File>
               <FileName>etharp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\etharp.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\etharp.c</FilePath>
             </File>
             <File>
               <FileName>icmp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\icmp.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\icmp.c</FilePath>
             </File>
             <File>
               <FileName>igmp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\igmp.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\igmp.c</FilePath>
             </File>
             <File>
               <FileName>ip4.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\ip4.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\ip4.c</FilePath>
             </File>
             <File>
               <FileName>ip4_addr.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\ip4_addr.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\ip4_addr.c</FilePath>
             </File>
             <File>
               <FileName>ip4_frag.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\ip4_frag.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\ip4_frag.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -4387,42 +4387,42 @@
             <File>
               <FileName>bridgeif.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\bridgeif.c</FilePath>
+              <FilePath>..\..\LwIP\netif\bridgeif.c</FilePath>
             </File>
             <File>
               <FileName>bridgeif_fdb.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\bridgeif_fdb.c</FilePath>
+              <FilePath>..\..\LwIP\netif\bridgeif_fdb.c</FilePath>
             </File>
             <File>
               <FileName>ethernet.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\ethernet.c</FilePath>
+              <FilePath>..\..\LwIP\netif\ethernet.c</FilePath>
             </File>
             <File>
               <FileName>lowpan6.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\lowpan6.c</FilePath>
+              <FilePath>..\..\LwIP\netif\lowpan6.c</FilePath>
             </File>
             <File>
               <FileName>lowpan6_ble.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\lowpan6_ble.c</FilePath>
+              <FilePath>..\..\LwIP\netif\lowpan6_ble.c</FilePath>
             </File>
             <File>
               <FileName>lowpan6_common.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\lowpan6_common.c</FilePath>
+              <FilePath>..\..\LwIP\netif\lowpan6_common.c</FilePath>
             </File>
             <File>
               <FileName>slipif.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\slipif.c</FilePath>
+              <FilePath>..\..\LwIP\netif\slipif.c</FilePath>
             </File>
             <File>
               <FileName>zepif.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\zepif.c</FilePath>
+              <FilePath>..\..\LwIP\netif\zepif.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -4432,17 +4432,17 @@
             <File>
               <FileName>enet_ethernetif.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\port\enet_ethernetif.c</FilePath>
+              <FilePath>..\..\user\bsp\arch\enet_ethernetif.c</FilePath>
             </File>
             <File>
               <FileName>enet_ethernetif_kinetis.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\port\enet_ethernetif_kinetis.c</FilePath>
+              <FilePath>..\..\user\bsp\arch\enet_ethernetif_kinetis.c</FilePath>
             </File>
             <File>
               <FileName>sys_arch.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\port\sys_arch.c</FilePath>
+              <FilePath>..\..\user\bsp\arch\sys_arch.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -5087,47 +5087,47 @@
             <File>
               <FileName>api_lib.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\api_lib.c</FilePath>
+              <FilePath>..\..\LwIP\api\api_lib.c</FilePath>
             </File>
             <File>
               <FileName>api_msg.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\api_msg.c</FilePath>
+              <FilePath>..\..\LwIP\api\api_msg.c</FilePath>
             </File>
             <File>
               <FileName>err.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\err.c</FilePath>
+              <FilePath>..\..\LwIP\api\err.c</FilePath>
             </File>
             <File>
               <FileName>if_api.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\if_api.c</FilePath>
+              <FilePath>..\..\LwIP\api\if_api.c</FilePath>
             </File>
             <File>
               <FileName>netbuf.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\netbuf.c</FilePath>
+              <FilePath>..\..\LwIP\api\netbuf.c</FilePath>
             </File>
             <File>
               <FileName>netdb.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\netdb.c</FilePath>
+              <FilePath>..\..\LwIP\api\netdb.c</FilePath>
             </File>
             <File>
               <FileName>netifapi.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\netifapi.c</FilePath>
+              <FilePath>..\..\LwIP\api\netifapi.c</FilePath>
             </File>
             <File>
               <FileName>sockets.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\sockets.c</FilePath>
+              <FilePath>..\..\LwIP\api\sockets.c</FilePath>
             </File>
             <File>
               <FileName>tcpip.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\tcpip.c</FilePath>
+              <FilePath>..\..\LwIP\api\tcpip.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -5137,142 +5137,142 @@
             <File>
               <FileName>altcp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\altcp.c</FilePath>
+              <FilePath>..\..\LwIP\core\altcp.c</FilePath>
             </File>
             <File>
               <FileName>altcp_alloc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\altcp_alloc.c</FilePath>
+              <FilePath>..\..\LwIP\core\altcp_alloc.c</FilePath>
             </File>
             <File>
               <FileName>altcp_tcp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\altcp_tcp.c</FilePath>
+              <FilePath>..\..\LwIP\core\altcp_tcp.c</FilePath>
             </File>
             <File>
               <FileName>def.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\def.c</FilePath>
+              <FilePath>..\..\LwIP\core\def.c</FilePath>
             </File>
             <File>
               <FileName>dns.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\dns.c</FilePath>
+              <FilePath>..\..\LwIP\core\dns.c</FilePath>
             </File>
             <File>
               <FileName>inet_chksum.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\inet_chksum.c</FilePath>
+              <FilePath>..\..\LwIP\core\inet_chksum.c</FilePath>
             </File>
             <File>
               <FileName>init.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\init.c</FilePath>
+              <FilePath>..\..\LwIP\core\init.c</FilePath>
             </File>
             <File>
               <FileName>ip.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ip.c</FilePath>
+              <FilePath>..\..\LwIP\core\ip.c</FilePath>
             </File>
             <File>
               <FileName>mem.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\mem.c</FilePath>
+              <FilePath>..\..\LwIP\core\mem.c</FilePath>
             </File>
             <File>
               <FileName>memp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\memp.c</FilePath>
+              <FilePath>..\..\LwIP\core\memp.c</FilePath>
             </File>
             <File>
               <FileName>netif.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\netif.c</FilePath>
+              <FilePath>..\..\LwIP\core\netif.c</FilePath>
             </File>
             <File>
               <FileName>pbuf.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\pbuf.c</FilePath>
+              <FilePath>..\..\LwIP\core\pbuf.c</FilePath>
             </File>
             <File>
               <FileName>raw.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\raw.c</FilePath>
+              <FilePath>..\..\LwIP\core\raw.c</FilePath>
             </File>
             <File>
               <FileName>stats.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\stats.c</FilePath>
+              <FilePath>..\..\LwIP\core\stats.c</FilePath>
             </File>
             <File>
               <FileName>sys.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\sys.c</FilePath>
+              <FilePath>..\..\LwIP\core\sys.c</FilePath>
             </File>
             <File>
               <FileName>tcp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\tcp.c</FilePath>
+              <FilePath>..\..\LwIP\core\tcp.c</FilePath>
             </File>
             <File>
               <FileName>tcp_in.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\tcp_in.c</FilePath>
+              <FilePath>..\..\LwIP\core\tcp_in.c</FilePath>
             </File>
             <File>
               <FileName>tcp_out.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\tcp_out.c</FilePath>
+              <FilePath>..\..\LwIP\core\tcp_out.c</FilePath>
             </File>
             <File>
               <FileName>timeouts.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\timeouts.c</FilePath>
+              <FilePath>..\..\LwIP\core\timeouts.c</FilePath>
             </File>
             <File>
               <FileName>udp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\udp.c</FilePath>
+              <FilePath>..\..\LwIP\core\udp.c</FilePath>
             </File>
             <File>
               <FileName>autoip.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\autoip.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\autoip.c</FilePath>
             </File>
             <File>
               <FileName>dhcp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\dhcp.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\dhcp.c</FilePath>
             </File>
             <File>
               <FileName>etharp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\etharp.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\etharp.c</FilePath>
             </File>
             <File>
               <FileName>icmp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\icmp.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\icmp.c</FilePath>
             </File>
             <File>
               <FileName>igmp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\igmp.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\igmp.c</FilePath>
             </File>
             <File>
               <FileName>ip4.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\ip4.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\ip4.c</FilePath>
             </File>
             <File>
               <FileName>ip4_addr.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\ip4_addr.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\ip4_addr.c</FilePath>
             </File>
             <File>
               <FileName>ip4_frag.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\ip4_frag.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\ip4_frag.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -5282,42 +5282,42 @@
             <File>
               <FileName>bridgeif.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\bridgeif.c</FilePath>
+              <FilePath>..\..\LwIP\netif\bridgeif.c</FilePath>
             </File>
             <File>
               <FileName>bridgeif_fdb.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\bridgeif_fdb.c</FilePath>
+              <FilePath>..\..\LwIP\netif\bridgeif_fdb.c</FilePath>
             </File>
             <File>
               <FileName>ethernet.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\ethernet.c</FilePath>
+              <FilePath>..\..\LwIP\netif\ethernet.c</FilePath>
             </File>
             <File>
               <FileName>lowpan6.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\lowpan6.c</FilePath>
+              <FilePath>..\..\LwIP\netif\lowpan6.c</FilePath>
             </File>
             <File>
               <FileName>lowpan6_ble.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\lowpan6_ble.c</FilePath>
+              <FilePath>..\..\LwIP\netif\lowpan6_ble.c</FilePath>
             </File>
             <File>
               <FileName>lowpan6_common.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\lowpan6_common.c</FilePath>
+              <FilePath>..\..\LwIP\netif\lowpan6_common.c</FilePath>
             </File>
             <File>
               <FileName>slipif.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\slipif.c</FilePath>
+              <FilePath>..\..\LwIP\netif\slipif.c</FilePath>
             </File>
             <File>
               <FileName>zepif.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\zepif.c</FilePath>
+              <FilePath>..\..\LwIP\netif\zepif.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -5327,17 +5327,17 @@
             <File>
               <FileName>enet_ethernetif.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\port\enet_ethernetif.c</FilePath>
+              <FilePath>..\..\user\bsp\arch\enet_ethernetif.c</FilePath>
             </File>
             <File>
               <FileName>enet_ethernetif_kinetis.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\port\enet_ethernetif_kinetis.c</FilePath>
+              <FilePath>..\..\user\bsp\arch\enet_ethernetif_kinetis.c</FilePath>
             </File>
             <File>
               <FileName>sys_arch.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\port\sys_arch.c</FilePath>
+              <FilePath>..\..\user\bsp\arch\sys_arch.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -5982,47 +5982,47 @@
             <File>
               <FileName>api_lib.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\api_lib.c</FilePath>
+              <FilePath>..\..\LwIP\api\api_lib.c</FilePath>
             </File>
             <File>
               <FileName>api_msg.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\api_msg.c</FilePath>
+              <FilePath>..\..\LwIP\api\api_msg.c</FilePath>
             </File>
             <File>
               <FileName>err.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\err.c</FilePath>
+              <FilePath>..\..\LwIP\api\err.c</FilePath>
             </File>
             <File>
               <FileName>if_api.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\if_api.c</FilePath>
+              <FilePath>..\..\LwIP\api\if_api.c</FilePath>
             </File>
             <File>
               <FileName>netbuf.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\netbuf.c</FilePath>
+              <FilePath>..\..\LwIP\api\netbuf.c</FilePath>
             </File>
             <File>
               <FileName>netdb.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\netdb.c</FilePath>
+              <FilePath>..\..\LwIP\api\netdb.c</FilePath>
             </File>
             <File>
               <FileName>netifapi.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\netifapi.c</FilePath>
+              <FilePath>..\..\LwIP\api\netifapi.c</FilePath>
             </File>
             <File>
               <FileName>sockets.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\sockets.c</FilePath>
+              <FilePath>..\..\LwIP\api\sockets.c</FilePath>
             </File>
             <File>
               <FileName>tcpip.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\api\tcpip.c</FilePath>
+              <FilePath>..\..\LwIP\api\tcpip.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -6032,142 +6032,142 @@
             <File>
               <FileName>altcp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\altcp.c</FilePath>
+              <FilePath>..\..\LwIP\core\altcp.c</FilePath>
             </File>
             <File>
               <FileName>altcp_alloc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\altcp_alloc.c</FilePath>
+              <FilePath>..\..\LwIP\core\altcp_alloc.c</FilePath>
             </File>
             <File>
               <FileName>altcp_tcp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\altcp_tcp.c</FilePath>
+              <FilePath>..\..\LwIP\core\altcp_tcp.c</FilePath>
             </File>
             <File>
               <FileName>def.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\def.c</FilePath>
+              <FilePath>..\..\LwIP\core\def.c</FilePath>
             </File>
             <File>
               <FileName>dns.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\dns.c</FilePath>
+              <FilePath>..\..\LwIP\core\dns.c</FilePath>
             </File>
             <File>
               <FileName>inet_chksum.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\inet_chksum.c</FilePath>
+              <FilePath>..\..\LwIP\core\inet_chksum.c</FilePath>
             </File>
             <File>
               <FileName>init.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\init.c</FilePath>
+              <FilePath>..\..\LwIP\core\init.c</FilePath>
             </File>
             <File>
               <FileName>ip.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ip.c</FilePath>
+              <FilePath>..\..\LwIP\core\ip.c</FilePath>
             </File>
             <File>
               <FileName>mem.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\mem.c</FilePath>
+              <FilePath>..\..\LwIP\core\mem.c</FilePath>
             </File>
             <File>
               <FileName>memp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\memp.c</FilePath>
+              <FilePath>..\..\LwIP\core\memp.c</FilePath>
             </File>
             <File>
               <FileName>netif.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\netif.c</FilePath>
+              <FilePath>..\..\LwIP\core\netif.c</FilePath>
             </File>
             <File>
               <FileName>pbuf.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\pbuf.c</FilePath>
+              <FilePath>..\..\LwIP\core\pbuf.c</FilePath>
             </File>
             <File>
               <FileName>raw.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\raw.c</FilePath>
+              <FilePath>..\..\LwIP\core\raw.c</FilePath>
             </File>
             <File>
               <FileName>stats.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\stats.c</FilePath>
+              <FilePath>..\..\LwIP\core\stats.c</FilePath>
             </File>
             <File>
               <FileName>sys.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\sys.c</FilePath>
+              <FilePath>..\..\LwIP\core\sys.c</FilePath>
             </File>
             <File>
               <FileName>tcp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\tcp.c</FilePath>
+              <FilePath>..\..\LwIP\core\tcp.c</FilePath>
             </File>
             <File>
               <FileName>tcp_in.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\tcp_in.c</FilePath>
+              <FilePath>..\..\LwIP\core\tcp_in.c</FilePath>
             </File>
             <File>
               <FileName>tcp_out.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\tcp_out.c</FilePath>
+              <FilePath>..\..\LwIP\core\tcp_out.c</FilePath>
             </File>
             <File>
               <FileName>timeouts.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\timeouts.c</FilePath>
+              <FilePath>..\..\LwIP\core\timeouts.c</FilePath>
             </File>
             <File>
               <FileName>udp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\udp.c</FilePath>
+              <FilePath>..\..\LwIP\core\udp.c</FilePath>
             </File>
             <File>
               <FileName>autoip.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\autoip.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\autoip.c</FilePath>
             </File>
             <File>
               <FileName>dhcp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\dhcp.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\dhcp.c</FilePath>
             </File>
             <File>
               <FileName>etharp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\etharp.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\etharp.c</FilePath>
             </File>
             <File>
               <FileName>icmp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\icmp.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\icmp.c</FilePath>
             </File>
             <File>
               <FileName>igmp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\igmp.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\igmp.c</FilePath>
             </File>
             <File>
               <FileName>ip4.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\ip4.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\ip4.c</FilePath>
             </File>
             <File>
               <FileName>ip4_addr.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\ip4_addr.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\ip4_addr.c</FilePath>
             </File>
             <File>
               <FileName>ip4_frag.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\core\ipv4\ip4_frag.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\ip4_frag.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -6177,42 +6177,42 @@
             <File>
               <FileName>bridgeif.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\bridgeif.c</FilePath>
+              <FilePath>..\..\LwIP\netif\bridgeif.c</FilePath>
             </File>
             <File>
               <FileName>bridgeif_fdb.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\bridgeif_fdb.c</FilePath>
+              <FilePath>..\..\LwIP\netif\bridgeif_fdb.c</FilePath>
             </File>
             <File>
               <FileName>ethernet.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\ethernet.c</FilePath>
+              <FilePath>..\..\LwIP\netif\ethernet.c</FilePath>
             </File>
             <File>
               <FileName>lowpan6.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\lowpan6.c</FilePath>
+              <FilePath>..\..\LwIP\netif\lowpan6.c</FilePath>
             </File>
             <File>
               <FileName>lowpan6_ble.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\lowpan6_ble.c</FilePath>
+              <FilePath>..\..\LwIP\netif\lowpan6_ble.c</FilePath>
             </File>
             <File>
               <FileName>lowpan6_common.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\lowpan6_common.c</FilePath>
+              <FilePath>..\..\LwIP\netif\lowpan6_common.c</FilePath>
             </File>
             <File>
               <FileName>slipif.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\slipif.c</FilePath>
+              <FilePath>..\..\LwIP\netif\slipif.c</FilePath>
             </File>
             <File>
               <FileName>zepif.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\src\netif\zepif.c</FilePath>
+              <FilePath>..\..\LwIP\netif\zepif.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -6222,17 +6222,17 @@
             <File>
               <FileName>enet_ethernetif.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\port\enet_ethernetif.c</FilePath>
+              <FilePath>..\..\user\bsp\arch\enet_ethernetif.c</FilePath>
             </File>
             <File>
               <FileName>enet_ethernetif_kinetis.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\port\enet_ethernetif_kinetis.c</FilePath>
+              <FilePath>..\..\user\bsp\arch\enet_ethernetif_kinetis.c</FilePath>
             </File>
             <File>
               <FileName>sys_arch.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\port\sys_arch.c</FilePath>
+              <FilePath>..\..\user\bsp\arch\sys_arch.c</FilePath>
             </File>
           </Files>
         </Group>
