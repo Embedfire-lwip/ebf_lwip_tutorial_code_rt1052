@@ -728,37 +728,6 @@ void sys_arch_unprotect( sys_prot_t xValue )
 }
 
 #endif /*NO_SYS*/
-
-
-/* IP address configuration. */
-#define configIP_ADDR0 192
-#define configIP_ADDR1 168
-#define configIP_ADDR2 0
-#define configIP_ADDR3 172
-
-/* Netmask configuration. */
-#define configNET_MASK0 255
-#define configNET_MASK1 255
-#define configNET_MASK2 255
-#define configNET_MASK3 0
-
-/* Gateway address configuration. */
-#define configGW_ADDR0 192
-#define configGW_ADDR1 168
-#define configGW_ADDR2 0
-#define configGW_ADDR3 100
-
-/* MAC address configuration. */
-#define configMAC_ADDR                     \
-    {                                      \
-        0x02, 0x12, 0x13, 0x10, 0x15, 0x11 \
-    }
-
-/* Address of PHY interface. */
-#define EXAMPLE_PHY_ADDRESS 0x00U
-
-/* System clock name. */
-#define EXAMPLE_CLOCK_NAME kCLOCK_CoreSysClk
 		
 void TCPIP_Init(void)
 {
@@ -778,9 +747,9 @@ void TCPIP_Init(void)
   ip_addr_set_zero_ip4(&fsl_netif0_netmask);
   ip_addr_set_zero_ip4(&fsl_netif0_gw);
 #else
-    IP4_ADDR(&fsl_netif0_ipaddr, configIP_ADDR0, configIP_ADDR1, configIP_ADDR2, configIP_ADDR3);
-    IP4_ADDR(&fsl_netif0_netmask, configNET_MASK0, configNET_MASK1, configNET_MASK2, configNET_MASK3);
-    IP4_ADDR(&fsl_netif0_gw, configGW_ADDR0, configGW_ADDR1, configGW_ADDR2, configGW_ADDR3);
+    IP4_ADDR(&fsl_netif0_ipaddr, DEST_IP_ADDR0, DEST_IP_ADDR1, DEST_IP_ADDR2, DEST_IP_ADDR3);
+    IP4_ADDR(&fsl_netif0_netmask, NETMASK_ADDR0, NETMASK_ADDR1, NETMASK_ADDR2, NETMASK_ADDR3);
+    IP4_ADDR(&fsl_netif0_gw, GW_ADDR0, GW_ADDR1, GW_ADDR2, GW_ADDR3);
 #endif /* USE_DHCP */
 	
     netifapi_netif_add(&fsl_netif0, &fsl_netif0_ipaddr, &fsl_netif0_netmask, &fsl_netif0_gw, &fsl_enet_config0,
@@ -815,7 +784,7 @@ void TCPIP_Init(void)
 					((fsl_netif0.ip_addr.addr)&0xff000000)>>24);
 	
 	
-	ping_init(&fsl_netif0_gw);
+//	ping_init(&fsl_netif0_gw);
 
 }
 

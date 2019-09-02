@@ -54,6 +54,51 @@
 
 #endif
 
+#define DEST_IP_ADDR0               192
+#define DEST_IP_ADDR1               168
+#define DEST_IP_ADDR2                 0
+#define DEST_IP_ADDR3               119
+
+#define DEST_PORT                  5001
+
+#define UDP_SERVER_PORT            5002   /* define the UDP local connection port */
+#define UDP_CLIENT_PORT            5002   /* define the UDP remote connection port */
+
+#define LOCAL_PORT                 5001
+
+/*Static IP ADDRESS: IP_ADDR0.IP_ADDR1.IP_ADDR2.IP_ADDR3 */
+#define IP_ADDR0                    192
+#define IP_ADDR1                    168
+#define IP_ADDR2                      0
+#define IP_ADDR3                    122
+
+/*NETMASK*/
+#define NETMASK_ADDR0               255
+#define NETMASK_ADDR1               255
+#define NETMASK_ADDR2               255
+#define NETMASK_ADDR3                 0
+
+/*Gateway Address*/
+#define GW_ADDR0                    192
+#define GW_ADDR1                    168
+#define GW_ADDR2                      0
+#define GW_ADDR3                      1
+
+
+/* MAC address configuration. */
+#define configMAC_ADDR                     \
+    {                                      \
+        0x02, 0x12, 0x13, 0x10, 0x15, 0x11 \
+    }
+
+/* Address of PHY interface. */
+#define EXAMPLE_PHY_ADDRESS 0x00U
+
+/* System clock name. */
+#define EXAMPLE_CLOCK_NAME kCLOCK_CoreSysClk
+		
+		
+
 #define SYS_MBOX_NULL					( ( QueueHandle_t ) NULL )
 #define SYS_SEM_NULL					( ( SemaphoreHandle_t ) NULL )
 #define SYS_DEFAULT_THREAD_STACK_DEPTH	configMINIMAL_STACK_SIZE
@@ -96,5 +141,6 @@ void sys_assert( char *msg );
 #if defined(__cplusplus)
 }
 #endif /* __cplusplus */
+extern void TCPIP_Init(void);
 
 #endif /* __ARCH_SYS_ARCH_H__ */

@@ -561,6 +561,11 @@
               <FileType>5</FileType>
               <FilePath>..\..\user\lwipopts.h</FilePath>
             </File>
+            <File>
+              <FileName>client.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\user\client.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1460,6 +1465,11 @@
               <FileType>5</FileType>
               <FilePath>..\..\user\lwipopts.h</FilePath>
             </File>
+            <File>
+              <FileName>client.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\user\client.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2358,6 +2368,11 @@
               <FileName>lwipopts.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\user\lwipopts.h</FilePath>
+            </File>
+            <File>
+              <FileName>client.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\user\client.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3259,6 +3274,11 @@
               <FileType>5</FileType>
               <FilePath>..\..\user\lwipopts.h</FilePath>
             </File>
+            <File>
+              <FileName>client.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\user\client.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -4158,6 +4178,11 @@
               <FileName>lwipopts.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\user\lwipopts.h</FilePath>
+            </File>
+            <File>
+              <FileName>client.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\user\client.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -5059,6 +5084,11 @@
               <FileType>5</FileType>
               <FilePath>..\..\user\lwipopts.h</FilePath>
             </File>
+            <File>
+              <FileName>client.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\user\client.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -5958,6 +5988,11 @@
               <FileName>lwipopts.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\user\lwipopts.h</FilePath>
+            </File>
+            <File>
+              <FileName>client.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\user\client.c</FilePath>
             </File>
           </Files>
         </Group>

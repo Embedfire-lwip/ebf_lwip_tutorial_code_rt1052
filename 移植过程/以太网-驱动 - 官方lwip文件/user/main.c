@@ -1,254 +1,250 @@
-///**
-//  ******************************************************************
-//  * @file    main.c
-//  * @author  fire
-//  * @version V1.0
-//  * @date    2018-xx-xx
-//  * @brief   液晶显示英文
-//  ******************************************************************
-//  * @attention
-//  *
-//  * 实验平台:野火  i.MXRT1052开发板 
-//  * 论坛    :http://www.firebbs.cn
-//  * 淘宝    :http://firestm32.taobao.com
-//  *
-//  ******************************************************************
-//  */
-//#include <stdio.h>
+/**
+  *********************************************************************
+  * @file    main.c
+  * @author  fire
+  * @version V1.0
+  * @date    2019-xx-xx
+  * @brief   FreeRTOS V9.0.0 + i.MXRT LwIP
+  *********************************************************************
+  * @attention
+  *
+  * 实验平台:野火 i.MX RT 全系列开发板 
+  * 论坛    :http://www.firebbs.cn
+  * 淘宝    :https://fire-stm32.taobao.com
+  *
+  **********************************************************************
+  */ 
+ 
+/*
+*************************************************************************
+*                             包含的头文件
+*************************************************************************
+*/ 
+#include "fsl_debug_console.h"
+#include "board.h"
+#include "pin_mux.h"
+#include "clock_config.h"
+#include "debug.h"
+#include "fsl_iomuxc.h"
+/* FreeRTOS头文件 */
+#include "FreeRTOS.h"
+#include "task.h"
+#include "queue.h"
+#include "client.h"
+/*板载驱动*/
+#include "./led/bsp_led.h"   
 
-//#include "fsl_debug_console.h"
-//#include "board.h"
-//#include "pin_mux.h"
-//#include "clock_config.h"
-//#include "./systick/bsp_systick.h"
-//#include "./led/bsp_led.h"   
-//extern int lwip_ping_test(void);
+/**************************** 任务句柄 ********************************/
+/* 
+ * 任务句柄是一个指针，用于指向一个任务，当任务创建好之后，它就具有了一个任务句柄
+ * 以后我们要想操作这个任务都需要通过这个任务句柄，如果是自身的任务操作自己，那么
+ * 这个句柄可以为NULL。
+ */
+static TaskHandle_t AppTaskCreate_Handle = NULL;/* 创建任务句柄 */
+static TaskHandle_t Test1_Task_Handle = NULL;/* LED任务句柄 */
+static TaskHandle_t Test2_Task_Handle = NULL;/* KEY任务句柄 */
 
-///*******************************************************************
-// * Prototypes
-// *******************************************************************/
-//#define SDRAM_TEST_FAIL  0
-//#define SDRAM_TEST_OK    1
+/********************************** 内核对象句柄 *********************************/
+/*
+ * 信号量，消息队列，事件标志组，软件定时器这些都属于内核的对象，要想使用这些内核
+ * 对象，必须先创建，创建成功之后会返回一个相应的句柄。实际上就是一个指针，后续我
+ * 们就可以通过这个句柄操作这些内核对象。
+ *
+ * 内核对象说白了就是一种全局的数据结构，通过这些数据结构我们可以实现任务间的通信，
+ * 任务间的事件同步等各种功能。至于这些功能的实现我们是通过调用这些内核对象的函数
+ * 来完成的
+ * 
+ */
 
-//#define ENET_TEST_FAIL   0
-//#define ENET_TEST_OK     1
-
-///*******************************************************************
-// * Variables
-// *******************************************************************/
-
-///*******************************************************************
-// * Code
-// *******************************************************************/
-
-///**
-//  * @brief  主函数
-//  * @param  无
-//  * @retval 无
-//  */
-//	#if 0
-//int main(void)
-//{ 
-//	  /* 初始化内存保护单元 */
-//    BOARD_ConfigMPU();
-//		/* 初始化开发板引脚 */
-//    BOARD_InitPins();
-//		/* 初始化开发板时钟 */
-//    BOARD_BootClockRUN();
-//		/* 初始化调试串口 */
-//		BOARD_InitDebugConsole();
-//		/* 打印系统时钟 */
-//		PRINTF("\r\n");
-//		PRINTF("*****欢迎使用 野火i.MX RT1052 开发板*****\r\n");
-//		PRINTF("CPU:             %d Hz\r\n", CLOCK_GetFreq(kCLOCK_CpuClk));
-//		PRINTF("AHB:             %d Hz\r\n", CLOCK_GetFreq(kCLOCK_AhbClk));
-//		PRINTF("SEMC:            %d Hz\r\n", CLOCK_GetFreq(kCLOCK_SemcClk));
-//		PRINTF("SYSPLL:          %d Hz\r\n", CLOCK_GetFreq(kCLOCK_SysPllClk));
-//		PRINTF("SYSPLLPFD0:      %d Hz\r\n", CLOCK_GetFreq(kCLOCK_SysPllPfd0Clk));
-//		PRINTF("SYSPLLPFD1:      %d Hz\r\n", CLOCK_GetFreq(kCLOCK_SysPllPfd1Clk));
-//		PRINTF("SYSPLLPFD2:      %d Hz\r\n", CLOCK_GetFreq(kCLOCK_SysPllPfd2Clk));
-//		PRINTF("SYSPLLPFD3:      %d Hz\r\n", CLOCK_GetFreq(kCLOCK_SysPllPfd3Clk));	
-
-//		PRINTF("*****测试以太网*****\r\n");	
-//		SysTick_Init();
-//		/* 进行以太网测试 */
-//		lwip_ping_test();
-//    while(1);
-//    
-//}
-//#endif 
-//#include "fsl_debug_console.h"
-
-//#include "board.h"
-//#include "pin_mux.h"
-//#include "clock_config.h"
-
-//#include "./led/bsp_led.h"  
-//#include "./key/bsp_key.h"   
-
-///* FreeRTOS头文件 */
-//#include "FreeRTOS.h"
-//#include "task.h"
-///**************************** 任务句柄 ********************************/
-///* 
-// * 任务句柄是一个指针，用于指向一个任务，当任务创建好之后，它就具有了一个任务句柄
-// * 以后我们要想操作这个任务都需要通过这个任务句柄，如果是自身的任务操作自己，那么
-// * 这个句柄可以为NULL。
-// */
-// /* 创建任务句柄 */
-//static TaskHandle_t AppTaskCreate_Handle = NULL;
-///* LED1任务句柄 */
-//static TaskHandle_t LED1_Task_Handle = NULL;
-///* LED2任务句柄 */
-//static TaskHandle_t LED2_Task_Handle = NULL;
-
-//static void AppTaskCreate(void);/* 用于创建任务 */
-
-//static void LED1_Task(void* pvParameters);/* LED1_Task任务实现 */
-//static void LED2_Task(void* pvParameters);/* LED2_Task任务实现 */
-
-//static void BSP_Init(void);/* 用于初始化板载相关资源 */
+/******************************* 全局变量声明 ************************************/
+/*
+ * 当我们在写应用程序的时候，可能需要用到一些全局变量。
+ */
 
 
-//int main(void)
-//{	
-//  BaseType_t xReturn = pdPASS;/* 定义一个创建信息返回值，默认为pdPASS */
-
-//  /* 开发板硬件初始化 */
-//  BSP_Init();
-//  PRINTF("这是一个[野火]-全系列开发板-FreeRTOS-动态创建多任务实验!\r\n");
-//   /* 创建AppTaskCreate任务 */
-//  xReturn = xTaskCreate((TaskFunction_t )AppTaskCreate,  /* 任务入口函数 */
-//                        (const char*    )"AppTaskCreate",/* 任务名字 */
-//                        (uint16_t       )512,  /* 任务栈大小 */
-//                        (void*          )NULL,/* 任务入口函数参数 */
-//                        (UBaseType_t    )1, /* 任务的优先级 */
-//                        (TaskHandle_t*  )&AppTaskCreate_Handle);/* 任务控制块指针 */ 
-//  /* 启动任务调度 */           
-//  if(pdPASS == xReturn)
-//    vTaskStartScheduler();   /* 启动任务，开启调度 */
-//  else
-//    return -1;  
-//  
-//  while(1);   /* 正常不会执行到这里 */    
-//}
+/******************************* 宏定义 ************************************/
+/*
+ * 当我们在写应用程序的时候，可能需要用到一些宏定义。
+ */
 
 
-///***********************************************************************
-//  * @ 函数名  ： AppTaskCreate
-//  * @ 功能说明： 为了方便管理，所有的任务创建函数都放在这个函数里面
-//  * @ 参数    ： 无  
-//  * @ 返回值  ： 无
-//  **********************************************************************/
-//static void AppTaskCreate(void)
-//{
-//  BaseType_t xReturn = pdPASS;/* 定义一个创建信息返回值，默认为pdPASS */
-//  
-//  taskENTER_CRITICAL();           //进入临界区
-//  
-//  /* 创建LED_Task任务 */
-//  xReturn = xTaskCreate((TaskFunction_t )LED1_Task, /* 任务入口函数 */
-//                        (const char*    )"LED1_Task",/* 任务名字 */
-//                        (uint16_t       )512,   /* 任务栈大小 */
-//                        (void*          )NULL,	/* 任务入口函数参数 */
-//                        (UBaseType_t    )2,	    /* 任务的优先级 */
-//                        (TaskHandle_t*  )&LED1_Task_Handle);/* 任务控制块指针 */
-//  if(pdPASS == xReturn)
-//    PRINTF("创建LED1_Task任务成功!\r\n");
-//  
-//	/* 创建LED_Task任务 */
-//  xReturn = xTaskCreate((TaskFunction_t )LED2_Task, /* 任务入口函数 */
-//                        (const char*    )"LED2_Task",/* 任务名字 */
-//                        (uint16_t       )512,   /* 任务栈大小 */
-//                        (void*          )NULL,	/* 任务入口函数参数 */
-//                        (UBaseType_t    )3,	    /* 任务的优先级 */
-//                        (TaskHandle_t*  )&LED2_Task_Handle);/* 任务控制块指针 */
-//  if(pdPASS == xReturn)
-//    PRINTF("创建LED2_Task任务成功!\r\n");
-//  
-//  vTaskDelete(AppTaskCreate_Handle); //删除AppTaskCreate任务
-//  
-//  taskEXIT_CRITICAL();            //退出临界区
-//}
+/*
+*************************************************************************
+*                             函数声明
+*************************************************************************
+*/
+static void AppTaskCreate(void);/* 用于创建任务 */
+
+static void Test1_Task(void* pvParameters);/* Test1_Task任务实现 */
+static void Test2_Task(void* pvParameters);/* Test2_Task任务实现 */
+
+extern void TCPIP_Init(void);
+
+/*****************************************************************
+  * @brief  主函数
+  * @param  无
+  * @retval 无
+  * @note   第一步：开发板硬件初始化 
+            第二步：创建APP应用任务
+            第三步：启动FreeRTOS，开始多任务调度
+  ****************************************************************/
+void BOARD_InitModuleClock(void)
+{
+    const clock_enet_pll_config_t config = {.enableClkOutput = true, .enableClkOutput25M = false, .loopDivider = 1};
+    CLOCK_InitEnetPll(&config);
+}
+
+void delay(void)
+{
+    volatile uint32_t i = 0;
+    for (i = 0; i < 1000000; ++i)
+    {
+        __asm("NOP"); /* delay */
+    }
+}
+int main(void)
+{	
+  BaseType_t xReturn = pdPASS;/* 定义一个创建信息返回值，默认为pdPASS */
+  
+  /* 开发板硬件初始化 */
+  //BSP_Init();
+	 gpio_pin_config_t gpio_config = {kGPIO_DigitalOutput, 0, kGPIO_NoIntmode};
+	  /* 初始化内存保护单元 */
+  BOARD_ConfigMPU();
+  /* 初始化开发板引脚 */
+  BOARD_InitPins();
+  /* 初始化开发板时钟 */
+  BOARD_BootClockRUN();
+  /* 初始化调试串口 */
+  BOARD_InitDebugConsole();
+	BOARD_InitModuleClock();
+	IOMUXC_EnableMode(IOMUXC_GPR, kIOMUXC_GPR_ENET1TxClkOutputDir, true);
+	GPIO_PinInit(GPIO1, 9, &gpio_config);
+	GPIO_PinInit(GPIO1, 10, &gpio_config);
+	/* pull up the ENET_INT before RESET. */
+	GPIO_WritePinOutput(GPIO1, 10, 1);
+	GPIO_WritePinOutput(GPIO1, 9, 0);
+	delay();
+	GPIO_WritePinOutput(GPIO1, 9, 1);
+  /* 打印系统时钟 */
+  PRINTF("\r\n");
+  PRINTF("*****欢迎使用 野火i.MX RT1052 开发板*****\r\n");
+  PRINTF("CPU:             %d Hz\r\n", CLOCK_GetFreq(kCLOCK_CpuClk));
+  PRINTF("AHB:             %d Hz\r\n", CLOCK_GetFreq(kCLOCK_AhbClk));
+  PRINTF("SEMC:            %d Hz\r\n", CLOCK_GetFreq(kCLOCK_SemcClk));
+  PRINTF("SYSPLL:          %d Hz\r\n", CLOCK_GetFreq(kCLOCK_SysPllClk));
+  PRINTF("SYSPLLPFD0:      %d Hz\r\n", CLOCK_GetFreq(kCLOCK_SysPllPfd0Clk));
+  PRINTF("SYSPLLPFD1:      %d Hz\r\n", CLOCK_GetFreq(kCLOCK_SysPllPfd1Clk));
+  PRINTF("SYSPLLPFD2:      %d Hz\r\n", CLOCK_GetFreq(kCLOCK_SysPllPfd2Clk));
+  PRINTF("SYSPLLPFD3:      %d Hz\r\n", CLOCK_GetFreq(kCLOCK_SysPllPfd3Clk));  
+  
+  /* 初始化SysTick */
+  SysTick_Config(SystemCoreClock / configTICK_RATE_HZ);
+	/* LED 端口初始化 */
+	LED_GPIO_Config();	
+
+  /* 创建AppTaskCreate任务 */
+  xReturn = xTaskCreate((TaskFunction_t )AppTaskCreate,  /* 任务入口函数 */
+                        (const char*    )"AppTaskCreate",/* 任务名字 */
+                        (uint16_t       )512,  /* 任务栈大小 */
+                        (void*          )NULL,/* 任务入口函数参数 */
+                        (UBaseType_t    )1, /* 任务的优先级 */
+                        (TaskHandle_t*  )&AppTaskCreate_Handle);/* 任务控制块指针 */ 
+  /* 启动任务调度 */           
+  if(pdPASS == xReturn)
+    vTaskStartScheduler();   /* 启动任务，开启调度 */
+  else
+    return -1;  
+  
+  while(1);   /* 正常不会执行到这里 */    
+}
+
+
+/***********************************************************************
+  * @ 函数名  ： AppTaskCreate
+  * @ 功能说明： 为了方便管理，所有的任务创建函数都放在这个函数里面
+  * @ 参数    ： 无  
+  * @ 返回值  ： 无
+  **********************************************************************/
+static void AppTaskCreate(void)
+{
+  BaseType_t xReturn = pdPASS;/* 定义一个创建信息返回值，默认为pdPASS */
+ 
+  TCPIP_Init();
+
+  client_init();
+  
+  PRINTF("本例程演示开发板发送数据到服务器\n\n");
+  
+  PRINTF("网络连接模型如下：\n\t 电脑<--网线-->路由<--网线-->开发板\n\n");
+  
+  PRINTF("实验中使用TCP协议传输数据，电脑作为TCP Server，开发板作为TCP Client\n\n");
+  
+  PRINTF("本例程的IP地址均在User/arch/sys_arch.h文件中修改\n\n");
+    
+  PRINTF("本例程参考<<LwIP应用实战开发指南>>第15章 使用 NETCONN 接口编程\n\n");
+  
+  
+  taskENTER_CRITICAL();           //进入临界区
+
+  /* 创建Test1_Task任务 */
+  xReturn = xTaskCreate((TaskFunction_t )Test1_Task, /* 任务入口函数 */
+                        (const char*    )"Test1_Task",/* 任务名字 */
+                        (uint16_t       )512,   /* 任务栈大小 */
+                        (void*          )NULL,	/* 任务入口函数参数 */
+                        (UBaseType_t    )1,	    /* 任务的优先级 */
+                        (TaskHandle_t*  )&Test1_Task_Handle);/* 任务控制块指针 */
+  if(pdPASS == xReturn)
+    PRINT_DEBUG("Create Test1_Task sucess...\r\n");
+  
+  /* 创建Test2_Task任务 */
+  xReturn = xTaskCreate((TaskFunction_t )Test2_Task,  /* 任务入口函数 */
+                        (const char*    )"Test2_Task",/* 任务名字 */
+                        (uint16_t       )512,  /* 任务栈大小 */
+                        (void*          )NULL,/* 任务入口函数参数 */
+                        (UBaseType_t    )2, /* 任务的优先级 */
+                        (TaskHandle_t*  )&Test2_Task_Handle);/* 任务控制块指针 */ 
+  if(pdPASS == xReturn)
+    PRINT_DEBUG("Create Test2_Task sucess...\n\n");
+  
+  vTaskDelete(AppTaskCreate_Handle); //删除AppTaskCreate任务
+  
+  taskEXIT_CRITICAL();            //退出临界区
+}
 
 
 
-///**********************************************************************
-//  * @ 函数名  ： LED_Task
-//  * @ 功能说明： LED_Task任务主体
-//  * @ 参数    ：   
-//  * @ 返回值  ： 无
-//  ********************************************************************/
-//static void LED1_Task(void* parameter)
-//{	
-//    while (1)
-//    {
-//        LED1_ON;
-//        vTaskDelay(500);   /* 延时500个tick */
-//        //PRINTF("LED1_Task Running,LED1_ON\r\n");
-//        
-//        LED1_OFF;     
-//        vTaskDelay(500);   /* 延时500个tick */		 		
-//        //PRINTF("LED1_Task Running,LED1_OFF\r\n");
-//    }
-//}
+/**********************************************************************
+  * @ 函数名  ： Test1_Task
+  * @ 功能说明： Test1_Task任务主体
+  * @ 参数    ：   
+  * @ 返回值  ： 无
+  ********************************************************************/
+static void Test1_Task(void* parameter)
+{	
+  while (1)
+  {
+    LED1_TOGGLE;
+    vTaskDelay(1000);/* 延时1000个tick */
+  }
+}
 
-///**********************************************************************
-//  * @ 函数名  ： LED_Task
-//  * @ 功能说明： LED_Task任务主体
-//  * @ 参数    ：   
-//  * @ 返回值  ： 无
-//  ********************************************************************/
-//static void LED2_Task(void* parameter)
-//{	
-//	lwip_ping_test();
-////    while (1)
-////    {
-////        LED2_ON;
-////        vTaskDelay(500);   /* 延时500个tick */
-////        PRINTF("LED2_Task Running,LED2_ON\r\n");
-////        
-////        LED2_OFF;     
-////        vTaskDelay(500);   /* 延时500个tick */		 		
-////        PRINTF("LED2_Task Running,LED2_OFF\r\n");
-////    }
-//}
-///***********************************************************************
-//  * @ 函数名  ： BSP_Init
-//  * @ 功能说明： 板级外设初始化，所有板子上的初始化均可放在这个函数里面
-//  * @ 参数    ：   
-//  * @ 返回值  ： 无
-//  *********************************************************************/
-//static void BSP_Init(void)
-//{
-//  /* 初始化内存保护单元 */
-//  BOARD_ConfigMPU();
-//  /* 初始化开发板引脚 */
-//  BOARD_InitPins();
-//  /* 初始化开发板时钟 */
-//  BOARD_BootClockRUN();
-//  /* 初始化调试串口 */
-//  BOARD_InitDebugConsole();
-//  /* 打印系统时钟 */
-//  PRINTF("\r\n");
-//  PRINTF("*****欢迎使用 野火i.MX RT1052 开发板*****\r\n");
-//  PRINTF("CPU:             %d Hz\r\n", CLOCK_GetFreq(kCLOCK_CpuClk));
-//  PRINTF("AHB:             %d Hz\r\n", CLOCK_GetFreq(kCLOCK_AhbClk));
-//  PRINTF("SEMC:            %d Hz\r\n", CLOCK_GetFreq(kCLOCK_SemcClk));
-//  PRINTF("SYSPLL:          %d Hz\r\n", CLOCK_GetFreq(kCLOCK_SysPllClk));
-//  PRINTF("SYSPLLPFD0:      %d Hz\r\n", CLOCK_GetFreq(kCLOCK_SysPllPfd0Clk));
-//  PRINTF("SYSPLLPFD1:      %d Hz\r\n", CLOCK_GetFreq(kCLOCK_SysPllPfd1Clk));
-//  PRINTF("SYSPLLPFD2:      %d Hz\r\n", CLOCK_GetFreq(kCLOCK_SysPllPfd2Clk));
-//  PRINTF("SYSPLLPFD3:      %d Hz\r\n", CLOCK_GetFreq(kCLOCK_SysPllPfd3Clk));  
-//  
-//  /* 初始化SysTick */
-//  SysTick_Config(SystemCoreClock / configTICK_RATE_HZ);
-//  
-//	/* 硬件BSP初始化统统放在这里，比如LED，串口，LCD等 */
-//    
-//	/* LED 端口初始化 */
-//	LED_GPIO_Config();	
-//	
-//}
+/**********************************************************************
+  * @ 函数名  ： Test2_Task
+  * @ 功能说明： Test2_Task任务主体
+  * @ 参数    ：   
+  * @ 返回值  ： 无
+  ********************************************************************/
+static void Test2_Task(void* parameter)
+{	 
+  while (1)
+  {
+    LED2_TOGGLE;
+    vTaskDelay(2000);/* 延时2000个tick */
+  }
+}
 
-///****************************END OF FILE**********************/
+
+
+/********************************END OF FILE****************************/
+
