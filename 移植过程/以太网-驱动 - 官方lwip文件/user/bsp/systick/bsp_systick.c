@@ -85,10 +85,10 @@ void SysTick_Handler(void)
 #if (INCLUDE_xTaskGetSchedulerState  == 1 )
 	}
 #endif  /* INCLUDE_xTaskGetSchedulerState */
-#ifdef __CA7_REV
-    SystemClearSystickFlag();
-#endif
-		time_isr();
+//#ifdef __CA7_REV
+//    SystemClearSystickFlag();
+//#endif
+//		time_isr();
 }
 
 #if 0

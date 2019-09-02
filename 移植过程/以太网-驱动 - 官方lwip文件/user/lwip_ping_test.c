@@ -1,51 +1,24 @@
 /*
-* The Clear BSD License
-* Copyright (c) 2016, Freescale Semiconductor, Inc.
- * Copyright 2016-2017 NXP
-* All rights reserved.
-*
-* 
-* Redistribution and use in source and binary forms, with or without modification,
-* are permitted (subject to the limitations in the disclaimer below) provided
-*  that the following conditions are met:
-*
-* o Redistributions of source code must retain the above copyright notice, this list
-*   of conditions and the following disclaimer.
-*
-* o Redistributions in binary form must reproduce the above copyright notice, this
-*   list of conditions and the following disclaimer in the documentation and/or
-*   other materials provided with the distribution.
-*
-* o Neither the name of the copyright holder nor the names of its
-*   contributors may be used to endorse or promote products derived from this
-*   software without specific prior written permission.
-*
-* NO EXPRESS OR IMPLIED LICENSES TO ANY PARTY'S PATENT RIGHTS ARE GRANTED BY THIS LICENSE.
-* THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
-* ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-* WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-* DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
-* ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-* (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-* LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
-* ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-* (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-* SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
+ * Copyright (c) 2016, Freescale Semiconductor, Inc.
+ * Copyright 2016-2019 NXP
+ * All rights reserved.
+ *
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
 
 /*******************************************************************************
  * Includes
  ******************************************************************************/
-
 #include "lwip/opt.h"
 
-#if LWIP_IPV4 && LWIP_RAW
+#if LWIP_IPV4 && LWIP_RAW && LWIP_SOCKET
 
 #include "ping.h"
-#include "lwip/timeouts.h"
-#include "lwip/init.h"
+#include "lwip/netifapi.h"
+#include "lwip/tcpip.h"
 #include "netif/ethernet.h"
-#include "ethernetif.h"
+#include "enet_ethernetif.h"
 
 #include "board.h"
 
@@ -59,7 +32,7 @@
 /* IP address configuration. */
 #define configIP_ADDR0 192
 #define configIP_ADDR1 168
-#define configIP_ADDR2 1
+#define configIP_ADDR2 0
 #define configIP_ADDR3 172
 
 /* Netmask configuration. */
@@ -71,8 +44,8 @@
 /* Gateway address configuration. */
 #define configGW_ADDR0 192
 #define configGW_ADDR1 168
-#define configGW_ADDR2 1
-#define configGW_ADDR3 1
+#define configGW_ADDR2 0
+#define configGW_ADDR3 100
 
 /* MAC address configuration. */
 #define configMAC_ADDR                     \
@@ -87,20 +60,26 @@
 #define EXAMPLE_CLOCK_NAME kCLOCK_CoreSysClk
 
 
-/*******************************************************************************
-* Prototypes
-******************************************************************************/
+/*! @brief Stack size of the temporary lwIP initialization thread. */
+#define INIT_THREAD_STACKSIZE 1024
+
+/*! @brief Priority of the temporary lwIP initialization thread. */
+#define INIT_THREAD_PRIO DEFAULT_THREAD_PRIO
 
 /*******************************************************************************
-* Variables
-******************************************************************************/
+ * Prototypes
+ ******************************************************************************/
+
+/*******************************************************************************
+ * Variables
+ ******************************************************************************/
 
 /*******************************************************************************
  * Code
  ******************************************************************************/
 void BOARD_InitModuleClock(void)
 {
-    const clock_enet_pll_config_t config = {true, false, 1};
+    const clock_enet_pll_config_t config = {.enableClkOutput = true, .enableClkOutput25M = false, .loopDivider = 1};
     CLOCK_InitEnetPll(&config);
 }
 
@@ -112,48 +91,40 @@ void delay(void)
         __asm("NOP"); /* delay */
     }
 }
-extern uint8_t ping_recv_flag;
+
+
+
 /*!
- * @brief Main function.
+ * @brief Initializes lwIP stack.
  */
-int lwip_ping_test(void)
+static void stack_init(void *arg)
 {
-    struct netif fsl_netif0;
+    static struct netif fsl_netif0;
+#if defined(FSL_FEATURE_SOC_LPC_ENET_COUNT) && (FSL_FEATURE_SOC_LPC_ENET_COUNT > 0)
+    static mem_range_t non_dma_memory[] = NON_DMA_MEMORY_ARRAY;
+#endif /* FSL_FEATURE_SOC_LPC_ENET_COUNT */
     ip4_addr_t fsl_netif0_ipaddr, fsl_netif0_netmask, fsl_netif0_gw;
     ethernetif_config_t fsl_enet_config0 = {
         .phyAddress = EXAMPLE_PHY_ADDRESS,
-        .clockName = EXAMPLE_CLOCK_NAME,
+        .clockName  = EXAMPLE_CLOCK_NAME,
         .macAddress = configMAC_ADDR,
+#if defined(FSL_FEATURE_SOC_LPC_ENET_COUNT) && (FSL_FEATURE_SOC_LPC_ENET_COUNT > 0)
+        .non_dma_memory = non_dma_memory,
+#endif /* FSL_FEATURE_SOC_LPC_ENET_COUNT */
     };
 
-    gpio_pin_config_t gpio_config = {kGPIO_DigitalOutput, 0, kGPIO_NoIntmode};
-		BOARD_InitPins();
-    BOARD_InitModuleClock();
-
-    IOMUXC_EnableMode(IOMUXC_GPR, kIOMUXC_GPR_ENET1TxClkOutputDir, true);
-
-    GPIO_PinInit(GPIO1, 9, &gpio_config);
-    GPIO_PinInit(GPIO1, 10, &gpio_config);
-    /* pull up the ENET_INT before RESET. */
-    GPIO_WritePinOutput(GPIO1, 10, 1);
-    GPIO_WritePinOutput(GPIO1, 9, 0);
-    delay();
-    GPIO_WritePinOutput(GPIO1, 9, 1);
-
-    time_init();
+    LWIP_UNUSED_ARG(arg);
 
     IP4_ADDR(&fsl_netif0_ipaddr, configIP_ADDR0, configIP_ADDR1, configIP_ADDR2, configIP_ADDR3);
     IP4_ADDR(&fsl_netif0_netmask, configNET_MASK0, configNET_MASK1, configNET_MASK2, configNET_MASK3);
     IP4_ADDR(&fsl_netif0_gw, configGW_ADDR0, configGW_ADDR1, configGW_ADDR2, configGW_ADDR3);
 
-    lwip_init();
+    tcpip_init(NULL, NULL);
 
-    netif_add(&fsl_netif0, &fsl_netif0_ipaddr, &fsl_netif0_netmask, &fsl_netif0_gw,
-              &fsl_enet_config0, ethernetif0_init, ethernet_input);
-    netif_set_default(&fsl_netif0);
-    netif_set_up(&fsl_netif0);
-
-    ping_init(&fsl_netif0_gw);
+    netifapi_netif_add(&fsl_netif0, &fsl_netif0_ipaddr, &fsl_netif0_netmask, &fsl_netif0_gw, &fsl_enet_config0,
+                       ethernetif0_init, tcpip_input);
+    netifapi_netif_set_default(&fsl_netif0);
+    netifapi_netif_set_up(&fsl_netif0);
 
     PRINTF("\r\n************************************************\r\n");
     PRINTF(" PING example\r\n");
@@ -166,16 +137,41 @@ int lwip_ping_test(void)
            ((u8_t *)&fsl_netif0_gw)[2], ((u8_t *)&fsl_netif0_gw)[3]);
     PRINTF("************************************************\r\n");
 
-    while (1)
-    {
-        /* Poll the driver, get any outstanding frames */
-        ethernetif_input(&fsl_netif0);
+    ping_init(&fsl_netif0_gw);
 
-        sys_check_timeouts(); /* Handle all system timeouts for all core protocols */
-			  if(ping_recv_flag==0)
-					break;
-				 vTaskDelay(500);
-    }
-		return ping_recv_flag;
+    vTaskDelete(NULL);
+}
+
+/*!
+ * @brief Main function
+ */
+int main(void)
+{
+    gpio_pin_config_t gpio_config = {kGPIO_DigitalOutput, 0, kGPIO_NoIntmode};
+
+    BOARD_ConfigMPU();
+    BOARD_InitPins();
+    BOARD_BootClockRUN();
+    BOARD_InitDebugConsole();
+    BOARD_InitModuleClock();
+
+    IOMUXC_EnableMode(IOMUXC_GPR, kIOMUXC_GPR_ENET1TxClkOutputDir, true);
+
+    GPIO_PinInit(GPIO1, 9, &gpio_config);
+    GPIO_PinInit(GPIO1, 10, &gpio_config);
+    /* pull up the ENET_INT before RESET. */
+    GPIO_WritePinOutput(GPIO1, 10, 1);
+    GPIO_WritePinOutput(GPIO1, 9, 0);
+    delay();
+    GPIO_WritePinOutput(GPIO1, 9, 1);
+
+    /* Initialize lwIP from thread */
+    if (sys_thread_new("main", stack_init, NULL, INIT_THREAD_STACKSIZE, INIT_THREAD_PRIO) == NULL)
+        LWIP_ASSERT("main(): Task creation failed.", 0);
+
+    vTaskStartScheduler();
+
+    /* Will not get here unless a task calls vTaskEndScheduler ()*/
+    return 0;
 }
 #endif
