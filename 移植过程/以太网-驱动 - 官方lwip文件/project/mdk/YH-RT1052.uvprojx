@@ -437,6 +437,11 @@
               <FilePath>..\..\libraries\drivers\fsl_iomuxc.h</FilePath>
             </File>
             <File>
+              <FileName>fsl_phy.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\user\fsl_phy.c</FilePath>
+            </File>
+            <File>
               <FileName>fsl_enet.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\libraries\drivers\fsl_enet.c</FilePath>
@@ -537,9 +542,9 @@
               <FilePath>..\..\user\bsp\led\bsp_led.c</FilePath>
             </File>
             <File>
-              <FileName>fsl_phy.c</FileName>
+              <FileName>client.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\user\fsl_phy.c</FilePath>
+              <FilePath>..\..\user\client.c</FilePath>
             </File>
             <File>
               <FileName>bsp_systick.c</FileName>
@@ -547,24 +552,9 @@
               <FilePath>..\..\user\bsp\systick\bsp_systick.c</FilePath>
             </File>
             <File>
-              <FileName>ping.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\contrib\apps\ping\ping.c</FilePath>
-            </File>
-            <File>
-              <FileName>lwip_ping_test.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\lwip_ping_test.c</FilePath>
-            </File>
-            <File>
               <FileName>lwipopts.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\user\lwipopts.h</FilePath>
-            </File>
-            <File>
-              <FileName>client.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\client.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1341,6 +1331,11 @@
               <FilePath>..\..\libraries\drivers\fsl_iomuxc.h</FilePath>
             </File>
             <File>
+              <FileName>fsl_phy.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\user\fsl_phy.c</FilePath>
+            </File>
+            <File>
               <FileName>fsl_enet.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\libraries\drivers\fsl_enet.c</FilePath>
@@ -1441,9 +1436,9 @@
               <FilePath>..\..\user\bsp\led\bsp_led.c</FilePath>
             </File>
             <File>
-              <FileName>fsl_phy.c</FileName>
+              <FileName>client.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\user\fsl_phy.c</FilePath>
+              <FilePath>..\..\user\client.c</FilePath>
             </File>
             <File>
               <FileName>bsp_systick.c</FileName>
@@ -1451,24 +1446,9 @@
               <FilePath>..\..\user\bsp\systick\bsp_systick.c</FilePath>
             </File>
             <File>
-              <FileName>ping.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\contrib\apps\ping\ping.c</FilePath>
-            </File>
-            <File>
-              <FileName>lwip_ping_test.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\lwip_ping_test.c</FilePath>
-            </File>
-            <File>
               <FileName>lwipopts.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\user\lwipopts.h</FilePath>
-            </File>
-            <File>
-              <FileName>client.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\client.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2245,6 +2225,11 @@
               <FilePath>..\..\libraries\drivers\fsl_iomuxc.h</FilePath>
             </File>
             <File>
+              <FileName>fsl_phy.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\user\fsl_phy.c</FilePath>
+            </File>
+            <File>
               <FileName>fsl_enet.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\libraries\drivers\fsl_enet.c</FilePath>
@@ -2345,9 +2330,9 @@
               <FilePath>..\..\user\bsp\led\bsp_led.c</FilePath>
             </File>
             <File>
-              <FileName>fsl_phy.c</FileName>
+              <FileName>client.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\user\fsl_phy.c</FilePath>
+              <FilePath>..\..\user\client.c</FilePath>
             </File>
             <File>
               <FileName>bsp_systick.c</FileName>
@@ -2355,24 +2340,9 @@
               <FilePath>..\..\user\bsp\systick\bsp_systick.c</FilePath>
             </File>
             <File>
-              <FileName>ping.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\contrib\apps\ping\ping.c</FilePath>
-            </File>
-            <File>
-              <FileName>lwip_ping_test.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\lwip_ping_test.c</FilePath>
-            </File>
-            <File>
               <FileName>lwipopts.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\user\lwipopts.h</FilePath>
-            </File>
-            <File>
-              <FileName>client.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\client.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3150,6 +3120,11 @@
               <FilePath>..\..\libraries\drivers\fsl_iomuxc.h</FilePath>
             </File>
             <File>
+              <FileName>fsl_phy.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\user\fsl_phy.c</FilePath>
+            </File>
+            <File>
               <FileName>fsl_enet.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\libraries\drivers\fsl_enet.c</FilePath>
@@ -3250,9 +3225,9 @@
               <FilePath>..\..\user\bsp\led\bsp_led.c</FilePath>
             </File>
             <File>
-              <FileName>fsl_phy.c</FileName>
+              <FileName>client.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\user\fsl_phy.c</FilePath>
+              <FilePath>..\..\user\client.c</FilePath>
             </File>
             <File>
               <FileName>bsp_systick.c</FileName>
@@ -3260,24 +3235,9 @@
               <FilePath>..\..\user\bsp\systick\bsp_systick.c</FilePath>
             </File>
             <File>
-              <FileName>ping.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\contrib\apps\ping\ping.c</FilePath>
-            </File>
-            <File>
-              <FileName>lwip_ping_test.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\lwip_ping_test.c</FilePath>
-            </File>
-            <File>
               <FileName>lwipopts.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\user\lwipopts.h</FilePath>
-            </File>
-            <File>
-              <FileName>client.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\client.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -4055,6 +4015,11 @@
               <FilePath>..\..\libraries\drivers\fsl_iomuxc.h</FilePath>
             </File>
             <File>
+              <FileName>fsl_phy.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\user\fsl_phy.c</FilePath>
+            </File>
+            <File>
               <FileName>fsl_enet.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\libraries\drivers\fsl_enet.c</FilePath>
@@ -4155,9 +4120,9 @@
               <FilePath>..\..\user\bsp\led\bsp_led.c</FilePath>
             </File>
             <File>
-              <FileName>fsl_phy.c</FileName>
+              <FileName>client.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\user\fsl_phy.c</FilePath>
+              <FilePath>..\..\user\client.c</FilePath>
             </File>
             <File>
               <FileName>bsp_systick.c</FileName>
@@ -4165,24 +4130,9 @@
               <FilePath>..\..\user\bsp\systick\bsp_systick.c</FilePath>
             </File>
             <File>
-              <FileName>ping.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\contrib\apps\ping\ping.c</FilePath>
-            </File>
-            <File>
-              <FileName>lwip_ping_test.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\lwip_ping_test.c</FilePath>
-            </File>
-            <File>
               <FileName>lwipopts.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\user\lwipopts.h</FilePath>
-            </File>
-            <File>
-              <FileName>client.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\client.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -4960,6 +4910,11 @@
               <FilePath>..\..\libraries\drivers\fsl_iomuxc.h</FilePath>
             </File>
             <File>
+              <FileName>fsl_phy.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\user\fsl_phy.c</FilePath>
+            </File>
+            <File>
               <FileName>fsl_enet.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\libraries\drivers\fsl_enet.c</FilePath>
@@ -5060,9 +5015,9 @@
               <FilePath>..\..\user\bsp\led\bsp_led.c</FilePath>
             </File>
             <File>
-              <FileName>fsl_phy.c</FileName>
+              <FileName>client.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\user\fsl_phy.c</FilePath>
+              <FilePath>..\..\user\client.c</FilePath>
             </File>
             <File>
               <FileName>bsp_systick.c</FileName>
@@ -5070,24 +5025,9 @@
               <FilePath>..\..\user\bsp\systick\bsp_systick.c</FilePath>
             </File>
             <File>
-              <FileName>ping.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\contrib\apps\ping\ping.c</FilePath>
-            </File>
-            <File>
-              <FileName>lwip_ping_test.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\lwip_ping_test.c</FilePath>
-            </File>
-            <File>
               <FileName>lwipopts.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\user\lwipopts.h</FilePath>
-            </File>
-            <File>
-              <FileName>client.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\client.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -5865,6 +5805,11 @@
               <FilePath>..\..\libraries\drivers\fsl_iomuxc.h</FilePath>
             </File>
             <File>
+              <FileName>fsl_phy.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\user\fsl_phy.c</FilePath>
+            </File>
+            <File>
               <FileName>fsl_enet.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\libraries\drivers\fsl_enet.c</FilePath>
@@ -5965,9 +5910,9 @@
               <FilePath>..\..\user\bsp\led\bsp_led.c</FilePath>
             </File>
             <File>
-              <FileName>fsl_phy.c</FileName>
+              <FileName>client.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\user\fsl_phy.c</FilePath>
+              <FilePath>..\..\user\client.c</FilePath>
             </File>
             <File>
               <FileName>bsp_systick.c</FileName>
@@ -5975,24 +5920,9 @@
               <FilePath>..\..\user\bsp\systick\bsp_systick.c</FilePath>
             </File>
             <File>
-              <FileName>ping.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\contrib\apps\ping\ping.c</FilePath>
-            </File>
-            <File>
-              <FileName>lwip_ping_test.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\lwip_ping_test.c</FilePath>
-            </File>
-            <File>
               <FileName>lwipopts.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\user\lwipopts.h</FilePath>
-            </File>
-            <File>
-              <FileName>client.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\client.c</FilePath>
             </File>
           </Files>
         </Group>

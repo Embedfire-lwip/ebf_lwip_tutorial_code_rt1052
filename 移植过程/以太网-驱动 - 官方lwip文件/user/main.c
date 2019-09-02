@@ -31,8 +31,7 @@
 #include "task.h"
 #include "queue.h"
 #include "client.h"
-/*板载驱动*/
-#include "./led/bsp_led.h"   
+
 
 /**************************** 任务句柄 ********************************/
 /* 
@@ -88,61 +87,13 @@ extern void TCPIP_Init(void);
             第二步：创建APP应用任务
             第三步：启动FreeRTOS，开始多任务调度
   ****************************************************************/
-void BOARD_InitModuleClock(void)
-{
-    const clock_enet_pll_config_t config = {.enableClkOutput = true, .enableClkOutput25M = false, .loopDivider = 1};
-    CLOCK_InitEnetPll(&config);
-}
 
-void delay(void)
-{
-    volatile uint32_t i = 0;
-    for (i = 0; i < 1000000; ++i)
-    {
-        __asm("NOP"); /* delay */
-    }
-}
 int main(void)
 {	
   BaseType_t xReturn = pdPASS;/* 定义一个创建信息返回值，默认为pdPASS */
   
   /* 开发板硬件初始化 */
-  //BSP_Init();
-	 gpio_pin_config_t gpio_config = {kGPIO_DigitalOutput, 0, kGPIO_NoIntmode};
-	  /* 初始化内存保护单元 */
-  BOARD_ConfigMPU();
-  /* 初始化开发板引脚 */
-  BOARD_InitPins();
-  /* 初始化开发板时钟 */
-  BOARD_BootClockRUN();
-  /* 初始化调试串口 */
-  BOARD_InitDebugConsole();
-	BOARD_InitModuleClock();
-	IOMUXC_EnableMode(IOMUXC_GPR, kIOMUXC_GPR_ENET1TxClkOutputDir, true);
-	GPIO_PinInit(GPIO1, 9, &gpio_config);
-	GPIO_PinInit(GPIO1, 10, &gpio_config);
-	/* pull up the ENET_INT before RESET. */
-	GPIO_WritePinOutput(GPIO1, 10, 1);
-	GPIO_WritePinOutput(GPIO1, 9, 0);
-	delay();
-	GPIO_WritePinOutput(GPIO1, 9, 1);
-  /* 打印系统时钟 */
-  PRINTF("\r\n");
-  PRINTF("*****欢迎使用 野火i.MX RT1052 开发板*****\r\n");
-  PRINTF("CPU:             %d Hz\r\n", CLOCK_GetFreq(kCLOCK_CpuClk));
-  PRINTF("AHB:             %d Hz\r\n", CLOCK_GetFreq(kCLOCK_AhbClk));
-  PRINTF("SEMC:            %d Hz\r\n", CLOCK_GetFreq(kCLOCK_SemcClk));
-  PRINTF("SYSPLL:          %d Hz\r\n", CLOCK_GetFreq(kCLOCK_SysPllClk));
-  PRINTF("SYSPLLPFD0:      %d Hz\r\n", CLOCK_GetFreq(kCLOCK_SysPllPfd0Clk));
-  PRINTF("SYSPLLPFD1:      %d Hz\r\n", CLOCK_GetFreq(kCLOCK_SysPllPfd1Clk));
-  PRINTF("SYSPLLPFD2:      %d Hz\r\n", CLOCK_GetFreq(kCLOCK_SysPllPfd2Clk));
-  PRINTF("SYSPLLPFD3:      %d Hz\r\n", CLOCK_GetFreq(kCLOCK_SysPllPfd3Clk));  
-  
-  /* 初始化SysTick */
-  SysTick_Config(SystemCoreClock / configTICK_RATE_HZ);
-	/* LED 端口初始化 */
-	LED_GPIO_Config();	
-
+  BSP_Init();
   /* 创建AppTaskCreate任务 */
   xReturn = xTaskCreate((TaskFunction_t )AppTaskCreate,  /* 任务入口函数 */
                         (const char*    )"AppTaskCreate",/* 任务名字 */

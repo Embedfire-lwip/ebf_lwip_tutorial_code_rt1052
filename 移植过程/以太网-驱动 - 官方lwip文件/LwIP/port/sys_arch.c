@@ -731,13 +731,13 @@ void sys_arch_unprotect( sys_prot_t xValue )
 		
 void TCPIP_Init(void)
 {
-	  static struct netif fsl_netif0;
-    ip4_addr_t fsl_netif0_ipaddr, fsl_netif0_netmask, fsl_netif0_gw;
-    ethernetif_config_t fsl_enet_config0 = {
-        .phyAddress = EXAMPLE_PHY_ADDRESS,
-        .clockName  = EXAMPLE_CLOCK_NAME,
-        .macAddress = configMAC_ADDR,
-    };
+	static struct netif fsl_netif0;
+	ip4_addr_t fsl_netif0_ipaddr, fsl_netif0_netmask, fsl_netif0_gw;
+	ethernetif_config_t fsl_enet_config0 = {
+			.phyAddress = EXAMPLE_PHY_ADDRESS,
+			.clockName  = EXAMPLE_CLOCK_NAME,
+			.macAddress = configMAC_ADDR,
+	};
   tcpip_init(NULL, NULL);
   
   /* IP addresses initialization */
