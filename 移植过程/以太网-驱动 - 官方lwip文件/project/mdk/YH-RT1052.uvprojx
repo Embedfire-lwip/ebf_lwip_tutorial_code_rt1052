@@ -556,6 +556,11 @@
               <FileType>5</FileType>
               <FilePath>..\..\user\lwipopts.h</FilePath>
             </File>
+            <File>
+              <FileName>FreeRTOSConfig.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\user\FreeRTOSConfig.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1450,6 +1455,11 @@
               <FileType>5</FileType>
               <FilePath>..\..\user\lwipopts.h</FilePath>
             </File>
+            <File>
+              <FileName>FreeRTOSConfig.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\user\FreeRTOSConfig.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2343,6 +2353,11 @@
               <FileName>lwipopts.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\user\lwipopts.h</FilePath>
+            </File>
+            <File>
+              <FileName>FreeRTOSConfig.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\user\FreeRTOSConfig.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -3239,6 +3254,11 @@
               <FileType>5</FileType>
               <FilePath>..\..\user\lwipopts.h</FilePath>
             </File>
+            <File>
+              <FileName>FreeRTOSConfig.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\user\FreeRTOSConfig.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -4133,6 +4153,11 @@
               <FileName>lwipopts.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\user\lwipopts.h</FilePath>
+            </File>
+            <File>
+              <FileName>FreeRTOSConfig.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\user\FreeRTOSConfig.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -5029,6 +5054,11 @@
               <FileType>5</FileType>
               <FilePath>..\..\user\lwipopts.h</FilePath>
             </File>
+            <File>
+              <FileName>FreeRTOSConfig.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\user\FreeRTOSConfig.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -5923,6 +5953,11 @@
               <FileName>lwipopts.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\user\lwipopts.h</FilePath>
+            </File>
+            <File>
+              <FileName>FreeRTOSConfig.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\user\FreeRTOSConfig.h</FilePath>
             </File>
           </Files>
         </Group>
