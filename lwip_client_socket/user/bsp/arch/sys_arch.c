@@ -728,11 +728,12 @@ void sys_arch_unprotect( sys_prot_t xValue )
 }
 
 #endif /*NO_SYS*/
-		
+struct netif gnetif;
+ip4_addr_t ipaddr;
+ip4_addr_t netmask;
+ip4_addr_t gw;
 void TCPIP_Init(void)
 {
-	static struct netif fsl_netif0;
-	ip4_addr_t fsl_netif0_ipaddr, fsl_netif0_netmask, fsl_netif0_gw;
 	ethernetif_config_t fsl_enet_config0 = {
 			.phyAddress = EXAMPLE_PHY_ADDRESS,
 			.clockName  = EXAMPLE_CLOCK_NAME,
@@ -743,19 +744,19 @@ void TCPIP_Init(void)
   /* IP addresses initialization */
   /* USER CODE BEGIN 0 */
 #if LWIP_DHCP
-  ip_addr_set_zero_ip4(&fsl_netif0_ipaddr);
-  ip_addr_set_zero_ip4(&fsl_netif0_netmask);
-  ip_addr_set_zero_ip4(&fsl_netif0_gw);
+  ip_addr_set_zero_ip4(&ipaddr);
+  ip_addr_set_zero_ip4(&netmask);
+  ip_addr_set_zero_ip4(&gw);
 #else
-    IP4_ADDR(&fsl_netif0_ipaddr, DEST_IP_ADDR0, DEST_IP_ADDR1, DEST_IP_ADDR2, DEST_IP_ADDR3);
-    IP4_ADDR(&fsl_netif0_netmask, NETMASK_ADDR0, NETMASK_ADDR1, NETMASK_ADDR2, NETMASK_ADDR3);
-    IP4_ADDR(&fsl_netif0_gw, GW_ADDR0, GW_ADDR1, GW_ADDR2, GW_ADDR3);
+    IP4_ADDR(&ipaddr, IP_ADDR0, IP_ADDR1, IP_ADDR2, IP_ADDR3);
+    IP4_ADDR(&netmask, NETMASK_ADDR0, NETMASK_ADDR1, NETMASK_ADDR2, NETMASK_ADDR3);
+    IP4_ADDR(&gw, GW_ADDR0, GW_ADDR1, GW_ADDR2, GW_ADDR3);
 #endif /* USE_DHCP */
 	
-    netifapi_netif_add(&fsl_netif0, &fsl_netif0_ipaddr, &fsl_netif0_netmask, &fsl_netif0_gw, &fsl_enet_config0,
+    netifapi_netif_add(&gnetif, &ipaddr, &netmask, &gw, &fsl_enet_config0,
                        ethernetif0_init, tcpip_input);
-    netifapi_netif_set_default(&fsl_netif0);
-    netifapi_netif_set_up(&fsl_netif0);
+    netifapi_netif_set_default(&gnetif);
+    netifapi_netif_set_up(&gnetif);
 		
   
 #if LWIP_DHCP	   			//若使用了DHCP
@@ -767,21 +768,21 @@ void TCPIP_Init(void)
   
   PRINTF("本例程将使用DHCP动态分配IP地址,如果不需要则在lwipopts.h中将LWIP_DHCP定义为0\n\n");
   
-  err = dhcp_start(&fsl_netif0);      //开启dhcp
+  err = dhcp_start(&gnetif);      //开启dhcp
   if(err == ERR_OK)
     PRINTF("lwip dhcp init success...\n\n");
   else
     PRINTF("lwip dhcp init fail...\n\n");
-  while(ip_addr_cmp(&(fsl_netif0.ip_addr),&fsl_netif0_ipaddr))   //等待dhcp分配的ip有效
+  while(ip_addr_cmp(&(gnetif.ip_addr),&ipaddr))   //等待dhcp分配的ip有效
   {
     vTaskDelay(1);
   } 
 #endif
 		PRINTF("本地IP地址是:%d.%d.%d.%d\n\n",  \
-					((fsl_netif0.ip_addr.addr)&0x000000ff),       \
-					(((fsl_netif0.ip_addr.addr)&0x0000ff00)>>8),  \
-					(((fsl_netif0.ip_addr.addr)&0x00ff0000)>>16), \
-					((fsl_netif0.ip_addr.addr)&0xff000000)>>24);
+					((gnetif.ip_addr.addr)&0x000000ff),       \
+					(((gnetif.ip_addr.addr)&0x0000ff00)>>8),  \
+					(((gnetif.ip_addr.addr)&0x00ff0000)>>16), \
+					((gnetif.ip_addr.addr)&0xff000000)>>24);
 	
 	
 //	ping_init(&fsl_netif0_gw);
