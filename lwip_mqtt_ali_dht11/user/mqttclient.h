@@ -28,6 +28,7 @@
 #define   TOPIC         "/a1MZHjK2SCF/fire_temp_hum/user/temp_hum"      //订阅的主题
 #define   TEST_MESSAGE  "test_message"  //发送测试消息
 
+
 enum QoS 
 { QOS0 = 0, 
   QOS1, 
