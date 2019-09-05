@@ -728,6 +728,7 @@ void sys_arch_unprotect( sys_prot_t xValue )
     EnableGlobalIRQ((uint32_t)xValue);
 }
 
+
 #endif /*NO_SYS*/
 /*-------------------------------------------------------------------------*
  * End of File:  sys_arch.c

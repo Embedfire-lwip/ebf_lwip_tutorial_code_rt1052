@@ -34,7 +34,8 @@
 #include "fsl_common.h"
 #include "fsl_debug_console.h"
 #include "board.h"
-
+#include "fsl_iomuxc.h"
+#include "pin_mux.h"
 /*******************************************************************************
  * Variables
  ******************************************************************************/
@@ -228,5 +229,72 @@ void CopyAndUseRAMVectorTable(void)
 }
 
 #endif
+
+/*初始化 enet时钟*/
+void BOARD_InitModuleClock(void)
+{
+    const clock_enet_pll_config_t config = {.enableClkOutput = true, .enableClkOutput25M = false, .loopDivider = 1};
+    CLOCK_InitEnetPll(&config);
+}
+/*空操作延时*/
+void delay(void)
+{
+    volatile uint32_t i = 0;
+    for (i = 0; i < 1000000; ++i)
+    {
+        __asm("NOP");
+    }
+}
+
+/*
+板载ENET模块初始化
+*/
+void BOARD_InitENETModule()
+{
+	/*相关引脚初始化 在 BOARD_InitPins()函数里*/
+		gpio_pin_config_t gpio_config = {kGPIO_DigitalOutput, 0, kGPIO_NoIntmode};
+		/* 初始化模块时钟 */
+		BOARD_InitModuleClock();
+		IOMUXC_EnableMode(IOMUXC_GPR, kIOMUXC_GPR_ENET1TxClkOutputDir, true);
+		GPIO_PinInit(GPIO1, 9, &gpio_config);
+		GPIO_PinInit(GPIO1, 10, &gpio_config);
+		/* 在复位之前拉高ENET_INT 引脚。 */
+		GPIO_WritePinOutput(GPIO1, 10, 1);
+		GPIO_WritePinOutput(GPIO1, 9, 0);
+		delay();
+		GPIO_WritePinOutput(GPIO1, 9, 1);
+}
+
+void BSP_Init(void)
+{
+//#define PRINTF_KCLOCK_INFO  	//打印时钟信息
+
+	  /* 初始化内存保护单元 */
+  BOARD_ConfigMPU();
+  /* 初始化开发板引脚 */
+  BOARD_InitPins();
+  /* 初始化开发板时钟 */
+  BOARD_BootClockRUN();
+  /* 初始化调试串口 */
+  BOARD_InitDebugConsole();
+	/* 板载ENET模块初始化 */
+	BOARD_InitENETModule();
+	
+#if defined(PRINTF_KCLOCK_INFO)
+  /* 打印系统时钟 */
+  PRINTF("\r\n");
+  PRINTF("*****欢迎使用 野火i.MX RT1052 开发板*****\r\n");
+  PRINTF("CPU:             %d Hz\r\n", CLOCK_GetFreq(kCLOCK_CpuClk));
+  PRINTF("AHB:             %d Hz\r\n", CLOCK_GetFreq(kCLOCK_AhbClk));
+  PRINTF("SEMC:            %d Hz\r\n", CLOCK_GetFreq(kCLOCK_SemcClk));
+  PRINTF("SYSPLL:          %d Hz\r\n", CLOCK_GetFreq(kCLOCK_SysPllClk));
+  PRINTF("SYSPLLPFD0:      %d Hz\r\n", CLOCK_GetFreq(kCLOCK_SysPllPfd0Clk));
+  PRINTF("SYSPLLPFD1:      %d Hz\r\n", CLOCK_GetFreq(kCLOCK_SysPllPfd1Clk));
+  PRINTF("SYSPLLPFD2:      %d Hz\r\n", CLOCK_GetFreq(kCLOCK_SysPllPfd2Clk));
+  PRINTF("SYSPLLPFD3:      %d Hz\r\n", CLOCK_GetFreq(kCLOCK_SysPllPfd3Clk));  
+#endif
+	/*相关硬件初始化；例如，LED 按键 串口 等。。。*/
+	LED_GPIO_Config();
+}
 
 

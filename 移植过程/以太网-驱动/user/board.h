@@ -4,7 +4,8 @@
 #include "clock_config.h"
 #include "fsl_common.h"
 #include "fsl_gpio.h"
-
+/*°åÔØÇý¶¯*/
+#include "./led/bsp_led.h"   
 /*******************************************************************************
  * Definitions
  ******************************************************************************/
@@ -197,5 +198,5 @@ void BOARD_ConfigMPU(void);
 #if defined(__cplusplus)
 }
 #endif /* __cplusplus */
-
+extern void BSP_Init(void);
 #endif /* _BOARD_H_ */
