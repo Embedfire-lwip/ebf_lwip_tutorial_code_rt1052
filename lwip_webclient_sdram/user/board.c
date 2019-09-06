@@ -160,8 +160,9 @@ void BOARD_ConfigMPU(void)
     ARM_MPU_Enable(MPU_CTRL_PRIVDEFENA_Msk);
 
     /* Enable I cache and D cache */
-    SCB_EnableDCache();
-    SCB_EnableICache();
+
+    SCB_DisableDCache();
+    SCB_DisableICache();
     
 #if defined(USE_RAM_VECTOR_TABLE)
     /* 启用SDRAM版本的中断向量表 */
