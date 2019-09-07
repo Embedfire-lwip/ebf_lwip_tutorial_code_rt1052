@@ -202,8 +202,13 @@ vj_compress_tcp(struct vjcompress *comp, struct pbuf **pb)
 
   /* TCP stack requires that we don't change the packet payload, therefore we copy
    * the whole packet before compression. */
-  np = pbuf_clone(PBUF_RAW, PBUF_RAM, *pb);
+  np = pbuf_alloc(PBUF_RAW, np->tot_len, PBUF_POOL);
   if (!np) {
+    return (TYPE_IP);
+  }
+
+  if (pbuf_copy(np, *pb) != ERR_OK) {
+    pbuf_free(np);
     return (TYPE_IP);
   }
 
@@ -407,18 +412,18 @@ vj_compress_tcp(struct vjcompress *comp, struct pbuf **pb)
   if (!comp->compressSlot || comp->last_xmit != cs->cs_id) {
     comp->last_xmit = cs->cs_id;
     hlen -= deltaS + 4;
-    if (pbuf_remove_header(np, hlen)){
+    if (pbuf_header(np, -(s16_t)hlen)){
       /* Can we cope with this failing?  Just assert for now */
-      LWIP_ASSERT("pbuf_remove_header failed\n", 0);
+      LWIP_ASSERT("pbuf_header failed\n", 0);
     }
     cp = (u8_t*)np->payload;
     *cp++ = (u8_t)(changes | NEW_C);
     *cp++ = cs->cs_id;
   } else {
     hlen -= deltaS + 3;
-    if (pbuf_remove_header(np, hlen)) {
+    if (pbuf_header(np, -(s16_t)hlen)) {
       /* Can we cope with this failing?  Just assert for now */
-      LWIP_ASSERT("pbuf_remove_header failed\n", 0);
+      LWIP_ASSERT("pbuf_header failed\n", 0);
     }
     cp = (u8_t*)np->payload;
     *cp++ = (u8_t)changes;
@@ -466,20 +471,19 @@ vj_uncompress_uncomp(struct pbuf *nb, struct vjcompress *comp)
   hlen = IPH_HL(ip) << 2;
   if (IPH_PROTO(ip) >= MAX_SLOTS
       || hlen + sizeof(struct tcp_hdr) > nb->len
-      || (hlen += TCPH_HDRLEN_BYTES((struct tcp_hdr *)&((char *)ip)[hlen]))
+      || (hlen += TCPH_HDRLEN(((struct tcp_hdr *)&((char *)ip)[hlen])) << 2)
           > nb->len
       || hlen > MAX_HDR) {
     PPPDEBUG(LOG_INFO, ("vj_uncompress_uncomp: bad cid=%d, hlen=%d buflen=%d\n",
       IPH_PROTO(ip), hlen, nb->len));
-    vj_uncompress_err(comp);
+    comp->flags |= VJF_TOSS;
+    INCR(vjs_errorin);
     return -1;
   }
   cs = &comp->rstate[comp->last_recv = IPH_PROTO(ip)];
   comp->flags &=~ VJF_TOSS;
   IPH_PROTO_SET(ip, IP_PROTO_TCP);
-  /* copy from/to bigger buffers checked above instead of cs->cs_ip and ip
-     just to help static code analysis to see this is correct ;-) */
-  MEMCPY(&cs->cs_hdr, nb->payload, hlen);
+  MEMCPY(&cs->cs_ip, ip, hlen);
   cs->cs_hlen = (u16_t)hlen;
   INCR(vjs_uncompressedin);
   return 0;
@@ -619,14 +623,15 @@ vj_uncompress_tcp(struct pbuf **nb, struct vjcompress *comp)
   IPH_CHKSUM_SET(&cs->cs_ip,  (u16_t)(~tmp));
 
   /* Remove the compressed header and prepend the uncompressed header. */
-  if (pbuf_remove_header(n0, vjlen)) {
+  if (pbuf_header(n0, -(s16_t)vjlen)) {
     /* Can we cope with this failing?  Just assert for now */
-    LWIP_ASSERT("pbuf_remove_header failed\n", 0);
+    LWIP_ASSERT("pbuf_header failed\n", 0);
     goto bad;
   }
 
   if(LWIP_MEM_ALIGN(n0->payload) != n0->payload) {
-    struct pbuf *np;
+    struct pbuf *np, *q;
+    u8_t *bufptr;
 
 #if IP_FORWARD
     /* If IP forwarding is enabled we are using a PBUF_LINK packet type so
@@ -642,13 +647,17 @@ vj_uncompress_tcp(struct pbuf **nb, struct vjcompress *comp)
       goto bad;
     }
 
-    if (pbuf_remove_header(np, cs->cs_hlen)) {
+    if (pbuf_header(np, -(s16_t)cs->cs_hlen)) {
       /* Can we cope with this failing?  Just assert for now */
-      LWIP_ASSERT("pbuf_remove_header failed\n", 0);
+      LWIP_ASSERT("pbuf_header failed\n", 0);
       goto bad;
     }
 
-    pbuf_take(np, n0->payload, n0->len);
+    bufptr = (u8_t*)n0->payload;
+    for(q = np; q != NULL; q = q->next) {
+      MEMCPY(q->payload, bufptr, q->len);
+      bufptr += q->len;
+    }
 
     if(n0->next) {
       pbuf_chain(np, n0->next);
@@ -658,7 +667,7 @@ vj_uncompress_tcp(struct pbuf **nb, struct vjcompress *comp)
     n0 = np;
   }
 
-  if (pbuf_add_header(n0, cs->cs_hlen)) {
+  if (pbuf_header(n0, (s16_t)cs->cs_hlen)) {
     struct pbuf *np;
 
     LWIP_ASSERT("vj_uncompress_tcp: cs->cs_hlen <= PBUF_POOL_BUFSIZE", cs->cs_hlen <= PBUF_POOL_BUFSIZE);
@@ -678,7 +687,8 @@ vj_uncompress_tcp(struct pbuf **nb, struct vjcompress *comp)
   return vjlen;
 
 bad:
-  vj_uncompress_err(comp);
+  comp->flags |= VJF_TOSS;
+  INCR(vjs_errorin);
   return (-1);
 }
 

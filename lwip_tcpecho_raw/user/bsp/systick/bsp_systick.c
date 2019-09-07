@@ -62,19 +62,24 @@ void Delay_ms(__IO uint32_t nTime)
   * @retval нч
   * @attention
   */
+//void SysTick_Handler(void)
+//{
+//  if (TimingDelay != 0x00)
+//  { 
+//    TimingDelay--;
+//  }
+//}
+
+
+extern void time_isr(void);
 extern void xPortSysTickHandler(void);
 
 void SysTick_Handler(void)
 {
-	
-#if (INCLUDE_xTaskGetSchedulerState  == 1 )
-	if (xTaskGetSchedulerState() != taskSCHEDULER_NOT_STARTED)
-	{
-#endif  /* INCLUDE_xTaskGetSchedulerState */  
-		xPortSysTickHandler();
-#if (INCLUDE_xTaskGetSchedulerState  == 1 )
-	}
-#endif  /* INCLUDE_xTaskGetSchedulerState */
+#ifdef __CA7_REV
+    SystemClearSystickFlag();
+#endif
+		time_isr();
 }
 
 #if 0

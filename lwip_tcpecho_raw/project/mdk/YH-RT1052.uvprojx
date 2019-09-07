@@ -340,7 +340,7 @@
 --diag_suppress=66,1296,186 
  
 </MiscControls>
-              <Define>CPU_MIMXRT1052CVL5B,PRINTF_FLOAT_ENABLE=1, SCANF_FLOAT_ENABLE=1, PRINTF_ADVANCED_ENABLE=1, SCANF_ADVANCED_ENABLE=1</Define>
+              <Define>CPU_MIMXRT1052CVL5B,PRINTF_FLOAT_ENABLE=1, SCANF_FLOAT_ENABLE=1, PRINTF_ADVANCED_ENABLE=1, SCANF_ADVANCED_ENABLE=1 ,FSL_SDK_ENABLE_DRIVER_CACHE_CONTROL=1</Define>
               <Undefine></Undefine>
               <IncludePath>..\..\libraries\CMSIS\Include;..\..\libraries\drivers;..\..\libraries\utilities;..\..\libraries\utilities\str;..\..\libraries\utilities\log;..\..\libraries\utilities\io;..\..\libraries\xip;..\..\user;..\..\user\bsp;..\..\user\bsp\arch;..\..\LWIP\include;..\..\LWIP\api;..\..\LWIP\core;..\..\LWIP\core\ipv4;..\..\FreeRTOS\include;..\..\FreeRTOS\port\RVDS\ARM_CM7\r0p1</IncludePath>
             </VariousControls>
@@ -437,14 +437,14 @@
               <FilePath>..\..\libraries\drivers\fsl_iomuxc.h</FilePath>
             </File>
             <File>
-              <FileName>fsl_phy.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\fsl_phy.c</FilePath>
-            </File>
-            <File>
               <FileName>fsl_enet.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\libraries\drivers\fsl_enet.c</FilePath>
+            </File>
+            <File>
+              <FileName>fsl_cache.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\libraries\drivers\fsl_cache.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -542,6 +542,11 @@
               <FilePath>..\..\user\bsp\led\bsp_led.c</FilePath>
             </File>
             <File>
+              <FileName>fsl_phy.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\user\fsl_phy.c</FilePath>
+            </File>
+            <File>
               <FileName>bsp_systick.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\user\bsp\systick\bsp_systick.c</FilePath>
@@ -552,64 +557,14 @@
               <FilePath>..\..\user\lwipopts.h</FilePath>
             </File>
             <File>
-              <FileName>FreeRTOSConfig.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\user\FreeRTOSConfig.h</FilePath>
-            </File>
-            <File>
               <FileName>tcpecho.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\user\tcpecho.c</FilePath>
             </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>FreeRTOS/src</GroupName>
-          <Files>
             <File>
-              <FileName>croutine.c</FileName>
+              <FileName>ping.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\src\croutine.c</FilePath>
-            </File>
-            <File>
-              <FileName>event_groups.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\src\event_groups.c</FilePath>
-            </File>
-            <File>
-              <FileName>list.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\src\list.c</FilePath>
-            </File>
-            <File>
-              <FileName>queue.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\src\queue.c</FilePath>
-            </File>
-            <File>
-              <FileName>tasks.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\src\tasks.c</FilePath>
-            </File>
-            <File>
-              <FileName>timers.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\src\timers.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>FreeRTOS/port</GroupName>
-          <Files>
-            <File>
-              <FileName>heap_4.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\port\MemMang\heap_4.c</FilePath>
-            </File>
-            <File>
-              <FileName>port.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\port\RVDS\ARM_CM7\r0p1\port.c</FilePath>
+              <FilePath>..\..\user\ping.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -630,11 +585,6 @@
               <FileName>err.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\LwIP\api\err.c</FilePath>
-            </File>
-            <File>
-              <FileName>if_api.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\api\if_api.c</FilePath>
             </File>
             <File>
               <FileName>netbuf.c</FileName>
@@ -667,19 +617,44 @@
           <GroupName>LwIP/core</GroupName>
           <Files>
             <File>
-              <FileName>altcp.c</FileName>
+              <FileName>autoip.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\altcp.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\autoip.c</FilePath>
             </File>
             <File>
-              <FileName>altcp_alloc.c</FileName>
+              <FileName>dhcp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\altcp_alloc.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\dhcp.c</FilePath>
             </File>
             <File>
-              <FileName>altcp_tcp.c</FileName>
+              <FileName>etharp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\altcp_tcp.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\etharp.c</FilePath>
+            </File>
+            <File>
+              <FileName>icmp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\LwIP\core\ipv4\icmp.c</FilePath>
+            </File>
+            <File>
+              <FileName>igmp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\LwIP\core\ipv4\igmp.c</FilePath>
+            </File>
+            <File>
+              <FileName>ip4.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\LwIP\core\ipv4\ip4.c</FilePath>
+            </File>
+            <File>
+              <FileName>ip4_addr.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\LwIP\core\ipv4\ip4_addr.c</FilePath>
+            </File>
+            <File>
+              <FileName>ip4_frag.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\LwIP\core\ipv4\ip4_frag.c</FilePath>
             </File>
             <File>
               <FileName>def.c</FileName>
@@ -766,61 +741,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\LwIP\core\udp.c</FilePath>
             </File>
-            <File>
-              <FileName>autoip.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\autoip.c</FilePath>
-            </File>
-            <File>
-              <FileName>dhcp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\dhcp.c</FilePath>
-            </File>
-            <File>
-              <FileName>etharp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\etharp.c</FilePath>
-            </File>
-            <File>
-              <FileName>icmp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\icmp.c</FilePath>
-            </File>
-            <File>
-              <FileName>igmp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\igmp.c</FilePath>
-            </File>
-            <File>
-              <FileName>ip4.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\ip4.c</FilePath>
-            </File>
-            <File>
-              <FileName>ip4_addr.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\ip4_addr.c</FilePath>
-            </File>
-            <File>
-              <FileName>ip4_frag.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\ip4_frag.c</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>LwIP/netif</GroupName>
           <Files>
-            <File>
-              <FileName>bridgeif.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\netif\bridgeif.c</FilePath>
-            </File>
-            <File>
-              <FileName>bridgeif_fdb.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\netif\bridgeif_fdb.c</FilePath>
-            </File>
             <File>
               <FileName>ethernet.c</FileName>
               <FileType>1</FileType>
@@ -831,40 +756,15 @@
               <FileType>1</FileType>
               <FilePath>..\..\LwIP\netif\lowpan6.c</FilePath>
             </File>
-            <File>
-              <FileName>lowpan6_ble.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\netif\lowpan6_ble.c</FilePath>
-            </File>
-            <File>
-              <FileName>lowpan6_common.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\netif\lowpan6_common.c</FilePath>
-            </File>
-            <File>
-              <FileName>slipif.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\netif\slipif.c</FilePath>
-            </File>
-            <File>
-              <FileName>zepif.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\netif\zepif.c</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>LwIP/arch</GroupName>
           <Files>
             <File>
-              <FileName>enet_ethernetif.c</FileName>
+              <FileName>ethernetif.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\arch\enet_ethernetif.c</FilePath>
-            </File>
-            <File>
-              <FileName>enet_ethernetif_kinetis.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\arch\enet_ethernetif_kinetis.c</FilePath>
+              <FilePath>..\..\user\bsp\arch\ethernetif.c</FilePath>
             </File>
             <File>
               <FileName>sys_arch.c</FileName>
@@ -1239,7 +1139,7 @@
 --diag_suppress=66,1296,186 
  
 </MiscControls>
-              <Define>CPU_MIMXRT1052CVL5B,SKIP_SYSCLK_INIT,PRINTF_FLOAT_ENABLE=1, SCANF_FLOAT_ENABLE=1, PRINTF_ADVANCED_ENABLE=1, SCANF_ADVANCED_ENABLE=1</Define>
+              <Define>CPU_MIMXRT1052CVL5B,SKIP_SYSCLK_INIT,PRINTF_FLOAT_ENABLE=1, SCANF_FLOAT_ENABLE=1, PRINTF_ADVANCED_ENABLE=1, SCANF_ADVANCED_ENABLE=1 ,FSL_SDK_ENABLE_DRIVER_CACHE_CONTROL=1</Define>
               <Undefine></Undefine>
               <IncludePath>..\..\libraries\CMSIS\Include;..\..\libraries\drivers;..\..\libraries\utilities;..\..\libraries\utilities\str;..\..\libraries\utilities\log;..\..\libraries\utilities\io;..\..\libraries\xip;..\..\user;..\..\user\bsp;..\..\user\bsp\arch;..\..\LWIP\include;..\..\LWIP\api;..\..\LWIP\core;..\..\LWIP\core\ipv4;..\..\FreeRTOS\include;..\..\FreeRTOS\port\RVDS\ARM_CM7\r0p1</IncludePath>
             </VariousControls>
@@ -1336,14 +1236,14 @@
               <FilePath>..\..\libraries\drivers\fsl_iomuxc.h</FilePath>
             </File>
             <File>
-              <FileName>fsl_phy.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\fsl_phy.c</FilePath>
-            </File>
-            <File>
               <FileName>fsl_enet.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\libraries\drivers\fsl_enet.c</FilePath>
+            </File>
+            <File>
+              <FileName>fsl_cache.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\libraries\drivers\fsl_cache.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1441,6 +1341,11 @@
               <FilePath>..\..\user\bsp\led\bsp_led.c</FilePath>
             </File>
             <File>
+              <FileName>fsl_phy.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\user\fsl_phy.c</FilePath>
+            </File>
+            <File>
               <FileName>bsp_systick.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\user\bsp\systick\bsp_systick.c</FilePath>
@@ -1451,64 +1356,14 @@
               <FilePath>..\..\user\lwipopts.h</FilePath>
             </File>
             <File>
-              <FileName>FreeRTOSConfig.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\user\FreeRTOSConfig.h</FilePath>
-            </File>
-            <File>
               <FileName>tcpecho.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\user\tcpecho.c</FilePath>
             </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>FreeRTOS/src</GroupName>
-          <Files>
             <File>
-              <FileName>croutine.c</FileName>
+              <FileName>ping.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\src\croutine.c</FilePath>
-            </File>
-            <File>
-              <FileName>event_groups.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\src\event_groups.c</FilePath>
-            </File>
-            <File>
-              <FileName>list.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\src\list.c</FilePath>
-            </File>
-            <File>
-              <FileName>queue.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\src\queue.c</FilePath>
-            </File>
-            <File>
-              <FileName>tasks.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\src\tasks.c</FilePath>
-            </File>
-            <File>
-              <FileName>timers.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\src\timers.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>FreeRTOS/port</GroupName>
-          <Files>
-            <File>
-              <FileName>heap_4.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\port\MemMang\heap_4.c</FilePath>
-            </File>
-            <File>
-              <FileName>port.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\port\RVDS\ARM_CM7\r0p1\port.c</FilePath>
+              <FilePath>..\..\user\ping.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1529,11 +1384,6 @@
               <FileName>err.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\LwIP\api\err.c</FilePath>
-            </File>
-            <File>
-              <FileName>if_api.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\api\if_api.c</FilePath>
             </File>
             <File>
               <FileName>netbuf.c</FileName>
@@ -1566,19 +1416,44 @@
           <GroupName>LwIP/core</GroupName>
           <Files>
             <File>
-              <FileName>altcp.c</FileName>
+              <FileName>autoip.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\altcp.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\autoip.c</FilePath>
             </File>
             <File>
-              <FileName>altcp_alloc.c</FileName>
+              <FileName>dhcp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\altcp_alloc.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\dhcp.c</FilePath>
             </File>
             <File>
-              <FileName>altcp_tcp.c</FileName>
+              <FileName>etharp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\altcp_tcp.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\etharp.c</FilePath>
+            </File>
+            <File>
+              <FileName>icmp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\LwIP\core\ipv4\icmp.c</FilePath>
+            </File>
+            <File>
+              <FileName>igmp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\LwIP\core\ipv4\igmp.c</FilePath>
+            </File>
+            <File>
+              <FileName>ip4.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\LwIP\core\ipv4\ip4.c</FilePath>
+            </File>
+            <File>
+              <FileName>ip4_addr.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\LwIP\core\ipv4\ip4_addr.c</FilePath>
+            </File>
+            <File>
+              <FileName>ip4_frag.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\LwIP\core\ipv4\ip4_frag.c</FilePath>
             </File>
             <File>
               <FileName>def.c</FileName>
@@ -1665,61 +1540,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\LwIP\core\udp.c</FilePath>
             </File>
-            <File>
-              <FileName>autoip.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\autoip.c</FilePath>
-            </File>
-            <File>
-              <FileName>dhcp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\dhcp.c</FilePath>
-            </File>
-            <File>
-              <FileName>etharp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\etharp.c</FilePath>
-            </File>
-            <File>
-              <FileName>icmp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\icmp.c</FilePath>
-            </File>
-            <File>
-              <FileName>igmp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\igmp.c</FilePath>
-            </File>
-            <File>
-              <FileName>ip4.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\ip4.c</FilePath>
-            </File>
-            <File>
-              <FileName>ip4_addr.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\ip4_addr.c</FilePath>
-            </File>
-            <File>
-              <FileName>ip4_frag.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\ip4_frag.c</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>LwIP/netif</GroupName>
           <Files>
-            <File>
-              <FileName>bridgeif.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\netif\bridgeif.c</FilePath>
-            </File>
-            <File>
-              <FileName>bridgeif_fdb.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\netif\bridgeif_fdb.c</FilePath>
-            </File>
             <File>
               <FileName>ethernet.c</FileName>
               <FileType>1</FileType>
@@ -1730,40 +1555,15 @@
               <FileType>1</FileType>
               <FilePath>..\..\LwIP\netif\lowpan6.c</FilePath>
             </File>
-            <File>
-              <FileName>lowpan6_ble.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\netif\lowpan6_ble.c</FilePath>
-            </File>
-            <File>
-              <FileName>lowpan6_common.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\netif\lowpan6_common.c</FilePath>
-            </File>
-            <File>
-              <FileName>slipif.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\netif\slipif.c</FilePath>
-            </File>
-            <File>
-              <FileName>zepif.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\netif\zepif.c</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>LwIP/arch</GroupName>
           <Files>
             <File>
-              <FileName>enet_ethernetif.c</FileName>
+              <FileName>ethernetif.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\arch\enet_ethernetif.c</FilePath>
-            </File>
-            <File>
-              <FileName>enet_ethernetif_kinetis.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\arch\enet_ethernetif_kinetis.c</FilePath>
+              <FilePath>..\..\user\bsp\arch\ethernetif.c</FilePath>
             </File>
             <File>
               <FileName>sys_arch.c</FileName>
@@ -2138,7 +1938,7 @@
 --diag_suppress=66,1296,186 
  
 </MiscControls>
-              <Define>CPU_MIMXRT1052CVL5B,SKIP_SYSCLK_INIT,PRINTF_FLOAT_ENABLE=1, SCANF_FLOAT_ENABLE=1, PRINTF_ADVANCED_ENABLE=1, SCANF_ADVANCED_ENABLE=1</Define>
+              <Define>CPU_MIMXRT1052CVL5B,SKIP_SYSCLK_INIT,PRINTF_FLOAT_ENABLE=1, SCANF_FLOAT_ENABLE=1, PRINTF_ADVANCED_ENABLE=1, SCANF_ADVANCED_ENABLE=1 ,FSL_SDK_ENABLE_DRIVER_CACHE_CONTROL=1</Define>
               <Undefine></Undefine>
               <IncludePath>..\..\libraries\CMSIS\Include;..\..\libraries\drivers;..\..\libraries\utilities;..\..\libraries\utilities\str;..\..\libraries\utilities\log;..\..\libraries\utilities\io;..\..\libraries\xip;..\..\user;..\..\user\bsp;..\..\user\bsp\arch;..\..\LWIP\include;..\..\LWIP\api;..\..\LWIP\core;..\..\LWIP\core\ipv4;..\..\FreeRTOS\include;..\..\FreeRTOS\port\RVDS\ARM_CM7\r0p1</IncludePath>
             </VariousControls>
@@ -2235,14 +2035,14 @@
               <FilePath>..\..\libraries\drivers\fsl_iomuxc.h</FilePath>
             </File>
             <File>
-              <FileName>fsl_phy.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\fsl_phy.c</FilePath>
-            </File>
-            <File>
               <FileName>fsl_enet.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\libraries\drivers\fsl_enet.c</FilePath>
+            </File>
+            <File>
+              <FileName>fsl_cache.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\libraries\drivers\fsl_cache.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2340,6 +2140,11 @@
               <FilePath>..\..\user\bsp\led\bsp_led.c</FilePath>
             </File>
             <File>
+              <FileName>fsl_phy.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\user\fsl_phy.c</FilePath>
+            </File>
+            <File>
               <FileName>bsp_systick.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\user\bsp\systick\bsp_systick.c</FilePath>
@@ -2350,64 +2155,14 @@
               <FilePath>..\..\user\lwipopts.h</FilePath>
             </File>
             <File>
-              <FileName>FreeRTOSConfig.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\user\FreeRTOSConfig.h</FilePath>
-            </File>
-            <File>
               <FileName>tcpecho.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\user\tcpecho.c</FilePath>
             </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>FreeRTOS/src</GroupName>
-          <Files>
             <File>
-              <FileName>croutine.c</FileName>
+              <FileName>ping.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\src\croutine.c</FilePath>
-            </File>
-            <File>
-              <FileName>event_groups.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\src\event_groups.c</FilePath>
-            </File>
-            <File>
-              <FileName>list.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\src\list.c</FilePath>
-            </File>
-            <File>
-              <FileName>queue.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\src\queue.c</FilePath>
-            </File>
-            <File>
-              <FileName>tasks.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\src\tasks.c</FilePath>
-            </File>
-            <File>
-              <FileName>timers.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\src\timers.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>FreeRTOS/port</GroupName>
-          <Files>
-            <File>
-              <FileName>heap_4.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\port\MemMang\heap_4.c</FilePath>
-            </File>
-            <File>
-              <FileName>port.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\port\RVDS\ARM_CM7\r0p1\port.c</FilePath>
+              <FilePath>..\..\user\ping.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2428,11 +2183,6 @@
               <FileName>err.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\LwIP\api\err.c</FilePath>
-            </File>
-            <File>
-              <FileName>if_api.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\api\if_api.c</FilePath>
             </File>
             <File>
               <FileName>netbuf.c</FileName>
@@ -2465,19 +2215,44 @@
           <GroupName>LwIP/core</GroupName>
           <Files>
             <File>
-              <FileName>altcp.c</FileName>
+              <FileName>autoip.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\altcp.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\autoip.c</FilePath>
             </File>
             <File>
-              <FileName>altcp_alloc.c</FileName>
+              <FileName>dhcp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\altcp_alloc.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\dhcp.c</FilePath>
             </File>
             <File>
-              <FileName>altcp_tcp.c</FileName>
+              <FileName>etharp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\altcp_tcp.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\etharp.c</FilePath>
+            </File>
+            <File>
+              <FileName>icmp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\LwIP\core\ipv4\icmp.c</FilePath>
+            </File>
+            <File>
+              <FileName>igmp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\LwIP\core\ipv4\igmp.c</FilePath>
+            </File>
+            <File>
+              <FileName>ip4.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\LwIP\core\ipv4\ip4.c</FilePath>
+            </File>
+            <File>
+              <FileName>ip4_addr.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\LwIP\core\ipv4\ip4_addr.c</FilePath>
+            </File>
+            <File>
+              <FileName>ip4_frag.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\LwIP\core\ipv4\ip4_frag.c</FilePath>
             </File>
             <File>
               <FileName>def.c</FileName>
@@ -2564,61 +2339,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\LwIP\core\udp.c</FilePath>
             </File>
-            <File>
-              <FileName>autoip.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\autoip.c</FilePath>
-            </File>
-            <File>
-              <FileName>dhcp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\dhcp.c</FilePath>
-            </File>
-            <File>
-              <FileName>etharp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\etharp.c</FilePath>
-            </File>
-            <File>
-              <FileName>icmp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\icmp.c</FilePath>
-            </File>
-            <File>
-              <FileName>igmp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\igmp.c</FilePath>
-            </File>
-            <File>
-              <FileName>ip4.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\ip4.c</FilePath>
-            </File>
-            <File>
-              <FileName>ip4_addr.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\ip4_addr.c</FilePath>
-            </File>
-            <File>
-              <FileName>ip4_frag.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\ip4_frag.c</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>LwIP/netif</GroupName>
           <Files>
-            <File>
-              <FileName>bridgeif.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\netif\bridgeif.c</FilePath>
-            </File>
-            <File>
-              <FileName>bridgeif_fdb.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\netif\bridgeif_fdb.c</FilePath>
-            </File>
             <File>
               <FileName>ethernet.c</FileName>
               <FileType>1</FileType>
@@ -2629,40 +2354,15 @@
               <FileType>1</FileType>
               <FilePath>..\..\LwIP\netif\lowpan6.c</FilePath>
             </File>
-            <File>
-              <FileName>lowpan6_ble.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\netif\lowpan6_ble.c</FilePath>
-            </File>
-            <File>
-              <FileName>lowpan6_common.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\netif\lowpan6_common.c</FilePath>
-            </File>
-            <File>
-              <FileName>slipif.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\netif\slipif.c</FilePath>
-            </File>
-            <File>
-              <FileName>zepif.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\netif\zepif.c</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>LwIP/arch</GroupName>
           <Files>
             <File>
-              <FileName>enet_ethernetif.c</FileName>
+              <FileName>ethernetif.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\arch\enet_ethernetif.c</FilePath>
-            </File>
-            <File>
-              <FileName>enet_ethernetif_kinetis.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\arch\enet_ethernetif_kinetis.c</FilePath>
+              <FilePath>..\..\user\bsp\arch\ethernetif.c</FilePath>
             </File>
             <File>
               <FileName>sys_arch.c</FileName>
@@ -3037,9 +2737,9 @@
 --diag_suppress=66,1296,186 
  
 </MiscControls>
-              <Define>CPU_MIMXRT1052CVL5B,XIP_EXTERNAL_FLASH=1, XIP_BOOT_HEADER_ENABLE =1,XIP_BOOT_HEADER_DCD_ENABLE =1,PRINTF_FLOAT_ENABLE=1, SCANF_FLOAT_ENABLE=1, PRINTF_ADVANCED_ENABLE=1, SCANF_ADVANCED_ENABLE=1</Define>
+              <Define>CPU_MIMXRT1052CVL5B,XIP_EXTERNAL_FLASH=1, XIP_BOOT_HEADER_ENABLE =1,XIP_BOOT_HEADER_DCD_ENABLE =1,PRINTF_FLOAT_ENABLE=1, SCANF_FLOAT_ENABLE=1, PRINTF_ADVANCED_ENABLE=1, SCANF_ADVANCED_ENABLE=1 ,FSL_SDK_ENABLE_DRIVER_CACHE_CONTROL=1</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\libraries\CMSIS\Include;..\..\libraries\drivers;..\..\libraries\utilities;..\..\libraries\utilities\str;..\..\libraries\utilities\log;..\..\libraries\utilities\io;..\..\libraries\xip;..\..\user;..\..\user\bsp;..\..\FreeRTOS\include;..\..\FreeRTOS\port\RVDS\ARM_CM7\r0p1;..\..\LwIP\api;..\..\LwIP\core;..\..\LwIP\core\ipv4;..\..\user\bsp\arch;..\..\LwIP\include</IncludePath>
+              <IncludePath>..\..\libraries\CMSIS\Include;..\..\libraries\drivers;..\..\libraries\utilities;..\..\libraries\utilities\str;..\..\libraries\utilities\log;..\..\libraries\utilities\io;..\..\libraries\xip;..\..\user;..\..\user\bsp;..\..\user\bsp\arch;..\..\LWIP\include;..\..\LWIP\api;..\..\LWIP\core;..\..\LWIP\core\ipv4;..\..\FreeRTOS\include;..\..\FreeRTOS\port\RVDS\ARM_CM7\r0p1</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -3135,14 +2835,14 @@
               <FilePath>..\..\libraries\drivers\fsl_iomuxc.h</FilePath>
             </File>
             <File>
-              <FileName>fsl_phy.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\fsl_phy.c</FilePath>
-            </File>
-            <File>
               <FileName>fsl_enet.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\libraries\drivers\fsl_enet.c</FilePath>
+            </File>
+            <File>
+              <FileName>fsl_cache.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\libraries\drivers\fsl_cache.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3240,6 +2940,11 @@
               <FilePath>..\..\user\bsp\led\bsp_led.c</FilePath>
             </File>
             <File>
+              <FileName>fsl_phy.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\user\fsl_phy.c</FilePath>
+            </File>
+            <File>
               <FileName>bsp_systick.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\user\bsp\systick\bsp_systick.c</FilePath>
@@ -3250,64 +2955,14 @@
               <FilePath>..\..\user\lwipopts.h</FilePath>
             </File>
             <File>
-              <FileName>FreeRTOSConfig.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\user\FreeRTOSConfig.h</FilePath>
-            </File>
-            <File>
               <FileName>tcpecho.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\user\tcpecho.c</FilePath>
             </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>FreeRTOS/src</GroupName>
-          <Files>
             <File>
-              <FileName>croutine.c</FileName>
+              <FileName>ping.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\src\croutine.c</FilePath>
-            </File>
-            <File>
-              <FileName>event_groups.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\src\event_groups.c</FilePath>
-            </File>
-            <File>
-              <FileName>list.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\src\list.c</FilePath>
-            </File>
-            <File>
-              <FileName>queue.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\src\queue.c</FilePath>
-            </File>
-            <File>
-              <FileName>tasks.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\src\tasks.c</FilePath>
-            </File>
-            <File>
-              <FileName>timers.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\src\timers.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>FreeRTOS/port</GroupName>
-          <Files>
-            <File>
-              <FileName>heap_4.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\port\MemMang\heap_4.c</FilePath>
-            </File>
-            <File>
-              <FileName>port.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\port\RVDS\ARM_CM7\r0p1\port.c</FilePath>
+              <FilePath>..\..\user\ping.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3328,11 +2983,6 @@
               <FileName>err.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\LwIP\api\err.c</FilePath>
-            </File>
-            <File>
-              <FileName>if_api.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\api\if_api.c</FilePath>
             </File>
             <File>
               <FileName>netbuf.c</FileName>
@@ -3365,19 +3015,44 @@
           <GroupName>LwIP/core</GroupName>
           <Files>
             <File>
-              <FileName>altcp.c</FileName>
+              <FileName>autoip.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\altcp.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\autoip.c</FilePath>
             </File>
             <File>
-              <FileName>altcp_alloc.c</FileName>
+              <FileName>dhcp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\altcp_alloc.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\dhcp.c</FilePath>
             </File>
             <File>
-              <FileName>altcp_tcp.c</FileName>
+              <FileName>etharp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\altcp_tcp.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\etharp.c</FilePath>
+            </File>
+            <File>
+              <FileName>icmp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\LwIP\core\ipv4\icmp.c</FilePath>
+            </File>
+            <File>
+              <FileName>igmp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\LwIP\core\ipv4\igmp.c</FilePath>
+            </File>
+            <File>
+              <FileName>ip4.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\LwIP\core\ipv4\ip4.c</FilePath>
+            </File>
+            <File>
+              <FileName>ip4_addr.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\LwIP\core\ipv4\ip4_addr.c</FilePath>
+            </File>
+            <File>
+              <FileName>ip4_frag.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\LwIP\core\ipv4\ip4_frag.c</FilePath>
             </File>
             <File>
               <FileName>def.c</FileName>
@@ -3464,61 +3139,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\LwIP\core\udp.c</FilePath>
             </File>
-            <File>
-              <FileName>autoip.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\autoip.c</FilePath>
-            </File>
-            <File>
-              <FileName>dhcp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\dhcp.c</FilePath>
-            </File>
-            <File>
-              <FileName>etharp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\etharp.c</FilePath>
-            </File>
-            <File>
-              <FileName>icmp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\icmp.c</FilePath>
-            </File>
-            <File>
-              <FileName>igmp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\igmp.c</FilePath>
-            </File>
-            <File>
-              <FileName>ip4.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\ip4.c</FilePath>
-            </File>
-            <File>
-              <FileName>ip4_addr.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\ip4_addr.c</FilePath>
-            </File>
-            <File>
-              <FileName>ip4_frag.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\ip4_frag.c</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>LwIP/netif</GroupName>
           <Files>
-            <File>
-              <FileName>bridgeif.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\netif\bridgeif.c</FilePath>
-            </File>
-            <File>
-              <FileName>bridgeif_fdb.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\netif\bridgeif_fdb.c</FilePath>
-            </File>
             <File>
               <FileName>ethernet.c</FileName>
               <FileType>1</FileType>
@@ -3529,40 +3154,15 @@
               <FileType>1</FileType>
               <FilePath>..\..\LwIP\netif\lowpan6.c</FilePath>
             </File>
-            <File>
-              <FileName>lowpan6_ble.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\netif\lowpan6_ble.c</FilePath>
-            </File>
-            <File>
-              <FileName>lowpan6_common.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\netif\lowpan6_common.c</FilePath>
-            </File>
-            <File>
-              <FileName>slipif.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\netif\slipif.c</FilePath>
-            </File>
-            <File>
-              <FileName>zepif.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\netif\zepif.c</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>LwIP/arch</GroupName>
           <Files>
             <File>
-              <FileName>enet_ethernetif.c</FileName>
+              <FileName>ethernetif.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\arch\enet_ethernetif.c</FilePath>
-            </File>
-            <File>
-              <FileName>enet_ethernetif_kinetis.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\arch\enet_ethernetif_kinetis.c</FilePath>
+              <FilePath>..\..\user\bsp\arch\ethernetif.c</FilePath>
             </File>
             <File>
               <FileName>sys_arch.c</FileName>
@@ -3909,7 +3509,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>4</Optim>
+            <Optim>1</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>1</OneElfS>
@@ -3937,7 +3537,7 @@
 --diag_suppress=66,1296,186 
  
 </MiscControls>
-              <Define>CPU_MIMXRT1052CVL5B,XIP_EXTERNAL_FLASH=1, XIP_BOOT_HEADER_ENABLE =1,XIP_BOOT_HEADER_DCD_ENABLE =1,PRINTF_FLOAT_ENABLE=1, SCANF_FLOAT_ENABLE=1, PRINTF_ADVANCED_ENABLE=1, SCANF_ADVANCED_ENABLE=1</Define>
+              <Define>CPU_MIMXRT1052CVL5B,XIP_EXTERNAL_FLASH=1, XIP_BOOT_HEADER_ENABLE =1,XIP_BOOT_HEADER_DCD_ENABLE =1,PRINTF_FLOAT_ENABLE=1, SCANF_FLOAT_ENABLE=1, PRINTF_ADVANCED_ENABLE=1, SCANF_ADVANCED_ENABLE=1,FSL_SDK_ENABLE_DRIVER_CACHE_CONTROL=1</Define>
               <Undefine></Undefine>
               <IncludePath>..\..\libraries\CMSIS\Include;..\..\libraries\drivers;..\..\libraries\utilities;..\..\libraries\utilities\str;..\..\libraries\utilities\log;..\..\libraries\utilities\io;..\..\libraries\xip;..\..\user;..\..\user\bsp;..\..\user\bsp\arch;..\..\LWIP\include;..\..\LWIP\api;..\..\LWIP\core;..\..\LWIP\core\ipv4;..\..\FreeRTOS\include;..\..\FreeRTOS\port\RVDS\ARM_CM7\r0p1</IncludePath>
             </VariousControls>
@@ -4035,14 +3635,14 @@
               <FilePath>..\..\libraries\drivers\fsl_iomuxc.h</FilePath>
             </File>
             <File>
-              <FileName>fsl_phy.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\fsl_phy.c</FilePath>
-            </File>
-            <File>
               <FileName>fsl_enet.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\libraries\drivers\fsl_enet.c</FilePath>
+            </File>
+            <File>
+              <FileName>fsl_cache.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\libraries\drivers\fsl_cache.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -4140,6 +3740,11 @@
               <FilePath>..\..\user\bsp\led\bsp_led.c</FilePath>
             </File>
             <File>
+              <FileName>fsl_phy.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\user\fsl_phy.c</FilePath>
+            </File>
+            <File>
               <FileName>bsp_systick.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\user\bsp\systick\bsp_systick.c</FilePath>
@@ -4150,64 +3755,14 @@
               <FilePath>..\..\user\lwipopts.h</FilePath>
             </File>
             <File>
-              <FileName>FreeRTOSConfig.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\user\FreeRTOSConfig.h</FilePath>
-            </File>
-            <File>
               <FileName>tcpecho.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\user\tcpecho.c</FilePath>
             </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>FreeRTOS/src</GroupName>
-          <Files>
             <File>
-              <FileName>croutine.c</FileName>
+              <FileName>ping.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\src\croutine.c</FilePath>
-            </File>
-            <File>
-              <FileName>event_groups.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\src\event_groups.c</FilePath>
-            </File>
-            <File>
-              <FileName>list.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\src\list.c</FilePath>
-            </File>
-            <File>
-              <FileName>queue.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\src\queue.c</FilePath>
-            </File>
-            <File>
-              <FileName>tasks.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\src\tasks.c</FilePath>
-            </File>
-            <File>
-              <FileName>timers.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\src\timers.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>FreeRTOS/port</GroupName>
-          <Files>
-            <File>
-              <FileName>heap_4.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\port\MemMang\heap_4.c</FilePath>
-            </File>
-            <File>
-              <FileName>port.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\port\RVDS\ARM_CM7\r0p1\port.c</FilePath>
+              <FilePath>..\..\user\ping.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -4228,11 +3783,6 @@
               <FileName>err.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\LwIP\api\err.c</FilePath>
-            </File>
-            <File>
-              <FileName>if_api.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\api\if_api.c</FilePath>
             </File>
             <File>
               <FileName>netbuf.c</FileName>
@@ -4265,19 +3815,44 @@
           <GroupName>LwIP/core</GroupName>
           <Files>
             <File>
-              <FileName>altcp.c</FileName>
+              <FileName>autoip.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\altcp.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\autoip.c</FilePath>
             </File>
             <File>
-              <FileName>altcp_alloc.c</FileName>
+              <FileName>dhcp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\altcp_alloc.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\dhcp.c</FilePath>
             </File>
             <File>
-              <FileName>altcp_tcp.c</FileName>
+              <FileName>etharp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\altcp_tcp.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\etharp.c</FilePath>
+            </File>
+            <File>
+              <FileName>icmp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\LwIP\core\ipv4\icmp.c</FilePath>
+            </File>
+            <File>
+              <FileName>igmp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\LwIP\core\ipv4\igmp.c</FilePath>
+            </File>
+            <File>
+              <FileName>ip4.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\LwIP\core\ipv4\ip4.c</FilePath>
+            </File>
+            <File>
+              <FileName>ip4_addr.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\LwIP\core\ipv4\ip4_addr.c</FilePath>
+            </File>
+            <File>
+              <FileName>ip4_frag.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\LwIP\core\ipv4\ip4_frag.c</FilePath>
             </File>
             <File>
               <FileName>def.c</FileName>
@@ -4364,61 +3939,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\LwIP\core\udp.c</FilePath>
             </File>
-            <File>
-              <FileName>autoip.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\autoip.c</FilePath>
-            </File>
-            <File>
-              <FileName>dhcp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\dhcp.c</FilePath>
-            </File>
-            <File>
-              <FileName>etharp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\etharp.c</FilePath>
-            </File>
-            <File>
-              <FileName>icmp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\icmp.c</FilePath>
-            </File>
-            <File>
-              <FileName>igmp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\igmp.c</FilePath>
-            </File>
-            <File>
-              <FileName>ip4.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\ip4.c</FilePath>
-            </File>
-            <File>
-              <FileName>ip4_addr.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\ip4_addr.c</FilePath>
-            </File>
-            <File>
-              <FileName>ip4_frag.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\ip4_frag.c</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>LwIP/netif</GroupName>
           <Files>
-            <File>
-              <FileName>bridgeif.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\netif\bridgeif.c</FilePath>
-            </File>
-            <File>
-              <FileName>bridgeif_fdb.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\netif\bridgeif_fdb.c</FilePath>
-            </File>
             <File>
               <FileName>ethernet.c</FileName>
               <FileType>1</FileType>
@@ -4429,40 +3954,15 @@
               <FileType>1</FileType>
               <FilePath>..\..\LwIP\netif\lowpan6.c</FilePath>
             </File>
-            <File>
-              <FileName>lowpan6_ble.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\netif\lowpan6_ble.c</FilePath>
-            </File>
-            <File>
-              <FileName>lowpan6_common.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\netif\lowpan6_common.c</FilePath>
-            </File>
-            <File>
-              <FileName>slipif.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\netif\slipif.c</FilePath>
-            </File>
-            <File>
-              <FileName>zepif.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\netif\zepif.c</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>LwIP/arch</GroupName>
           <Files>
             <File>
-              <FileName>enet_ethernetif.c</FileName>
+              <FileName>ethernetif.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\arch\enet_ethernetif.c</FilePath>
-            </File>
-            <File>
-              <FileName>enet_ethernetif_kinetis.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\arch\enet_ethernetif_kinetis.c</FilePath>
+              <FilePath>..\..\user\bsp\arch\ethernetif.c</FilePath>
             </File>
             <File>
               <FileName>sys_arch.c</FileName>
@@ -4837,7 +4337,7 @@
 --diag_suppress=66,1296,186 
  
 </MiscControls>
-              <Define>CPU_MIMXRT1052CVL5B,XIP_EXTERNAL_FLASH=1, XIP_BOOT_HEADER_ENABLE =1,XIP_BOOT_HEADER_DCD_ENABLE =1,PRINTF_FLOAT_ENABLE=1, SCANF_FLOAT_ENABLE=1, PRINTF_ADVANCED_ENABLE=1, SCANF_ADVANCED_ENABLE=1,USE_RAM_VECTOR_TABLE</Define>
+              <Define>CPU_MIMXRT1052CVL5B,XIP_EXTERNAL_FLASH=1, XIP_BOOT_HEADER_ENABLE =1,XIP_BOOT_HEADER_DCD_ENABLE =1,PRINTF_FLOAT_ENABLE=1, SCANF_FLOAT_ENABLE=1, PRINTF_ADVANCED_ENABLE=1, SCANF_ADVANCED_ENABLE=1,USE_RAM_VECTOR_TABLE ,FSL_SDK_ENABLE_DRIVER_CACHE_CONTROL=1</Define>
               <Undefine></Undefine>
               <IncludePath>..\..\libraries\CMSIS\Include;..\..\libraries\drivers;..\..\libraries\utilities;..\..\libraries\utilities\str;..\..\libraries\utilities\log;..\..\libraries\utilities\io;..\..\libraries\xip;..\..\user;..\..\user\bsp;..\..\user\bsp\arch;..\..\LWIP\include;..\..\LWIP\api;..\..\LWIP\core;..\..\LWIP\core\ipv4;..\..\FreeRTOS\include;..\..\FreeRTOS\port\RVDS\ARM_CM7\r0p1</IncludePath>
             </VariousControls>
@@ -4935,14 +4435,14 @@
               <FilePath>..\..\libraries\drivers\fsl_iomuxc.h</FilePath>
             </File>
             <File>
-              <FileName>fsl_phy.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\fsl_phy.c</FilePath>
-            </File>
-            <File>
               <FileName>fsl_enet.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\libraries\drivers\fsl_enet.c</FilePath>
+            </File>
+            <File>
+              <FileName>fsl_cache.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\libraries\drivers\fsl_cache.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -5040,6 +4540,11 @@
               <FilePath>..\..\user\bsp\led\bsp_led.c</FilePath>
             </File>
             <File>
+              <FileName>fsl_phy.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\user\fsl_phy.c</FilePath>
+            </File>
+            <File>
               <FileName>bsp_systick.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\user\bsp\systick\bsp_systick.c</FilePath>
@@ -5050,64 +4555,14 @@
               <FilePath>..\..\user\lwipopts.h</FilePath>
             </File>
             <File>
-              <FileName>FreeRTOSConfig.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\user\FreeRTOSConfig.h</FilePath>
-            </File>
-            <File>
               <FileName>tcpecho.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\user\tcpecho.c</FilePath>
             </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>FreeRTOS/src</GroupName>
-          <Files>
             <File>
-              <FileName>croutine.c</FileName>
+              <FileName>ping.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\src\croutine.c</FilePath>
-            </File>
-            <File>
-              <FileName>event_groups.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\src\event_groups.c</FilePath>
-            </File>
-            <File>
-              <FileName>list.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\src\list.c</FilePath>
-            </File>
-            <File>
-              <FileName>queue.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\src\queue.c</FilePath>
-            </File>
-            <File>
-              <FileName>tasks.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\src\tasks.c</FilePath>
-            </File>
-            <File>
-              <FileName>timers.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\src\timers.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>FreeRTOS/port</GroupName>
-          <Files>
-            <File>
-              <FileName>heap_4.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\port\MemMang\heap_4.c</FilePath>
-            </File>
-            <File>
-              <FileName>port.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\port\RVDS\ARM_CM7\r0p1\port.c</FilePath>
+              <FilePath>..\..\user\ping.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -5128,11 +4583,6 @@
               <FileName>err.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\LwIP\api\err.c</FilePath>
-            </File>
-            <File>
-              <FileName>if_api.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\api\if_api.c</FilePath>
             </File>
             <File>
               <FileName>netbuf.c</FileName>
@@ -5165,19 +4615,44 @@
           <GroupName>LwIP/core</GroupName>
           <Files>
             <File>
-              <FileName>altcp.c</FileName>
+              <FileName>autoip.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\altcp.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\autoip.c</FilePath>
             </File>
             <File>
-              <FileName>altcp_alloc.c</FileName>
+              <FileName>dhcp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\altcp_alloc.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\dhcp.c</FilePath>
             </File>
             <File>
-              <FileName>altcp_tcp.c</FileName>
+              <FileName>etharp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\altcp_tcp.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\etharp.c</FilePath>
+            </File>
+            <File>
+              <FileName>icmp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\LwIP\core\ipv4\icmp.c</FilePath>
+            </File>
+            <File>
+              <FileName>igmp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\LwIP\core\ipv4\igmp.c</FilePath>
+            </File>
+            <File>
+              <FileName>ip4.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\LwIP\core\ipv4\ip4.c</FilePath>
+            </File>
+            <File>
+              <FileName>ip4_addr.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\LwIP\core\ipv4\ip4_addr.c</FilePath>
+            </File>
+            <File>
+              <FileName>ip4_frag.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\LwIP\core\ipv4\ip4_frag.c</FilePath>
             </File>
             <File>
               <FileName>def.c</FileName>
@@ -5264,61 +4739,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\LwIP\core\udp.c</FilePath>
             </File>
-            <File>
-              <FileName>autoip.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\autoip.c</FilePath>
-            </File>
-            <File>
-              <FileName>dhcp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\dhcp.c</FilePath>
-            </File>
-            <File>
-              <FileName>etharp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\etharp.c</FilePath>
-            </File>
-            <File>
-              <FileName>icmp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\icmp.c</FilePath>
-            </File>
-            <File>
-              <FileName>igmp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\igmp.c</FilePath>
-            </File>
-            <File>
-              <FileName>ip4.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\ip4.c</FilePath>
-            </File>
-            <File>
-              <FileName>ip4_addr.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\ip4_addr.c</FilePath>
-            </File>
-            <File>
-              <FileName>ip4_frag.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\ip4_frag.c</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>LwIP/netif</GroupName>
           <Files>
-            <File>
-              <FileName>bridgeif.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\netif\bridgeif.c</FilePath>
-            </File>
-            <File>
-              <FileName>bridgeif_fdb.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\netif\bridgeif_fdb.c</FilePath>
-            </File>
             <File>
               <FileName>ethernet.c</FileName>
               <FileType>1</FileType>
@@ -5329,40 +4754,15 @@
               <FileType>1</FileType>
               <FilePath>..\..\LwIP\netif\lowpan6.c</FilePath>
             </File>
-            <File>
-              <FileName>lowpan6_ble.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\netif\lowpan6_ble.c</FilePath>
-            </File>
-            <File>
-              <FileName>lowpan6_common.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\netif\lowpan6_common.c</FilePath>
-            </File>
-            <File>
-              <FileName>slipif.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\netif\slipif.c</FilePath>
-            </File>
-            <File>
-              <FileName>zepif.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\netif\zepif.c</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>LwIP/arch</GroupName>
           <Files>
             <File>
-              <FileName>enet_ethernetif.c</FileName>
+              <FileName>ethernetif.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\arch\enet_ethernetif.c</FilePath>
-            </File>
-            <File>
-              <FileName>enet_ethernetif_kinetis.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\arch\enet_ethernetif_kinetis.c</FilePath>
+              <FilePath>..\..\user\bsp\arch\ethernetif.c</FilePath>
             </File>
             <File>
               <FileName>sys_arch.c</FileName>
@@ -5737,7 +5137,7 @@
 --diag_suppress=66,1296,186 
  
 </MiscControls>
-              <Define>CPU_MIMXRT1052CVL5B,XIP_EXTERNAL_FLASH=1, XIP_BOOT_HEADER_ENABLE =1,XIP_BOOT_HEADER_DCD_ENABLE =1,PRINTF_FLOAT_ENABLE=1, SCANF_FLOAT_ENABLE=1, PRINTF_ADVANCED_ENABLE=1, SCANF_ADVANCED_ENABLE=1,USE_RAM_VECTOR_TABLE</Define>
+              <Define>CPU_MIMXRT1052CVL5B,XIP_EXTERNAL_FLASH=1, XIP_BOOT_HEADER_ENABLE =1,XIP_BOOT_HEADER_DCD_ENABLE =1,PRINTF_FLOAT_ENABLE=1, SCANF_FLOAT_ENABLE=1, PRINTF_ADVANCED_ENABLE=1, SCANF_ADVANCED_ENABLE=1,USE_RAM_VECTOR_TABLE ,FSL_SDK_ENABLE_DRIVER_CACHE_CONTROL=1</Define>
               <Undefine></Undefine>
               <IncludePath>..\..\libraries\CMSIS\Include;..\..\libraries\drivers;..\..\libraries\utilities;..\..\libraries\utilities\str;..\..\libraries\utilities\log;..\..\libraries\utilities\io;..\..\libraries\xip;..\..\user;..\..\user\bsp;..\..\user\bsp\arch;..\..\LWIP\include;..\..\LWIP\api;..\..\LWIP\core;..\..\LWIP\core\ipv4;..\..\FreeRTOS\include;..\..\FreeRTOS\port\RVDS\ARM_CM7\r0p1</IncludePath>
             </VariousControls>
@@ -5835,14 +5235,14 @@
               <FilePath>..\..\libraries\drivers\fsl_iomuxc.h</FilePath>
             </File>
             <File>
-              <FileName>fsl_phy.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\fsl_phy.c</FilePath>
-            </File>
-            <File>
               <FileName>fsl_enet.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\libraries\drivers\fsl_enet.c</FilePath>
+            </File>
+            <File>
+              <FileName>fsl_cache.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\libraries\drivers\fsl_cache.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -5940,6 +5340,11 @@
               <FilePath>..\..\user\bsp\led\bsp_led.c</FilePath>
             </File>
             <File>
+              <FileName>fsl_phy.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\user\fsl_phy.c</FilePath>
+            </File>
+            <File>
               <FileName>bsp_systick.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\user\bsp\systick\bsp_systick.c</FilePath>
@@ -5950,64 +5355,14 @@
               <FilePath>..\..\user\lwipopts.h</FilePath>
             </File>
             <File>
-              <FileName>FreeRTOSConfig.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\user\FreeRTOSConfig.h</FilePath>
-            </File>
-            <File>
               <FileName>tcpecho.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\user\tcpecho.c</FilePath>
             </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>FreeRTOS/src</GroupName>
-          <Files>
             <File>
-              <FileName>croutine.c</FileName>
+              <FileName>ping.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\src\croutine.c</FilePath>
-            </File>
-            <File>
-              <FileName>event_groups.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\src\event_groups.c</FilePath>
-            </File>
-            <File>
-              <FileName>list.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\src\list.c</FilePath>
-            </File>
-            <File>
-              <FileName>queue.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\src\queue.c</FilePath>
-            </File>
-            <File>
-              <FileName>tasks.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\src\tasks.c</FilePath>
-            </File>
-            <File>
-              <FileName>timers.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\src\timers.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>FreeRTOS/port</GroupName>
-          <Files>
-            <File>
-              <FileName>heap_4.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\port\MemMang\heap_4.c</FilePath>
-            </File>
-            <File>
-              <FileName>port.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\FreeRTOS\port\RVDS\ARM_CM7\r0p1\port.c</FilePath>
+              <FilePath>..\..\user\ping.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -6028,11 +5383,6 @@
               <FileName>err.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\LwIP\api\err.c</FilePath>
-            </File>
-            <File>
-              <FileName>if_api.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\api\if_api.c</FilePath>
             </File>
             <File>
               <FileName>netbuf.c</FileName>
@@ -6065,19 +5415,44 @@
           <GroupName>LwIP/core</GroupName>
           <Files>
             <File>
-              <FileName>altcp.c</FileName>
+              <FileName>autoip.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\altcp.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\autoip.c</FilePath>
             </File>
             <File>
-              <FileName>altcp_alloc.c</FileName>
+              <FileName>dhcp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\altcp_alloc.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\dhcp.c</FilePath>
             </File>
             <File>
-              <FileName>altcp_tcp.c</FileName>
+              <FileName>etharp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\altcp_tcp.c</FilePath>
+              <FilePath>..\..\LwIP\core\ipv4\etharp.c</FilePath>
+            </File>
+            <File>
+              <FileName>icmp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\LwIP\core\ipv4\icmp.c</FilePath>
+            </File>
+            <File>
+              <FileName>igmp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\LwIP\core\ipv4\igmp.c</FilePath>
+            </File>
+            <File>
+              <FileName>ip4.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\LwIP\core\ipv4\ip4.c</FilePath>
+            </File>
+            <File>
+              <FileName>ip4_addr.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\LwIP\core\ipv4\ip4_addr.c</FilePath>
+            </File>
+            <File>
+              <FileName>ip4_frag.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\LwIP\core\ipv4\ip4_frag.c</FilePath>
             </File>
             <File>
               <FileName>def.c</FileName>
@@ -6164,61 +5539,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\LwIP\core\udp.c</FilePath>
             </File>
-            <File>
-              <FileName>autoip.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\autoip.c</FilePath>
-            </File>
-            <File>
-              <FileName>dhcp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\dhcp.c</FilePath>
-            </File>
-            <File>
-              <FileName>etharp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\etharp.c</FilePath>
-            </File>
-            <File>
-              <FileName>icmp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\icmp.c</FilePath>
-            </File>
-            <File>
-              <FileName>igmp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\igmp.c</FilePath>
-            </File>
-            <File>
-              <FileName>ip4.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\ip4.c</FilePath>
-            </File>
-            <File>
-              <FileName>ip4_addr.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\ip4_addr.c</FilePath>
-            </File>
-            <File>
-              <FileName>ip4_frag.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\core\ipv4\ip4_frag.c</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>LwIP/netif</GroupName>
           <Files>
-            <File>
-              <FileName>bridgeif.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\netif\bridgeif.c</FilePath>
-            </File>
-            <File>
-              <FileName>bridgeif_fdb.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\netif\bridgeif_fdb.c</FilePath>
-            </File>
             <File>
               <FileName>ethernet.c</FileName>
               <FileType>1</FileType>
@@ -6229,40 +5554,15 @@
               <FileType>1</FileType>
               <FilePath>..\..\LwIP\netif\lowpan6.c</FilePath>
             </File>
-            <File>
-              <FileName>lowpan6_ble.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\netif\lowpan6_ble.c</FilePath>
-            </File>
-            <File>
-              <FileName>lowpan6_common.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\netif\lowpan6_common.c</FilePath>
-            </File>
-            <File>
-              <FileName>slipif.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\netif\slipif.c</FilePath>
-            </File>
-            <File>
-              <FileName>zepif.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\LwIP\netif\zepif.c</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>LwIP/arch</GroupName>
           <Files>
             <File>
-              <FileName>enet_ethernetif.c</FileName>
+              <FileName>ethernetif.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\arch\enet_ethernetif.c</FilePath>
-            </File>
-            <File>
-              <FileName>enet_ethernetif_kinetis.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\user\bsp\arch\enet_ethernetif_kinetis.c</FilePath>
+              <FilePath>..\..\user\bsp\arch\ethernetif.c</FilePath>
             </File>
             <File>
               <FileName>sys_arch.c</FileName>

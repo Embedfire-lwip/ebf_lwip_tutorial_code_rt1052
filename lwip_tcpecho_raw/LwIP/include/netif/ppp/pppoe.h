@@ -76,10 +76,6 @@
 #include "ppp.h"
 #include "lwip/etharp.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 #ifdef PACK_STRUCT_USE_INCLUDES
 #  include "arch/bpstruct.h"
 #endif
@@ -177,10 +173,6 @@ ppp_pcb *pppoe_create(struct netif *pppif,
  */
 void pppoe_disc_input(struct netif *netif, struct pbuf *p);
 void pppoe_data_input(struct netif *netif, struct pbuf *p);
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif /* PPP_OE_H */
 

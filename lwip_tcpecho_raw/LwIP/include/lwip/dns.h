@@ -44,7 +44,6 @@
 #if LWIP_DNS
 
 #include "lwip/ip_addr.h"
-#include "lwip/err.h"
 
 #ifdef __cplusplus
 extern "C" {

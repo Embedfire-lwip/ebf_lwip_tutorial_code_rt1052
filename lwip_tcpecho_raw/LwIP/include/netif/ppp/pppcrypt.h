@@ -44,10 +44,6 @@
  */
 #include "lwip/arch.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 /*
  * Map hashes and ciphers functions to PolarSSL
  */
@@ -134,10 +130,6 @@ extern "C" {
 #endif /* LWIP_USE_EXTERNAL_MBEDTLS */
 
 void pppcrypt_56_to_64_bit_key(u_char *key, u_char *des_key);
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif /* PPPCRYPT_H */
 

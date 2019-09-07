@@ -74,7 +74,7 @@ udpecho_thread(void *arg)
     
     if (bind(sock, (struct sockaddr *)&udp_addr, sizeof(struct sockaddr)) == -1)
     {
-      printf("Unable to bind\n");
+      PRINTF("Unable to bind\n");
       goto __exit;
     }
     while(1)

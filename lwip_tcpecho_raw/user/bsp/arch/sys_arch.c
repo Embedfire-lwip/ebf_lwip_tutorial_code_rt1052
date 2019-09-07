@@ -32,10 +32,33 @@
  
 /*
  * Copyright (c) 2013-2016, Freescale Semiconductor, Inc.
- * Copyright 2016-2019 NXP
+ * Copyright 2016 NXP
  * All rights reserved.
  *
- * SPDX-License-Identifier: BSD-3-Clause
+ * Redistribution and use in source and binary forms, with or without modification,
+ * are permitted provided that the following conditions are met:
+ *
+ * o Redistributions of source code must retain the above copyright notice, this list
+ *   of conditions and the following disclaimer.
+ *
+ * o Redistributions in binary form must reproduce the above copyright notice, this
+ *   list of conditions and the following disclaimer in the documentation and/or
+ *   other materials provided with the distribution.
+ *
+ * o Neither the name of the copyright holder nor the names of its
+ *   contributors may be used to endorse or promote products derived from this
+ *   software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SDRVL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
+ * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+ * ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
 //*****************************************************************************
@@ -55,22 +78,14 @@
 #include "lwip/sys.h"
 #include "lwip/mem.h"
 #include "lwip/stats.h"
-
-#include "lwip/tcpip.h"
-#include "lwip/init.h"
-#include "lwip/netif.h"
-#include "lwip/sio.h"
-#include "enet_ethernetif.h"
-#include "enet_ethernetif_priv.h"
-
-#include "lwip/netifapi.h"
-
 #if NO_SYS
 #include "lwip/init.h"
 #endif
 
+#if LWIP_SOCKET_SET_ERRNO
 #ifndef errno
 int errno = 0;
+#endif
 #endif
 
 /*
@@ -188,13 +203,17 @@ void sys_mbox_post( sys_mbox_t *pxMailBox, void *pxMessageToPost )
 err_t sys_mbox_trypost( sys_mbox_t *pxMailBox, void *pxMessageToPost )
 {
     portBASE_TYPE taskToWake = pdFALSE;
+    if( xQueueIsQueueFullFromISR( *pxMailBox ))
+    {
+        return ERR_VAL;
+    }
 #ifdef __CA7_REV
     if (SystemGetIRQNestingLevel())
 #else
     if (__get_IPSR())
 #endif
     {
-        if (pdTRUE == xQueueSendToBackFromISR(*pxMailBox, &pxMessageToPost, &taskToWake))
+        if (pdTRUE == xQueueSendFromISR(*pxMailBox, &pxMessageToPost, &taskToWake))
         {
             if(taskToWake == pdTRUE)
             {
@@ -211,7 +230,7 @@ err_t sys_mbox_trypost( sys_mbox_t *pxMailBox, void *pxMessageToPost )
     }
     else
     {
-        if(pdTRUE == xQueueSendToBack(*pxMailBox, &pxMessageToPost, 0) )
+        if(pdTRUE == xQueueSend(*pxMailBox, &pxMessageToPost, 0) )
         {
             return ERR_OK;
         }
@@ -222,24 +241,6 @@ err_t sys_mbox_trypost( sys_mbox_t *pxMailBox, void *pxMessageToPost )
             return ERR_MEM;
         }
     }
-}
-
-/*---------------------------------------------------------------------------*
- * Routine:  sys_mbox_trypost_fromisr
- *---------------------------------------------------------------------------*
- * Description:
- *      Try to post the "msg" to the mailbox.  Returns immediately with
- *      error if cannot. To be be used from ISR.
- * Inputs:
- *      sys_mbox_t mbox         -- Handle of mailbox
- *      void *msg               -- Pointer to data to post
- * Outputs:
- *      err_t                   -- ERR_OK if message posted, else ERR_MEM
- *                                  if not.
- *---------------------------------------------------------------------------*/
-err_t sys_mbox_trypost_fromisr(sys_mbox_t *mbox, void *msg)
-{
-    return sys_mbox_trypost(mbox, msg);
 }
 
 /*---------------------------------------------------------------------------*
@@ -727,68 +728,8 @@ void sys_arch_unprotect( sys_prot_t xValue )
     EnableGlobalIRQ((uint32_t)xValue);
 }
 
+
 #endif /*NO_SYS*/
-struct netif gnetif;
-ip4_addr_t ipaddr;
-ip4_addr_t netmask;
-ip4_addr_t gw;
-void TCPIP_Init(void)
-{
-	ethernetif_config_t fsl_enet_config0 = {
-			.phyAddress = EXAMPLE_PHY_ADDRESS,
-			.clockName  = EXAMPLE_CLOCK_NAME,
-			.macAddress = configMAC_ADDR,
-	};
-  tcpip_init(NULL, NULL);
-  
-  /* IP addresses initialization */
-  /* USER CODE BEGIN 0 */
-#if LWIP_DHCP
-  ip_addr_set_zero_ip4(&ipaddr);
-  ip_addr_set_zero_ip4(&netmask);
-  ip_addr_set_zero_ip4(&gw);
-#else
-    IP4_ADDR(&ipaddr, IP_ADDR0, IP_ADDR1, IP_ADDR2, IP_ADDR3);
-    IP4_ADDR(&netmask, NETMASK_ADDR0, NETMASK_ADDR1, NETMASK_ADDR2, NETMASK_ADDR3);
-    IP4_ADDR(&gw, GW_ADDR0, GW_ADDR1, GW_ADDR2, GW_ADDR3);
-#endif /* USE_DHCP */
-	
-    netifapi_netif_add(&gnetif, &ipaddr, &netmask, &gw, &fsl_enet_config0,
-                       ethernetif0_init, tcpip_input);
-    netifapi_netif_set_default(&gnetif);
-    netifapi_netif_set_up(&gnetif);
-		
-  
-#if LWIP_DHCP	   			//若使用了DHCP
-  int err;
-  /*  Creates a new DHCP client for this interface on the first call.
-  Note: you must call dhcp_fine_tmr() and dhcp_coarse_tmr() at
-  the predefined regular intervals after starting the client.
-  You can peek in the netif->dhcp struct for the actual DHCP status.*/
-  
-  PRINTF("本例程将使用DHCP动态分配IP地址,如果不需要则在lwipopts.h中将LWIP_DHCP定义为0\n\n");
-  
-  err = dhcp_start(&gnetif);      //开启dhcp
-  if(err == ERR_OK)
-    PRINTF("lwip dhcp init success...\n\n");
-  else
-    PRINTF("lwip dhcp init fail...\n\n");
-  while(ip_addr_cmp(&(gnetif.ip_addr),&ipaddr))   //等待dhcp分配的ip有效
-  {
-    vTaskDelay(1);
-  } 
-#endif
-		PRINTF("本地IP地址是:%d.%d.%d.%d\n\n",  \
-					((gnetif.ip_addr.addr)&0x000000ff),       \
-					(((gnetif.ip_addr.addr)&0x0000ff00)>>8),  \
-					(((gnetif.ip_addr.addr)&0x00ff0000)>>16), \
-					((gnetif.ip_addr.addr)&0xff000000)>>24);
-	
-	
-//	ping_init(&fsl_netif0_gw);
-
-}
-
 /*-------------------------------------------------------------------------*
  * End of File:  sys_arch.c
  *-------------------------------------------------------------------------*/

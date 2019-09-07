@@ -186,8 +186,8 @@ void BOARD_ConfigMPU(void)
 
     /* Enable I cache and D cache */
 		
-		SCB_DisableDCache();
-		SCB_DisableICache();
+		SCB_EnableDCache();
+		SCB_EnableICache();
 
     
 #if defined(USE_RAM_VECTOR_TABLE)

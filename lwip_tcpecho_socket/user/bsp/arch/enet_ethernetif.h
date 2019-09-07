@@ -119,8 +119,11 @@
 
 #define ENET_RING_NUM 1U
 
-typedef uint8_t rx_buffer_t[SDK_SIZEALIGN(ENET_RXBUFF_SIZE, FSL_ENET_BUFF_ALIGNMENT)];
-typedef uint8_t tx_buffer_t[SDK_SIZEALIGN(ENET_TXBUFF_SIZE, FSL_ENET_BUFF_ALIGNMENT)];
+//#define AT_NONCACHEABLE_SECTION_INIT(rx_buffer_t) __attribute__((section("NonCacheable.init"))) rx_buffer_t
+//#define AT_NONCACHEABLE_SECTION_INIT(tx_buffer_t) __attribute__((section("NonCacheable.init"))) tx_buffer_t
+
+__attribute__((section("NonCacheable.init"))) typedef uint8_t rx_buffer_t[SDK_SIZEALIGN(ENET_RXBUFF_SIZE, FSL_ENET_BUFF_ALIGNMENT)];
+__attribute__((section("NonCacheable.init"))) typedef uint8_t tx_buffer_t[SDK_SIZEALIGN(ENET_TXBUFF_SIZE, FSL_ENET_BUFF_ALIGNMENT)];
 
 #if (defined(FSL_FEATURE_SOC_LPC_ENET_COUNT) && (FSL_FEATURE_SOC_LPC_ENET_COUNT > 0))
 typedef struct mem_range

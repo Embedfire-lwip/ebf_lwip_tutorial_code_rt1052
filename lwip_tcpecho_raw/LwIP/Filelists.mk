@@ -42,9 +42,6 @@ COREFILES=$(LWIPDIR)/core/init.c \
 	$(LWIPDIR)/core/raw.c \
 	$(LWIPDIR)/core/stats.c \
 	$(LWIPDIR)/core/sys.c \
-	$(LWIPDIR)/core/altcp.c \
-	$(LWIPDIR)/core/altcp_alloc.c \
-	$(LWIPDIR)/core/altcp_tcp.c \
 	$(LWIPDIR)/core/tcp.c \
 	$(LWIPDIR)/core/tcp_in.c \
 	$(LWIPDIR)/core/tcp_out.c \
@@ -74,7 +71,6 @@ CORE6FILES=$(LWIPDIR)/core/ipv6/dhcp6.c \
 APIFILES=$(LWIPDIR)/api/api_lib.c \
 	$(LWIPDIR)/api/api_msg.c \
 	$(LWIPDIR)/api/err.c \
-	$(LWIPDIR)/api/if_api.c \
 	$(LWIPDIR)/api/netbuf.c \
 	$(LWIPDIR)/api/netdb.c \
 	$(LWIPDIR)/api/netifapi.c \
@@ -83,15 +79,10 @@ APIFILES=$(LWIPDIR)/api/api_lib.c \
 
 # NETIFFILES: Files implementing various generic network interface functions
 NETIFFILES=$(LWIPDIR)/netif/ethernet.c \
-	$(LWIPDIR)/netif/bridgeif.c \
-	$(LWIPDIR)/netif/bridgeif_fdb.c \
 	$(LWIPDIR)/netif/slipif.c
 
 # SIXLOWPAN: 6LoWPAN
-SIXLOWPAN=$(LWIPDIR)/netif/lowpan6_common.c \
-        $(LWIPDIR)/netif/lowpan6.c \
-	$(LWIPDIR)/netif/lowpan6_ble.c \
-	$(LWIPDIR)/netif/zepif.c
+SIXLOWPAN=$(LWIPDIR)/netif/lowpan6.c \
 
 # PPPFILES: PPP
 PPPFILES=$(LWIPDIR)/netif/ppp/auth.c \
@@ -145,8 +136,6 @@ SNMPFILES=$(LWIPDIR)/apps/snmp/snmp_asn1.c \
 	$(LWIPDIR)/apps/snmp/snmp_mib2_system.c \
 	$(LWIPDIR)/apps/snmp/snmp_mib2_tcp.c \
 	$(LWIPDIR)/apps/snmp/snmp_mib2_udp.c \
-	$(LWIPDIR)/apps/snmp/snmp_snmpv2_framework.c \
-	$(LWIPDIR)/apps/snmp/snmp_snmpv2_usm.c \
 	$(LWIPDIR)/apps/snmp/snmp_msg.c \
 	$(LWIPDIR)/apps/snmp/snmpv3.c \
 	$(LWIPDIR)/apps/snmp/snmp_netconn.c \
@@ -155,22 +144,16 @@ SNMPFILES=$(LWIPDIR)/apps/snmp/snmp_asn1.c \
 	$(LWIPDIR)/apps/snmp/snmp_scalar.c \
 	$(LWIPDIR)/apps/snmp/snmp_table.c \
 	$(LWIPDIR)/apps/snmp/snmp_threadsync.c \
-	$(LWIPDIR)/apps/snmp/snmp_traps.c
+	$(LWIPDIR)/apps/snmp/snmp_traps.c \
+	$(LWIPDIR)/apps/snmp/snmpv3_mbedtls.c \
+	$(LWIPDIR)/apps/snmp/snmpv3_dummy.c
 
-# HTTPFILES: HTTP server + client
-HTTPFILES=$(LWIPDIR)/apps/http/altcp_proxyconnect.c \
-	$(LWIPDIR)/apps/http/fs.c \
-	$(LWIPDIR)/apps/http/http_client.c \
-	$(LWIPDIR)/apps/http/httpd.c
-
-# MAKEFSDATA: MAKEFSDATA HTTP server host utility
-MAKEFSDATAFILES=$(LWIPDIR)/apps/http/makefsdata/makefsdata.c
+# HTTPDFILES: HTTP server
+HTTPDFILES=$(LWIPDIR)/apps/httpd/fs.c \
+	$(LWIPDIR)/apps/httpd/httpd.c
 
 # LWIPERFFILES: IPERF server
 LWIPERFFILES=$(LWIPDIR)/apps/lwiperf/lwiperf.c
-
-# SMTPFILES: SMTP client
-SMTPFILES=$(LWIPDIR)/apps/smtp/smtp.c
 
 # SNTPFILES: SNTP client
 SNTPFILES=$(LWIPDIR)/apps/sntp/sntp.c
@@ -187,19 +170,12 @@ TFTPFILES=$(LWIPDIR)/apps/tftp/tftp_server.c
 # MQTTFILES: MQTT client files
 MQTTFILES=$(LWIPDIR)/apps/mqtt/mqtt.c
 
-# MBEDTLS_FILES: MBEDTLS related files of lwIP rep
-MBEDTLS_FILES=$(LWIPDIR)/apps/altcp_tls/altcp_tls_mbedtls.c \
-	$(LWIPDIR)/apps/altcp_tls/altcp_tls_mbedtls_mem.c \
-	$(LWIPDIR)/apps/snmp/snmpv3_mbedtls.c
-
 # LWIPAPPFILES: All LWIP APPs
 LWIPAPPFILES=$(SNMPFILES) \
-	$(HTTPFILES) \
+	$(HTTPDFILES) \
 	$(LWIPERFFILES) \
-	$(SMTPFILES) \
 	$(SNTPFILES) \
 	$(MDNSFILES) \
 	$(NETBIOSNSFILES) \
 	$(TFTPFILES) \
-	$(MQTTFILES) \
-	$(MBEDTLS_FILES)
+	$(MQTTFILES)

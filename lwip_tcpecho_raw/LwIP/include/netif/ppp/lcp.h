@@ -50,10 +50,6 @@
 
 #include "ppp.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 /*
  * Options.
  */
@@ -170,10 +166,6 @@ extern const struct protent lcp_protent;
    before deciding the link is looped-back. */
 #define DEFLOOPBACKFAIL	10
 #endif /* moved to ppp_opts.h */
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif /* LCP_H */
 #endif /* PPP_SUPPORT */
