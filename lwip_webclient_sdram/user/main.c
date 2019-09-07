@@ -32,17 +32,16 @@
 #include "queue.h"
 #include "client.h"
 
-////设置变量定义到“EXRAM”节区的宏
-//#define __EXRAM  __attribute__ ((section ("EXRAM")))
+//设置变量定义到“EXRAM”节区的宏
+#define __EXRAM  __attribute__ ((section ("EXRAM")))
 
 //将内存定义在SDRAM上
-//uint8_t ucHeap[ configTOTAL_HEAP_SIZE ] __EXRAM;
-uint8_t ucHeap[ configTOTAL_HEAP_SIZE ] ;
+uint8_t ucHeap[ configTOTAL_HEAP_SIZE ] __EXRAM;
 
-////定义数组到SDRAM
-//uint8_t testGrup[3] __EXRAM ={1,2,3};
-////定义数组到SRAM
-//uint8_t testGrup2[3] ={1,2,3};
+//定义数组到SDRAM
+uint8_t testGrup[3] __EXRAM ={1,2,3};
+//定义数组到SRAM
+uint8_t testGrup2[3] ={1,2,3};
 
 /**************************** 任务句柄 ********************************/
 /* 
