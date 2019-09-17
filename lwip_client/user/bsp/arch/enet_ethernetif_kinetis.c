@@ -215,7 +215,7 @@ err_t ethernetif_mld_mac_filter(struct netif *netif, const ip6_addr_t *group,
 #endif
 
 /**
- * Initializes ENET driver.
+ * ENET驱动程序初始化
  */
 void ethernetif_enet_init(struct netif *netif, struct ethernetif *ethernetif,
                           const ethernetif_config_t *ethernetifConfig)
@@ -224,35 +224,35 @@ void ethernetif_enet_init(struct netif *netif, struct ethernetif *ethernetif,
     uint32_t sysClock;
     enet_buffer_config_t buffCfg[ENET_RING_NUM];
 
-    /* prepare the buffer configuration. */
-    buffCfg[0].rxBdNumber = ENET_RXBD_NUM;                      /* Receive buffer descriptor number. */
-    buffCfg[0].txBdNumber = ENET_TXBD_NUM;                      /* Transmit buffer descriptor number. */
-    buffCfg[0].rxBuffSizeAlign = sizeof(rx_buffer_t);           /* Aligned receive data buffer size. */
-    buffCfg[0].txBuffSizeAlign = sizeof(tx_buffer_t);           /* Aligned transmit data buffer size. */
-    buffCfg[0].rxBdStartAddrAlign = &(ethernetif->RxBuffDescrip[0]); /* Aligned receive buffer descriptor start address. */
-    buffCfg[0].txBdStartAddrAlign = &(ethernetif->TxBuffDescrip[0]); /* Aligned transmit buffer descriptor start address. */
-    buffCfg[0].rxBufferAlign = &(ethernetif->RxDataBuff[0][0]); /* Receive data buffer start address. */
-    buffCfg[0].txBufferAlign = &(ethernetif->TxDataBuff[0][0]); /* Transmit data buffer start address. */
-
+    /* 配置buff. */
+    buffCfg[0].rxBdNumber = ENET_RXBD_NUM;/* 接收缓冲区描述符号。 */
+    buffCfg[0].txBdNumber = ENET_TXBD_NUM;/* 传输缓冲区描述符号. */
+    buffCfg[0].rxBuffSizeAlign = sizeof(rx_buffer_t);/*对齐接收数据缓冲区大小. */
+    buffCfg[0].txBuffSizeAlign = sizeof(tx_buffer_t);/* 对齐的传输数据缓冲区大小. */
+    buffCfg[0].rxBdStartAddrAlign = &(ethernetif->RxBuffDescrip[0]); /* 对齐的接收缓冲区描述符起始地址. */
+    buffCfg[0].txBdStartAddrAlign = &(ethernetif->TxBuffDescrip[0]); /* 对齐的发送缓冲区描述符起始地址. */
+    buffCfg[0].rxBufferAlign = &(ethernetif->RxDataBuff[0][0]); /* 接收数据缓冲区起始地址*/
+    buffCfg[0].txBufferAlign = &(ethernetif->TxDataBuff[0][0]); /* 传输数据缓冲区起始地址. */
+		/*获取以太网时钟*/
     sysClock = CLOCK_GetFreq(ethernetifConfig->clockName);
-
+		/*以太网默认配置*/
     ENET_GetDefaultConfig(&config);
     config.ringNum = ENET_RING_NUM;
-
+		/*初始化phy*/
     ethernetif_phy_init(ethernetif, ethernetifConfig, &config);
 
 #if USE_RTOS && defined(FSL_RTOS_FREE_RTOS)
     uint32_t instance;
     static ENET_Type *const enetBases[] = ENET_BASE_PTRS;
     static const IRQn_Type enetTxIrqId[] = ENET_Transmit_IRQS;
-    /*! @brief Pointers to enet receive IRQ number for each instance. */
+    /*! @brief 指向enet的指针接收每个实例的IRQ编号. */
     static const IRQn_Type enetRxIrqId[] = ENET_Receive_IRQS;
 #if defined(ENET_ENHANCEDBUFFERDESCRIPTOR_MODE) && ENET_ENHANCEDBUFFERDESCRIPTOR_MODE
-    /*! @brief Pointers to enet timestamp IRQ number for each instance. */
+    /*! @brief 指向每个实例的enet时间戳IRQ编号的指针. */
     static const IRQn_Type enetTsIrqId[] = ENET_1588_Timer_IRQS;
 #endif /* ENET_ENHANCEDBUFFERDESCRIPTOR_MODE */
 
-    /* Create the Event for transmit busy release trigger. */
+    /* 为传输忙释放触发器创建事件. */
     ethernetif->enetTransmitAccessEvent = xEventGroupCreate();
     ethernetif->txFlag = 0x1;
 
@@ -282,13 +282,13 @@ void ethernetif_enet_init(struct netif *netif, struct ethernetif *ethernetif,
     LWIP_ASSERT("Input Ethernet base error!", (instance != ARRAY_SIZE(enetBases)));
 #endif /* USE_RTOS */
 
-    /* Initialize the ENET module.*/
+    /*初始化ENET模块.*/
     ENET_Init(ethernetif->base, &ethernetif->handle, &config, &buffCfg[0], netif->hwaddr, sysClock);
 
 #if USE_RTOS && defined(FSL_RTOS_FREE_RTOS)
+		/*设置回调函数*/
     ENET_SetCallback(&ethernetif->handle, ethernet_callback, netif);
 #endif
-
     ENET_ActiveRead(ethernetif->base);
 }
 

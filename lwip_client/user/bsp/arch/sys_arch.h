@@ -57,7 +57,7 @@
 #define DEST_IP_ADDR0               192
 #define DEST_IP_ADDR1               168
 #define DEST_IP_ADDR2                 0
-#define DEST_IP_ADDR3               120
+#define DEST_IP_ADDR3               83
 
 #define DEST_PORT                  5001
 
