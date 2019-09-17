@@ -387,7 +387,7 @@ void ENET_Init(ENET_Type *base,
     ENET_SetMacController(base, handle, config, bufferConfig, macAddr, srcClock_Hz);
 
     /* Set all buffers or data in handler for data transmit/receive process. */
-    ENET_SetHandler(base, handle, config, bufferConfig);
+    ENET_SetHandler(base, handle, config, bufferConfig);//…Ë÷√÷–∂œ
 }
 
 void ENET_Deinit(ENET_Type *base)
