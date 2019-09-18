@@ -446,6 +446,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\libraries\drivers\fsl_enet.c</FilePath>
             </File>
+            <File>
+              <FileName>fsl_cache.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\libraries\drivers\fsl_cache.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1345,6 +1350,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\libraries\drivers\fsl_enet.c</FilePath>
             </File>
+            <File>
+              <FileName>fsl_cache.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\libraries\drivers\fsl_cache.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2243,6 +2253,11 @@
               <FileName>fsl_enet.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\libraries\drivers\fsl_enet.c</FilePath>
+            </File>
+            <File>
+              <FileName>fsl_cache.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\libraries\drivers\fsl_cache.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3144,6 +3159,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\libraries\drivers\fsl_enet.c</FilePath>
             </File>
+            <File>
+              <FileName>fsl_cache.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\libraries\drivers\fsl_cache.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -4043,6 +4063,11 @@
               <FileName>fsl_enet.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\libraries\drivers\fsl_enet.c</FilePath>
+            </File>
+            <File>
+              <FileName>fsl_cache.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\libraries\drivers\fsl_cache.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -4944,6 +4969,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\libraries\drivers\fsl_enet.c</FilePath>
             </File>
+            <File>
+              <FileName>fsl_cache.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\libraries\drivers\fsl_cache.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -5843,6 +5873,11 @@
               <FileName>fsl_enet.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\libraries\drivers\fsl_enet.c</FilePath>
+            </File>
+            <File>
+              <FileName>fsl_cache.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\libraries\drivers\fsl_cache.c</FilePath>
             </File>
           </Files>
         </Group>
