@@ -133,7 +133,7 @@ static void AppTaskCreate(void)
   
   PRINTF("本例程的IP地址均在User/arch/sys_arch.h文件中修改\n\n");
     
-  PRINTF("本例程参考<<LwIP应用实战开发指南>> 使用 NETCONN 接口编程\n\n");
+  PRINTF("本例程参考<<LwIP应用实战开发指南>> 使用 Socket 接口编程\n\n");
   
   PRINTF("请将电脑上位机设置为UDP协议.输入开发板的IP地址(如192.168.0.122)\n\n");  
   

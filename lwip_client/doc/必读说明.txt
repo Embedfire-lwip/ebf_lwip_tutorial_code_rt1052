@@ -95,6 +95,8 @@ txt_：用于分隔，即其左侧表示保存代码的介质，右侧表示内存介质（程序堆栈所在的介质
   “Debug”选项使用的调试文件、
   “Linker”选项使用的分散加载文件
 
+所有工程模板需要在以下基础上增加 FSL_SDK_ENABLE_DRIVER_CACHE_CONTROL=1	选项
+
 以KEIL开发环境为例说明如下：
 
 itcm_txt_ram_debug工程

@@ -80,7 +80,7 @@ int main(void)
     netif_set_default(&gnetif);
     netif_set_up(&gnetif);
 		/*ping 初始化*/
-    ping_init(&gw);
+   // ping_init(&gw);
 		/*打印提示信息*/
     PRINTF("\r\n************************************************\r\n");
     PRINTF(" PING example\r\n");

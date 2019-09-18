@@ -197,5 +197,5 @@ void BOARD_ConfigMPU(void);
 #if defined(__cplusplus)
 }
 #endif /* __cplusplus */
-
+extern void BSP_Init(void);
 #endif /* _BOARD_H_ */

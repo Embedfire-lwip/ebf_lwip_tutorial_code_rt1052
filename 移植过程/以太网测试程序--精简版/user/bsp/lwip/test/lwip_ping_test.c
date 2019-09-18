@@ -59,8 +59,8 @@
 /* IP address configuration. */
 #define configIP_ADDR0 192
 #define configIP_ADDR1 168
-#define configIP_ADDR2 1
-#define configIP_ADDR3 172
+#define configIP_ADDR2 0
+#define configIP_ADDR3 111
 
 /* Netmask configuration. */
 #define configNET_MASK0 255
@@ -71,7 +71,7 @@
 /* Gateway address configuration. */
 #define configGW_ADDR0 192
 #define configGW_ADDR1 168
-#define configGW_ADDR2 1
+#define configGW_ADDR2 0
 #define configGW_ADDR3 1
 
 /* MAC address configuration. */
@@ -98,30 +98,30 @@
 /*******************************************************************************
  * Code
  ******************************************************************************/
-void BOARD_InitModuleClock(void)
-{
-    const clock_enet_pll_config_t config = {true, false, 1};
-    CLOCK_InitEnetPll(&config);
-}
-
-void delay(void)
-{
-    volatile uint32_t i = 0;
-    for (i = 0; i < 1000000; ++i)
-    {
-        __asm("NOP"); /* delay */
-    }
-}
-
-
-
-///*!
-// * @brief Interrupt service for SysTick timer.
-// */
-//void SysTick_Handler(void)
+//void BOARD_InitModuleClock(void)
 //{
-//    time_isr();
+//    const clock_enet_pll_config_t config = {true, false, 1};
+//    CLOCK_InitEnetPll(&config);
 //}
+
+//void delay(void)
+//{
+//    volatile uint32_t i = 0;
+//    for (i = 0; i < 1000000; ++i)
+//    {
+//        __asm("NOP"); /* delay */
+//    }
+//}
+
+
+
+/*!
+ * @brief Interrupt service for SysTick timer.
+ */
+void SysTick_Handler(void)
+{
+    time_isr();
+}
 extern uint8_t ping_recv_flag;
 /*!
  * @brief Main function.

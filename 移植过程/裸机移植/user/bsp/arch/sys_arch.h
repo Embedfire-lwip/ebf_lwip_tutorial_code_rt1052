@@ -83,7 +83,7 @@
 #define IP_ADDR0                    192
 #define IP_ADDR1                    168
 #define IP_ADDR2                      0
-#define IP_ADDR3                    112
+#define IP_ADDR3                    111
 
 /*NETMASK*/
 #define NETMASK_ADDR0               255
