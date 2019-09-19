@@ -31,15 +31,13 @@ http_server_netconn_serve(struct netconn *conn)
   u16_t buflen;
   err_t err;
   
-  /* Read the data from the port, blocking if nothing yet there. 
-   We assume the request (the part we care about) is in one netbuf */
+  /* 读取数据 */
   err = netconn_recv(conn, &inbuf);
   
   if (err == ERR_OK) {
     netbuf_data(inbuf, (void**)&buf, &buflen);
     
-    /* Is this an HTTP GET command? (only check the first 5 chars, since
-    there are other formats for GET, and we're keeping it very simple )*/
+    /* 判断是不是HTTP的GET命令*/
     if (buflen>=5 &&
         buf[0]=='G' &&
         buf[1]=='E' &&
@@ -47,21 +45,17 @@ http_server_netconn_serve(struct netconn *conn)
         buf[3]==' ' &&
         buf[4]=='/' ) {
       
-      /* Send the HTML header 
-             * subtract 1 from the size, since we dont send the \0 in the string
-             * NETCONN_NOCOPY: our data is const static, so no need to copy it
-       */
+      /* 发送数据头*/
       netconn_write(conn, http_html_hdr, sizeof(http_html_hdr)-1, NETCONN_NOCOPY);
       
-      /* Send our HTML page */
+      /* 发送网页数据 */
       netconn_write(conn, http_index_html, sizeof(http_index_html)-1, NETCONN_NOCOPY);
     }
   }
-  /* Close the connection (server closes in HTTP) */
+  /* 关闭连接  */
   netconn_close(conn);
   
-  /* Delete the buffer (netconn_recv gives us ownership,
-   so we have to make sure to deallocate the buffer) */
+  /* 释放inbuf */
   netbuf_delete(inbuf);
 }
 
@@ -73,8 +67,8 @@ http_server_netconn_thread(void *arg)
   err_t err;
   LWIP_UNUSED_ARG(arg);
   
-  /* Create a new TCP connection handle */
-  /* Bind to port 80 (HTTP) with default IP address */
+  /*  创建netconn连接结构 */
+  /* 绑定端口号与IP地址，端口号默认是80 */
 #if LWIP_IPV6
   conn = netconn_new(NETCONN_TCP_IPV6);
   netconn_bind(conn, IP6_ADDR_ANY, LOCAL_PORT);
@@ -84,16 +78,20 @@ http_server_netconn_thread(void *arg)
 #endif /* LWIP_IPV6 */
   LWIP_ERROR("http_server: invalid conn", (conn != NULL), return;);
   
-  /* Put the connection into LISTEN state */
+  /* 监听 */
   netconn_listen(conn);
   
   do {
+		//处理请求
     err = netconn_accept(conn, &newconn);
     if (err == ERR_OK) {
+			//发送网页数据
       http_server_netconn_serve(newconn);
+			//删除连接结构
       netconn_delete(newconn);
     }
   } while(err == ERR_OK);
+	//关闭
   LWIP_DEBUGF(HTTPD_DEBUG,
     ("http_server_netconn_thread: netconn_accept received error %d, shutting down",
     err));
@@ -101,7 +99,7 @@ http_server_netconn_thread(void *arg)
   netconn_delete(conn);
 }
 
-/** Initialize the HTTP server (start its thread) */
+/** 初始化HTTP 服务器(start its thread) */
 void
 http_server_netconn_init(void)
 {

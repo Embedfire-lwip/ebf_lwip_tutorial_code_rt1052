@@ -32,6 +32,7 @@
 #include "queue.h"
 #include "httpserver-netconn.h"
 
+
 /**************************** 任务句柄 ********************************/
 /* 
  * 任务句柄是一个指针，用于指向一个任务，当任务创建好之后，它就具有了一个任务句柄
@@ -193,7 +194,7 @@ static void Test2_Task(void* parameter)
 {	 
   while (1)
   {
-    LED2_TOGGLE;
+    //LED2_TOGGLE;
 //    PRINT_DEBUG("LED2_TOGGLE\n");
     vTaskDelay(2000);/* 延时2000个tick */
   }

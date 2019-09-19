@@ -1,4 +1,3 @@
-
 #include "lwip/opt.h"
 #include "lwip/arch.h"
 #include "lwip/api.h"
@@ -45,16 +44,16 @@ const unsigned char Led1On_Data[] ="<HTML> \
                                          </body></html>";
 static bool led_on = FALSE;
 
-/*send page*/
+/*发送网页数据*/
 void httpserver_send_html(struct netconn *conn, bool led_status)
 {
+  /* 发送数据头 */
   netconn_write(conn, http_html_hdr, sizeof(http_html_hdr)-1, NETCONN_NOCOPY);
-     /* Send our HTML page */
+	/* 根据LED状态，发送不同的LED数据 */
 	if(led_status == TRUE)
      netconn_write(conn, Led1On_Data, sizeof(Led1On_Data)-1, NETCONN_NOCOPY);
 	else
 	  netconn_write(conn, Led1Off_Data, sizeof(Led1Off_Data)-1, NETCONN_NOCOPY);
-//  
   netconn_write(conn, http_index_html, sizeof(http_index_html)-1, NETCONN_NOCOPY);
 
 }
@@ -67,14 +66,12 @@ static void httpserver_serve(struct netconn *conn)
   u16_t buflen;
   err_t err;
   
-  /* Read the data from the port, blocking if nothing yet there. 
-   We assume the request (the part we care about) is in one netbuf */
+  /*等待客户端的命令数据*/
   err = netconn_recv(conn, &inbuf);
   
   if (err == ERR_OK) {
     netbuf_data(inbuf, (void**)&buf, &buflen);
-    /* Is this an HTTP GET command? (only check the first 5 chars, since
-    there are other formats for GET, and we're keeping it very simple )*/
+    /* “GET”命令*/
     if (buflen>=5 &&
         buf[0]=='G' &&
         buf[1]=='E' &&
@@ -82,10 +79,7 @@ static void httpserver_serve(struct netconn *conn)
         buf[3]==' ' &&
         buf[4]=='/' ) {
       
-      /* Send the HTML header 
-             * subtract 1 from the size, since we dont send the \0 in the string
-             * NETCONN_NOCOPY: our data is const static, so no need to copy it
-       */
+      /* “POST” 命令*/
       httpserver_send_html(conn, led_on);
     }
 	else if(buflen>=8&&buf[0]=='P'&&buf[1]=='O'&&buf[2]=='S'&&buf[3]=='T')
@@ -99,17 +93,14 @@ static void httpserver_serve(struct netconn *conn)
          LED1_OFF;
         PRINT_DEBUG("LED OFF!\n");
 	    }
-
+		//发送数据
 		httpserver_send_html(conn, led_on);
 	}
 
 	netbuf_delete(inbuf);
   }
-  /* Close the connection (server closes in HTTP) */
+  /*  关闭*/
   netconn_close(conn);
-  
-  /* Delete the buffer (netconn_recv gives us ownership,
-   so we have to make sure to deallocate the buffer) */
 }
 
 /** The main function, never returns! */
@@ -120,17 +111,17 @@ httpserver_thread(void *arg)
   err_t err;
   LWIP_UNUSED_ARG(arg);
   
-  /* Create a new TCP connection handle */
+  /* 创建连接结构 */
   conn = netconn_new(NETCONN_TCP);
   LWIP_ERROR("http_server: invalid conn", (conn != NULL), return;);
 
   led_on = TRUE;
   LED1_ON;
   
-  /* Bind to port 80 (HTTP) with default IP address */
+  /* 绑定IP地址与端口号  */
   netconn_bind(conn, NULL, LOCAL_PORT);
   
-  /* Put the connection into LISTEN state */
+  /* 监听 */
   netconn_listen(conn);
   
   do {
@@ -147,7 +138,7 @@ httpserver_thread(void *arg)
   netconn_delete(conn);
 }
 
-/** Initialize the HTTP server (start its thread) */
+/** 初始化HTTP 服务器*/
 void
 httpserver_init()
 {
