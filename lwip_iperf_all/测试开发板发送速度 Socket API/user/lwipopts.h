@@ -79,7 +79,7 @@
    sends a lot of data out of ROM (or other static memory), this
    should be set high. */
 #ifndef MEMP_NUM_PBUF
-#define MEMP_NUM_PBUF 15
+#define MEMP_NUM_PBUF 25
 #endif
 /* MEMP_NUM_UDP_PCB: the number of UDP protocol control blocks. One
    per active UDP "connection". */
@@ -99,7 +99,7 @@
 /* MEMP_NUM_TCP_SEG: the number of simultaneously queued TCP
    segments. */
 #ifndef MEMP_NUM_TCP_SEG
-#define MEMP_NUM_TCP_SEG 22
+#define MEMP_NUM_TCP_SEG 35
 #endif
 /* MEMP_NUM_SYS_TIMEOUT: the number of simulateously active
    timeouts. */
@@ -110,7 +110,7 @@
 /* ---------- Pbuf options ---------- */
 /* PBUF_POOL_SIZE: the number of buffers in the pbuf pool. */
 #ifndef PBUF_POOL_SIZE
-#define PBUF_POOL_SIZE 9
+#define PBUF_POOL_SIZE 32
 #endif
 
 /* PBUF_POOL_BUFSIZE: the size of each pbuf in the pbuf pool. */
@@ -139,13 +139,13 @@
 
 /* TCP sender buffer space (bytes). */
 #ifndef TCP_SND_BUF
-#define TCP_SND_BUF (6 * TCP_MSS) // 2
+#define TCP_SND_BUF (5 * TCP_MSS) // 2
 #endif
 
 /* TCP sender buffer space (pbufs). This must be at least = 2 *
    TCP_SND_BUF/TCP_MSS for things to work. */
 #ifndef TCP_SND_QUEUELEN
-#define TCP_SND_QUEUELEN (3 * TCP_SND_BUF) / TCP_MSS // 6
+#define TCP_SND_QUEUELEN (7 * TCP_SND_BUF) / TCP_MSS // 6
 #endif
 
 /* TCP receive window. */
