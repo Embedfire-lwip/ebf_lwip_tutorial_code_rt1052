@@ -12,20 +12,22 @@
 #define   KEEPLIVE_TIME   50
 #define   MQTT_VERSION    4
 
+
+/*以下信息需要自己注册并填写*/
+
 #if    LWIP_DNS
-#define   HOST_NAME       "a1MZHjK2SCF.iot-as-mqtt.cn-shanghai.aliyuncs.com"     //服务器域名
+#define   HOST_NAME     "a1MZHjK2SCF.iot-as-mqtt.cn-shanghai.aliyuncs.com"  //服务器域名
 #else
 #define   HOST_NAME       "139.196.135.135"     //服务器IP地址
 #endif
-
 
 #define   HOST_PORT     1883    //由于是TCP连接，端口必须是1883
 
 #define   CLIENT_ID     "12345|securemode=3,signmethod=hmacsha1|"         //
 #define   USER_NAME     "fire_temp_hum&a1MZHjK2SCF"     //用户名
-#define   PASSWORD      "D6419896E7BEAF8BD9D03C88BF854EA0D3D506AE"  //秘钥
+#define   PASSWORD      "D6419896E7BEAF8BD9D03C88BF854EA0D3XXXXX"  //密码
 
-#define   TOPIC         "/a1MZHjK2SCF/fire_temp_hum/user/temp_hum"      //订阅的主题
+#define   TOPIC         "/a1MZHjK2SCF/fire_temp_hum/user/temp_hum" //主题     
 #define   TEST_MESSAGE  "test_message"  //发送测试消息
 
 

@@ -191,9 +191,9 @@ void UserMsgCtl(MQTT_USER_MSG  *msg)
 		//这里处理数据只是打印，用户可以在这里添加自己的处理方式
 //   if(msg->msglenth > 2)    //只有当消息长度大于2 "{}" 的时候才去处理它 
 //   {
-      PRINT_DEBUG("*****收到订阅的消息！******\n");
-      //返回后处理消息
-        if(msg->msglenth > 2)    //只有当消息长度大于2 "{}" 的时候才去处理它 
+   PRINT_DEBUG("*****收到订阅的消息！******\n");
+   //返回后处理消息
+   if(msg->msglenth > 2)    //只有当消息长度大于2 "{}" 的时候才去处理它 
    {
       switch(msg->msgqos)
       {
@@ -233,80 +233,88 @@ uint16_t GetNextPackID(void)
 	 return pubpacketid++;
 }
 
-/************************************************************************
-** 函数名称: mqtt_msg_publish						
+ /********************************************************
+** 函数名称: mqtt_msg_publish
 ** 函数功能: 用户推送消息
 ** 入口参数: MQTT_USER_MSG  *msg：消息结构体指针
 ** 出口参数: >=0:发送成功 <0:发送失败
-** 备    注: 
-************************************************************************/
-int32_t MQTTMsgPublish(int32_t sock, char *topic, int8_t qos, uint8_t* msg, uint16_t msg_len)
+** 备    注:
+*******************************************************/
+int32_t MQTTMsgPublish(int32_t sock,
+                       char *topic,
+                       int8_t qos,
+                       uint8_t* msg,
+                       uint16_t msg_len)
 {
     int8_t retained = 0;      //保留标志位
     // uint32_t msg_len;         //数据长度
-		uint8_t buf[MSG_MAX_LEN];
-		int32_t buflen = sizeof(buf),len;
-		MQTTString topicString = MQTTString_initializer;
-	  uint16_t packid = 0,packetidbk;
-	
-		//填充主题
-	  topicString.cstring = (char *)topic;
+    uint8_t buf[MSG_MAX_LEN];
+    int32_t buflen = sizeof(buf),len;
+    MQTTString topicString = MQTTString_initializer;
+    uint16_t packid = 0,packetidbk;
 
-	  //填充数据包ID
-	  if((qos == QOS1)||(qos == QOS2))
-		{ 
-			packid = GetNextPackID();
-		}
-		else
-		{
-			  qos = QOS0;
-			  retained = 0;
-			  packid = 0;
-		}
-     
+    //填充主题
+    topicString.cstring = (char *)topic;
+
+    //填充数据包ID
+    if ((qos == QOS1)||(qos == QOS2))
+    {
+        packid = GetNextPackID();
+    }
+    else
+    {
+        qos = QOS0;
+        retained = 0;
+        packid = 0;
+    }
+
     // msg_len = strlen((char *)msg);
-		//推送消息
-		len = MQTTSerialize_publish(buf, buflen, 0, qos, retained, packid, topicString, (unsigned char*)msg, msg_len);
-		if(len <= 0)
-				return -1;
-		if(transport_sendPacketBuffer(buf, len) < 0)	
-				return -2;	
-		
-		//质量等级0，不需要返回
-		if(qos == QOS0)
-		{
-				return 0;
-		}
-		
-		//等级1
-		if(qos == QOS1)
-		{
-				//等待PUBACK
-			  if(WaitForPacket(sock,PUBACK,5) < 0)
-					 return -3;
-				return 1;
-			  
-		}
-		//等级2
-		if(qos == QOS2)	
-		{
-			  //等待PUBREC
-			  if(WaitForPacket(sock,PUBREC,5) < 0)
-					 return -3;
-			  //发送PUBREL
+    //推送消息
+    len = MQTTSerialize_publish(buf, buflen, 0, qos, retained,
+                                packid, topicString,
+                                (unsigned char*)msg, msg_len);
+    if (len <= 0)
+        return -1;
+    if (transport_sendPacketBuffer(buf, len) < 0)
+        return -2;
+
+    //质量等级0，不需要返回
+    if (qos == QOS0)
+    {
+        return 0;
+    }
+
+    //等级1
+    if (qos == QOS1)
+    {
+        //等待PUBACK
+        if (WaitForPacket(sock,PUBACK,5) < 0)
+            return -3;
+        return 1;
+
+    }
+    //等级2
+    if (qos == QOS2)
+    {
+        //等待PUBREC
+        if (WaitForPacket(sock,PUBREC,5) < 0)
+            return -3;
+        //发送PUBREL
         len = MQTTSerialize_pubrel(buf, buflen,0, packetidbk);
-				if(len == 0)
-					return -4;
-				if(transport_sendPacketBuffer(buf, len) < 0)	
-					return -6;			
-			  //等待PUBCOMP
-			  if(WaitForPacket(sock,PUBREC,5) < 0)
-					 return -7;
-				return 2;
-		}
-		//等级错误
-		return -8;
+        if (len == 0)
+            return -4;
+        if (transport_sendPacketBuffer(buf, len) < 0)
+            return -6;
+        //等待PUBCOMP
+        if (WaitForPacket(sock,PUBREC,5) < 0)
+            return -7;
+        return 2;
+    }
+    //等级错误
+    return -8;
 }
+
+
 
 /************************************************************************
 ** 函数名称: ReadPacketTimeout					
@@ -546,45 +554,46 @@ MQTT_START:
 }
 
 /************************************************************************
-** 函数名称: MQTTMsgPublish2dp						
-** 函数功能: 用户推送消息到'$dp'系统主题
-** 入口参数: MQTT_USER_MSG  *msg：消息结构体指针
-** 出口参数: >=0:发送成功 <0:发送失败
-** 备    注: 
-************************************************************************/
-int32_t MQTTMsgPublish2dp(int32_t sock, int8_t qos, int8_t type,uint8_t* msg)
-{
-    int32_t ret;
-    uint16_t msg_len = 0;
-    msg_len = strlen((char *)msg);
-    uint8_t* q = pvPortMalloc(msg_len+3); //目前只支持1、3、4类型的json数据
-      switch (type)
-      {
-        case TopicType1:
-          *(uint8_t*)&q[0] = 0x01;
-          break;
-        case TopicType3:
-          *(uint8_t*)&q[0] = 0x03;
-          break;
-        case TopicType5:
-          *(uint8_t*)&q[0] = 0x05;
-          break;  
-        default:
-          goto publish2dpfail;
-      }
-//      *(uint8_t*)&q[0] = 0x03;
-      *(uint8_t*)&q[1] = ((msg_len)&0xff00)>>8;
-      *(uint8_t*)&q[2] = (msg_len)&0xff;
-      memcpy((uint8_t*)(&q[3]),(uint8_t*)msg,msg_len);
+ ** 函数名称: MQTTMsgPublish2dp
+ ** 函数功能: 用户推送消息到'$dp'系统主题
+ ** 入口参数: MQTT_USER_MSG  *msg：消息结构体指针
+ ** 出口参数: >=0:发送成功 <0:发送失败
+ ** 备    注:
+ ************************************************************************/
+ int32_t MQTTMsgPublish2dp(int32_t sock, int8_t qos, int8_t type,uint8_t* msg)
+ {
+     int32_t ret;
+     uint16_t msg_len = 0;
+     msg_len = strlen((char *)msg);
+     uint8_t* q = pvPortMalloc(msg_len+3); //目前只支持1、3、4类型的json数据
+     switch (type)
+     {
+     case TopicType1:
+         *(uint8_t*)&q[0] = 0x01;
+         break;
+     case TopicType3:
+         *(uint8_t*)&q[0] = 0x03;
+         break;
+     case TopicType5:
+         *(uint8_t*)&q[0] = 0x05;
+         break;
+     default:
+         goto publish2dpfail;
+     }
+     *(uint8_t*)&q[0] = 0x03;
+     *(uint8_t*)&q[1] = ((msg_len)&0xff00)>>8;
+     *(uint8_t*)&q[2] = (msg_len)&0xff;
+     memcpy((uint8_t*)(&q[3]),(uint8_t*)msg,msg_len);
+ 
+     //发布消息
+     ret = MQTTMsgPublish(MQTT_Socket,(char*)"$dp",qos,(uint8_t*)q,msg_len+3);
+ 
+ publish2dpfail:
+     vPortFree(q);
+     q = NULL;
+     return ret;
+ }
 
-    //发布消息
-    ret = MQTTMsgPublish(MQTT_Socket,(char*)"$dp",qos,(uint8_t*)q,msg_len+3);
-
-publish2dpfail:
-    vPortFree(q);
-    q = NULL;
-    return ret;
-}
 
 /************************************************************************
 ** 函数名称: mqtt_thread								

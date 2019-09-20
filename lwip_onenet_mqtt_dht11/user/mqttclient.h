@@ -8,6 +8,9 @@
 #define   KEEPLIVE_TIME   50
 #define   MQTT_VERSION    4
 
+
+/*以下信息需要自己注册账号并填写*/
+
 #if    LWIP_DNS
 #define   HOST_NAME       "mqtt.heclouds.com"     //服务器域名
 #else
@@ -23,6 +26,8 @@
 
 #define   TOPIC         "temp_hum"      //订阅的主题
 #define   TEST_MESSAGE  "test_message"  //发送测试消息
+
+
 
 enum TopicType 
 {

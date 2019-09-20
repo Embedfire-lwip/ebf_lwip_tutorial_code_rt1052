@@ -49,7 +49,7 @@ udpecho_thread(void *arg)
   char *recv_data;
   struct sockaddr_in udp_addr,seraddr;
   int recv_data_len;
-  socklen_t addrlen;
+	socklen_t addrlen=sizeof(seraddr);
 
   while(1)
   {
@@ -88,7 +88,7 @@ udpecho_thread(void *arg)
       PRINTF("receive from %s\n",inet_ntoa(seraddr.sin_addr));
                              
       /*显示发送端发来的字串*/ 
-      PRINTF("recevce:%s",recv_data);
+      PRINTF("recevce:%s \r\n",recv_data);
                              
       /*将字串返回给发送端*/
       sendto(sock,recv_data,

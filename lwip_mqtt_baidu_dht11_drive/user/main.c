@@ -212,18 +212,14 @@ static void Test1_Task(void* parameter)
     send_data = DHT11_Data;
     if(SUCCESS != res)
     {
-//      PRINTF("humidity = %f , temperature = %f\n",
-//             DHT11_Data->humi_int,DHT11_Data->temp_int);
-									PRINTF("\r\n读取DHT11成功!\r\n\r\n湿度为%d.%d ％RH ，温度为 %d.%d℃ \r\n",\
+				PRINTF("\r\n读取DHT11成功!\r\n\r\n湿度为%d.%d ％RH ，温度为 %d.%d℃ \r\n",\
 						DHT11_Data->humi_int,DHT11_Data->humi_deci,DHT11_Data->temp_int,DHT11_Data->temp_deci);
-//      printf("发送消息send_data1！\n");
       xQueueSend( MQTT_Data_Queue, /* 消息队列的句柄 */
                   &send_data,/* 发送的消息内容 */
                   0 );        /* 等待时间 0 */
     }
 
     LED1_TOGGLE;
-//    PRINT_DEBUG("LED1_TOGGLE\n");
     vTaskDelay(1000);/* 延时1000个tick */
   }
 }
@@ -239,7 +235,6 @@ static void Test2_Task(void* parameter)
   while (1)
   {
     LED2_TOGGLE;
-//    PRINT_DEBUG("LED2_TOGGLE\n");
     vTaskDelay(2000);/* 延时2000个tick */
   }
 }
