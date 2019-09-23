@@ -218,6 +218,12 @@
 #define LWIP_PROVIDE_ERRNO 1
 #endif
 
+/* ---------- DNS options ---------- */
+
+#ifndef LWIP_DNS
+#define LWIP_DNS 	0
+#endif
+
 /*
    --------------------------------------
    ---------- Checksum options ----------

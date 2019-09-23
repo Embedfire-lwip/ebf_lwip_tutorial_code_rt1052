@@ -2255,7 +2255,9 @@
 /**
  * @}
  */
-
+#ifndef LWIP_DNS
+#define LWIP_DNS 1
+#endif
 /*
    --------------------------------------
    ---------- Checksum options ----------

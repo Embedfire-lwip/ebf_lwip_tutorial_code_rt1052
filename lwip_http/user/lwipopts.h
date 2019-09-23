@@ -198,6 +198,11 @@
 #define LWIP_PROVIDE_ERRNO 1
 #endif
 
+/* ---------- DNS options ---------- */
+
+#ifndef LWIP_DNS
+#define LWIP_DNS 	1
+#endif
 /*
    --------------------------------------
    ---------- Checksum options ----------
@@ -311,9 +316,7 @@ Some MCU allow computing and verifying the IP, UDP, TCP and ICMP checksums by ha
 #define DEFAULT_ACCEPTMBOX_SIZE 12
 
 
-//官方写法找不到 LWIP_DNS定义的位置，修改一下
-//#if (LWIP_DNS || LWIP_IGMP || LWIP_IPV6) && !defined(LWIP_RAND)
-#if !defined(LWIP_RAND)
+#if (LWIP_DNS || LWIP_IGMP || LWIP_IPV6) && !defined(LWIP_RAND)
 /* When using IGMP or IPv6, LWIP_RAND() needs to be defined to a random-function returning an u32_t random value*/
 #include "lwip/arch.h"
 u32_t lwip_rand(void);
